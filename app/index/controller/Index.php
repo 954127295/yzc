@@ -13,7 +13,7 @@ class Index extends Common{
     }
 
     public function ceshi(){
-    	$this->display();
+    	echo "这是测试";
     }
 
     public function shiyu(){

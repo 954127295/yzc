@@ -30,9 +30,9 @@ class Alluse extends Controller{
             return $this->fetch();
         }
     }
-    // public function error(){
-    //     echo "木有权限";
-    // }
+    public function error_show(){
+        echo "木有权限";
+    }
 
 
 }
