@@ -1,16 +1,17 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use think\Controller;
 use think\Request;
+use think\Session;
 
 class Common extends Controller{
     public function _initialize(){
-    	parent::__construct();
-        $c = CONTROLLER_NAME;
-    	$a = ACTION_NAME;
-    	$user = session("user");
+        $request = Request::instance();
+        $c = $request->controller();
+    	$a = $request->action();
+        $user = Session::get('user');
     	if(empty($user)){
-    		$this->redirect("Public/login");
+    		$this->redirect("Alluse/login");
     	}
     	$permission = $user['permission'];
     	$where['controller'] = $c;
@@ -25,6 +26,4 @@ class Common extends Controller{
             $this->assign("per",$pers['name']);
         }
     }
-
-
 }

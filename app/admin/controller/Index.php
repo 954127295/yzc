@@ -2,13 +2,21 @@
 namespace app\admin\controller;
 use \think\Controller;
 use \think\Request;
-class Index extends Common
-{
-    /**
-     * 首页
-     */
+class Index extends Common{
+	public function __construct(){
+		parent::__construct();
+	}
+
+	//首页
     public function index(){
-        // echo 1;die;
-        return $this->fetch();
+        $this->display();
+    }
+
+    public function ceshi(){
+    	$this->display();
+    }
+
+    public function shiyu(){
+    	echo "shiyu";
     }
 }

@@ -1,0 +1,33 @@
+<div class="top">
+    <div class="m-min">
+        <div class="logo"><img src="__PUBLIC__/img/logo.png"/></div>
+        <div class="top-r">
+            <div onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" id="navigation">
+                <div class="tx">
+                    <div class="tx-img"><img src="__PUBLIC__/img/tx.png"/></div>
+                    <div class="tx-name">牧原1234</div>
+                </div>
+                <ul >
+                    <li><a href="#">密码修改</a></li>
+                    <li><a href="#">用户信息修改</a></li>
+                    <li><a href="#">退出</a></li>
+                </ul>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+<div class="position">
+    <div class="m-min">
+        <div class="p-info"><a href="#">后台管理</a> > <a href="#">{$per}</a></div>
+    </div>
+</div>
+<div class="row">
+    <!--ce-->
+    <div class="sidebar">
+        <div class="sid_title">场维护</div>
+        <ul>
+            {$c,$a|get_menu=###}
+        </ul>
+    </div>
