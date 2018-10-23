@@ -9,7 +9,7 @@ class Index extends Common{
 
 	//首页
     public function index(){
-        $this->display();
+        return $this->fetch();
     }
 
     public function ceshi(){

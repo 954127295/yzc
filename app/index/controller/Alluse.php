@@ -7,10 +7,11 @@ use think\Session;
 class Alluse extends Controller{
     public function login(){
         if($_POST){
-            $username = I("post.username");
-            $password = I("post.password");
+            $request = Request::instance();
+            $username = $request->post('username');
+            $password = $request->post('password');
             $where['username'] = $username;
-            $user = M("User")->where($where)->find();
+            $user = db("User")->where($where)->find();
             if(empty($user)){
                 $this->error("用户不存在");
             }else{

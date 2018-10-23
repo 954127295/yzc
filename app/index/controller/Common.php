@@ -16,7 +16,7 @@ class Common extends Controller{
     	$permission = $user['permission'];
     	$where['controller'] = $c;
     	$where['function'] = $a;
-    	$pers = M("Permission")->where($where)->field("per,name")->find();
+    	$pers = db("Permission")->where($where)->field("per,name")->find();
     	$pre_arr = explode(",",$pers['per']);
     	if(!in_array($permission,$pre_arr)){
     		$this->error("非法操作");
