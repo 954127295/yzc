@@ -38,7 +38,7 @@ class Alluse extends Controller{
     }
 
     public function error_show(){
-        echo "木有权限";
+        $this->error("没有权限");
     }
 
 
