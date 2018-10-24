@@ -30,6 +30,13 @@ class Alluse extends Controller{
             return $this->fetch();
         }
     }
+
+    //退出登录
+    public function logout(){
+        Session::delete('user');
+        $this->redirect("Alluse/login");
+    }
+
     public function error_show(){
         echo "木有权限";
     }
