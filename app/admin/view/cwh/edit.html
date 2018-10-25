@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>单元分组-添加</title>
+<title>单元分组-修改</title>
 <link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -31,36 +31,37 @@
 
 <div class="main">
 <div class="table">
-<div class="ups-title">添加场信息</div>
+<div class="ups-title">修改场信息</div>
 <div class="ups-info add-info">
 
 <form action="" method="post">
+    <input type="hidden" name="id" value="{$data.id}" />
     <div class="ups-info-n add-info-n"><div class="info-name">项目</div>
-        <div class="info-in add-in"><input name="xmname" type="text" placeholder="项目" /></div>
+        <div class="info-in add-in"><input name="xmname" type="text" value="{$data.xmname}"/></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">所属区域</div>
-        <div class="info-in add-in"><input name="region" type="text" placeholder="所属区域" /></div>
+        <div class="info-in add-in"><input name="region" type="text" value="{$data.region}" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">所属省份</div>
-        <div class="info-in add-in"><input name="province" type="text" placeholder="所属省份" /></div>
+        <div class="info-in add-in"><input name="province" type="text" value="{$data.province}" placeholder="所属省份" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">所属子公司</div>
-        <div class="info-in add-in"><input name="zgs" type="text" placeholder="所属子公司" /></div>
+        <div class="info-in add-in"><input name="zgs" type="text" value="{$data.zgs}" placeholder="所属子公司" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">地址</div>
-        <div class="info-in add-in"><input name="address" type="text" placeholder="地址" /></div>
+        <div class="info-in add-in"><input name="address" type="text" value="{$data.address}" placeholder="地址" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">负责人</div>
-        <div class="info-in add-in"><input name="fzrname" type="text" placeholder="负责人" /></div>
+        <div class="info-in add-in"><input name="fzrname" type="text" value="{$data.fzrname}" placeholder="负责人" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">电话</div>
-        <div class="info-in add-in"><input name="tel" type="text" placeholder="电话" /></div>
+        <div class="info-in add-in"><input name="tel" type="text" value="{$data.tel}" placeholder="电话" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">说明</div>
-        <div class="info-in add-in"><input name="explains" type="text" placeholder="说明" /></div>
+        <div class="info-in add-in"><input name="explains" type="text" value="{$data.explains}" placeholder="说明" /></div>
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">报警电话</div>
-        <div class="info-in add-in"><input name="bjtel" type="text" placeholder="报警电话" /></div>
+        <div class="info-in add-in"><input name="bjtel" type="text" value="{$data.bjtel}" placeholder="报警电话" /></div>
     </div>
 
 </div>

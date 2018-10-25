@@ -7,9 +7,13 @@ class Index extends Common{
 		parent::__construct();
 	}
 
-	//首页
+	//首页场列表
     public function index(){
-        return $this->fetch();
+        $data = db('cwh')->paginate(1);
+        $this->assign([
+            'data' => $data,
+        ]);
+        return view();
     }
 
     public function ceshi(){

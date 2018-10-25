@@ -9,6 +9,7 @@ class Index extends Common{
 
 	//首页
     public function index(){
+
         $this->display();
     }
 
