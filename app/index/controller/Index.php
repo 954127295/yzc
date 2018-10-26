@@ -16,11 +16,4 @@ class Index extends Common{
         return view();
     }
 
-    public function ceshi(){
-    	echo "这是测试";
-    }
-
-    public function shiyu(){
-    	echo "shiyu";
-    }
 }

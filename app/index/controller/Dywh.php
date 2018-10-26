@@ -6,7 +6,7 @@ class Dywh extends Common
 {
     // 单元分组列表
     public function lst(){
-        $data = db('dyfz')->paginate(1);
+        $data = db('dyfz')->paginate(10);
         $this->assign([
             'data' => $data,
         ]);

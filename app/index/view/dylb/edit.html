@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改单元</title>
+<link href="/__ADMIN__/css/dwsj.css" rel="stylesheet" type="text/css" />
+
+ <script src="/__ADMIN__/js/jquery.js"></script>
+ <script src="/__ADMIN__/js/dssj.js"></script>
+</head>
+
+<body>
+<div class="content">
+<!--top-->
+{include file="common/qheader"}
+<!--位置<div class="position"></div>-->
+<div class="row">
+<!--ce-->
+{include file="common/qtlft"}
+
+  <div class="main">
+    <div class="table">
+      <div class="ups-title">修改单元</div>
+      <div class="ups-info add-info">
+        <form action="{:url('edit')}" method="post">
+        <input type="hidden" value="{$data.id}" name="id" />
+            <div class="ups-info-n add-info-n"><div class="info-name">单元名</div>
+                <div class="info-in1 add-in">
+                    <input name="dyname" type="text" value="{$data.dyname}" placeholder="单元分组名称"/>
+                </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">单元分组</div>
+              <div class="info-in1 add-in">
+                <select name="dyfzid">
+                  <option>————单元分组————</option>
+                  {volist name="dyfz" id="vo1"}
+                  <option value="{$vo1.id}" {if condition="$vo1['id'] eq $data['dyid']"} selected="selected" {/if}>{$vo1.fzname}</option>
+                  {/volist}
+                </select>
+              </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">接入DTU</div>
+              <div class="info-in1 add-in">
+                <select name="dtuid">
+                  <option>————接入DTU————</option>
+                  {volist name="dtu" id="vo2"}
+                  <option value="{$vo2.id}" {if condition="$vo2['id'] eq $data['dtuid']"} selected="selected" {/if}>{$vo2.dtuname}</option>
+                  {/volist}
+                </select>
+              </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">控制器编号</div>
+                <div class="info-in1 add-in">
+                    <input name="controller" type="text" value="{$data.controller}" placeholder="控制器编号"/>
+                </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">报警手机</div>
+                <div class="info-in1 add-in">
+                    <input name="warningtel" type="text" value="{$data.warningtel}" placeholder="报警手机"/>
+                </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">视频监控</div>
+                <div class="info-in1 add-in">
+                    <textarea name="monitor" style="width: 380px;border: 0;color: #c8c8c8;background: #141414;height: 100px;line-height: 36px;padding-left: 20px;">{$data.monitor}</textarea>
+                </div>
+            </div>
+            <input type="submit" value="提交" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 80px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+</div>
+<!--修改弹窗-->
+<div class="modify-tc">
+  <div class="mark"></div>
+  <div class="ups">
+    <div class="ups-title">单元01-05信息修改<div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
+    <div class="ups-info">
+      <div class="ups-info-n01"><div class="info-name1">项目</div>
+        <div class="info-in1">山西长荣农业科技股份有限公司1200头母猪场</div></div>
+
+      <div class="ups-info-n01"><div class="info-name1">分组名称</div>
+        <div class="info-in1"><input name="名称" type="text" value="单元01-05" /></div></div>
+
+      <div class="ups-info-n01"><div class="info-name1">排序</div>
+        <div class="info-in1"><input name="排序" type="text" value="100" /></div></div>
+    </div>
+    <div class="ups-button">提交</div>
+  </div>
+</div>
+
+
+<!--删除-->
+<div class="delete-tc">
+  <div class="mark"></div>
+  <div class="ups">
+    <div class="ups-title delete-title"><div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
+    <div class="ups-info delete-info">
+      确定要删除单元 单元01-05 吗？
+    </div>
+    <div class="ups-button">确认删除</div>
+  </div>
+</div>
+
+
+
+<!--怀孕单元弹窗-->
+</div>
+
+</div>
+<!---->
+</div>
+</body>
+
+
+</html>

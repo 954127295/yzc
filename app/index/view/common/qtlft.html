@@ -15,9 +15,9 @@
 </li>
 <li class="li-f sid_checked "><div class="li-first"><img src="/__ADMIN__/img/li-7.png"/>单元维护</div>
     <ul class="li-firstDrop">
-      <li {if condition="$c eq 'Dywh'"} class="deop-checked" {/if}>单元分组</li>
-      <li >单元列表</li>
-      <li >DTU维护</li>
+      <li {if condition="$c eq 'Dywh'"} class="deop-checked" {/if}><a href="{:url('Dywh/lst')}">单元分组</a></li>
+      <li {if condition="$c eq 'Dtu'"} class="deop-checked" {/if}><a href="{:url('Dylb/lst')}">单元列表</a></li>
+      <li {if condition="$c eq 'Dtu'"} class="deop-checked" {/if}><a href="{:url('Dtu/lst')}">DTU维护</a></li>
     </ul>
 </li>
 
