@@ -2,20 +2,21 @@
 namespace app\admin\controller;
 use think\Controller;
 use think\Request;
+use think\Session;
 
 class Common extends Controller{
     public function _initialize(){
-    	parent::__construct();
-        $c = CONTROLLER_NAME;
-    	$a = ACTION_NAME;
-    	$user = session("user");
+        $request = Request::instance();
+        $c = $request->controller();
+    	$a = $request->action();
+        $user = Session::get('user');
     	if(empty($user)){
-    		$this->redirect("Public/login");
+    		$this->redirect("Alluse/login");
     	}
     	$permission = $user['permission'];
     	$where['controller'] = $c;
     	$where['function'] = $a;
-    	$pers = M("Permission")->where($where)->field("per,name")->find();
+    	$pers = db("Permission")->where($where)->field("per,name")->find();
     	$pre_arr = explode(",",$pers['per']);
     	if(!in_array($permission,$pre_arr)){
     		$this->error("非法操作");
@@ -25,6 +26,4 @@ class Common extends Controller{
             $this->assign("per",$pers['name']);
         }
     }
-
-
 }

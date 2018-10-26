@@ -3,77 +3,76 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>后台管理-添加场</title>
-    <link href="__PUBLIC__/css/cwh.css" rel="stylesheet" type="text/css"/>
+    <title>后台管理-场列表</title>
+    <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/dswh.js"></script>
+    <script src="/__ADMIN__/js/dswh.js"></script>
     <script type="text/javascript">
 
     </script>
-    <style>
-
-    </style>
+<style type="text/css">
+    .pagination{
+        text-align:right;
+    }
+    .pagination li{
+        display: inline-block;
+    }
+    .page-style{
+        width:1000px;
+    }
+    td
+    {
+        /*设置表格文字左右和上下居中对齐*/
+        vertical-align: middle;
+        text-align: center;
+        /*设置表格文字在一行显示*/
+        text-overflow:ellipsis;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+</style>
 </head>
 
 <body>
 <div class="content">
-    <include file="Public:menu"/>
+    {include file="alluse/menu" /}
      <!--修改弹窗-->
-        <div class="main">
-            <div class="ups的">
-                <div class="ups-info">
-                    <div class="ups-info-n">
-                        <div class="info-name">项目</div>
-                        <div class="info-in"><input name="项目" type="text" value="山西长荣农业科技股份有限公司1200头母猪场"/></div>
-                    </div>
-
-                    <div class="ups-info-n">
-                        <div class="info-name">所属区域</div>
-                        <div class="info-in"><input name="名称" type="text" value="华北地区"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">所属省份</div>
-                        <div class="info-in"><input name="名称" type="text" value="河北省"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">所属子公司</div>
-                        <div class="info-in"><input name="名称" type="text" value="大厂县子公司"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">地址</div>
-                        <div class="info-in"><input name="名称" type="text" value="大厂县东里乡"/></div>
-                    </div>
-
-                    <div class="ups-info-n">
-                        <div class="info-name">负责人</div>
-                        <div class="info-in"><input name="排序" type="text" value="100"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">电话</div>
-                        <div class="info-in"><input name="排序" type="text" value="100"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">说明</div>
-                        <div class="info-in"><input name="排序" type="text" value="100"/></div>
-                    </div>
-                    <div class="ups-info-n">
-                        <div class="info-name">报警电话</div>
-                        <div class="info-in"><input name="排序" type="text" value="100"/></div>
-                    </div>
-                    <div class="ups-button" style="margin-left:200px;">提交</div>
-
+       <div class="main">
+            <div class="table">
+                <table width="1100" border="0">
+                    <tr>
+                        <td bgcolor="#191919" width="20%"><strong>名称</strong></td>
+                        <td bgcolor="#191919" width="20%"><strong>地址</strong></td>
+                        <td bgcolor="#191919" width="20%"><strong>负责人</strong></td>
+                        <td bgcolor="#191919" ><strong>电话</strong></td>
+                        <td bgcolor="#191919" ><strong>报警电话</strong></td>
+                        <td bgcolor="#191919" ><strong>说明</strong></td>
+                        <td bgcolor="#191919" ><strong>操作</strong></td>
+                    </tr>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>{$vo.xmname}</td>
+                        <td>{$vo.address}</td>
+                        <td>{$vo.fzrname}</td>
+                        <td>{$vo.tel}</td>
+                        <td>{$vo.bjtel}</td>
+                        <td>{$vo.explains}</td>
+                        <td class="opt">
+                            <a href="{:url('Cwh/edit',array('id'=>$vo['id']))}">[修改信息]</a>
+                            <a href="{:url('Cwh/del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除?')==false)return false;">[删除]</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+                <div class="page-style">
+                    {$data->render()}
                 </div>
-                
             </div>
         </div>
-
-       
     </div>
 
-
-</div>
 <!---->
-</div>
+
 </body>
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace app\index\controller;
+namespace app\admin\controller;
 use \think\Controller;
 use \think\Request;
 class Dywh extends Common

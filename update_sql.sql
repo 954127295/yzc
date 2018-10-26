@@ -41,3 +41,5 @@ INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `sh
 INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Dylb', 'add', '单元添加', 'no');
 INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Dylb', 'del', '单元删除', 'no');
 INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Dylb', 'edit', '单元修改', 'no');
+
+ALTER TABLE `pig_cwh` ADD `category` enum('1','2') NOT NULL DEFAULT '1' COMMENT '场分类（生产厂、繁殖场）';

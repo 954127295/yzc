@@ -8,7 +8,7 @@ class Cwh extends Common
         return view();
     }
 
-
+    // 场信息添加
     public function add(){
         if(request()->isPost()){
             $data = input('post.');
@@ -22,16 +22,31 @@ class Cwh extends Common
         }
         return view();
     }
-    public function lst(){
-        $data = db('cwh')->paginate(1);
-        // dump($data);die;
+    // 场信息修改
+    public function edit($id){
+        if(request()->isPost()){
+            $_edit = input('post.');
+            $edit = db('cwh')->update($_edit);
+            if($edit){
+                $this->success('修改场信息成功','Index/index');
+            }else{
+                $this->error('修改场信息失败');
+            }
+        }
+        $data = db('cwh')->where('id',$id)->find();
         $this->assign([
             'data' => $data,
         ]);
         return view();
     }
-
-    public function edit(){
-        return view();
+    // 场删除
+    public function del($id){
+        $del = db('cwh')->delete($id);
+        if($del){
+            $this->success('删除场信息成功','Index/index');
+        }else{
+            $this->error('删除场信息失败');
+        }
     }
+
 }
