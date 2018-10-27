@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>圏维护</title>
+<link href="css/dswh.css" rel="stylesheet" type="text/css" />
+ <script src="js/jquery.js" ></script>
+  <script src="js/dswh.js" ></script>
+</head>
+
+<body>
+<div class="content">
+<!--top-->
+<div class="top">
+<div class="m-min">
+<div class="logo"><img src="img/logo.png"/></div>
+<div class="top-r">
+  <div onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" id="navigation">
+    <div class="tx">
+      <div class="tx-img"><img src="img/tx.png"/></div>
+      <div class="tx-name">牧原1234</div>
+    </div>
+    <ul >
+      <li><a href="#">密码修改</a></li>
+      <li><a href="#">用户信息修改</a></li>
+      <li><a href="#">退出</a></li>
+    </ul>
+  </div>
+<div class="t-alarm"><img src="img/zc-jb.png"/></div>
+<div class="t-sett"><img src="img/t-sett.png" /></div>
+</div>
+</div>
+</div>
+
+<!--位置-->
+<div class="position">
+<div class="m-min"><div class="p-info"><a href="#">首页</a> > <a href="#">单元维护</a> </div> </div>
+</div>
+
+<div class="row">
+<!--ce-->
+
+<div style="right: 98px" class="main">
+<div class="addto">添加圈</div>
+<div class="table">
+<table width="1000" border="0">
+  <tr>
+    <td bgcolor="#191919"><strong>编号</strong></td>
+    <td bgcolor="#191919"><strong>名称</strong></td>
+    <td bgcolor="#191919"><strong>操作</strong></td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>圈01</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+  <tr>
+     <td>1</td>
+    <td>圈02</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+  <tr>
+     <td>1</td>
+    <td>圈03</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+  <tr>
+     <td>1</td>
+    <td>圈04</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+  <tr>
+     <td>1</td>
+    <td>圈05</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+  <tr>
+     <td>1</td>
+    <td>圈06</td>
+    <td class="opt"><div class="modify">[修改信息]</div><div class="delete">[删除]</div></td>
+  </tr>
+</table>
+</div>
+</div>
+
+<!--1添加分组弹窗-->
+<div class="addto-tc">
+<div class="mark"></div>
+<div class="ups">
+<div class="ups-title">添加圈<div class="close"><img src="img/close.png" /></div></div>
+<div class="ups-info">
+<div class="ups-info-n"><div class="info-name">单元名</div>
+<div class="info-in">单元01-05</div></div>
+
+<div class="ups-info-n"><div class="info-name">圈名称</div>
+<div class="info-in"><input name="名称" type="text" value="圈名称" /></div></div>
+
+<div class="ups-info-n"><div class="info-name">圈编号</div>
+<div class="info-in"><input name="编号" type="text" value="圈编号" /></div></div>
+
+</div>
+<div class="ups-button">提交</div>
+</div>
+</div>
+
+<!--修改弹窗-->
+<div class="modify-tc">
+<div class="mark"></div>
+<div class="ups">
+<div class="ups-title">圈02信息修改<div class="close"><img src="img/close.png" /></div></div>
+<div class="ups-info">
+<div class="ups-info-n"><div class="info-name">单元</div>
+<div class="info-in">单元01-05</div></div>
+
+<div class="ups-info-n"><div class="info-name">编号</div>
+<div class="info-in"><input name="编号" type="text" value="01" /></div></div>
+
+<div class="ups-info-n"><div class="info-name">名称</div>
+<div class="info-in"><input name="名称" type="text" value="圈01" /></div></div>
+</div>
+<div class="ups-button">提交</div>
+</div>
+</div>
+
+
+<!--删除-->
+<div class="delete-tc">
+<div class="mark"></div>
+<div class="ups">
+<div class="ups-title delete-title"><div class="close"><img src="img/close.png" /></div></div>
+<div class="ups-info delete-info">
+确定要删除圈 圈01 吗？
+</div>
+<div class="ups-button">确认删除</div>
+</div>
+</div>
+
+</div>
+
+</div>
+<!---->
+</div>
+</body>
+
+
+</html>

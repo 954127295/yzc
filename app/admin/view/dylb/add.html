@@ -31,7 +31,7 @@
             <div class="ups-info-n add-info-n"><div class="info-name">单元分组</div>
               <div class="info-in1 add-in">
                 <select name="dyfzid">
-                  <option>————单元分组————</option>
+                  <option>—————————添加单元分组—————————</option>
                   {volist name="dyfz" id="vo1"}
                   <option value="{$vo1.id}">{$vo1.fzname}</option>
                   {/volist}
@@ -41,10 +41,25 @@
             <div class="ups-info-n add-info-n"><div class="info-name">接入DTU</div>
               <div class="info-in1 add-in">
                 <select name="dtuid">
-                  <option>————接入DTU————</option>
+                  <option>——————————接入DTU——————————</option>
                   {volist name="dtu" id="vo2"}
                   <option value="{$vo2.id}">{$vo2.dtuname}</option>
                   {/volist}
+                </select>
+              </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">单元类型</div>
+              <div class="info-in1 add-in">
+                <select name="dytype">
+                  <option>——————————单元类型——————————</option>
+                  <!-- 1是生产厂 2是繁殖场-->
+                  {if condition="$ctype eq 1"}
+                  <option value="1">保育单元</option>
+                  <option value="2">育肥单元</option>
+                  {else}
+                  <option value="3">怀孕单元</option>
+                  <option value="4">分娩单元</option>
+                  {/if}
                 </select>
               </div>
             </div>

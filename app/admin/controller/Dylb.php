@@ -25,7 +25,7 @@ class Dylb extends Common
             $data['monitor'] = json_encode($data['monitor'],JSON_UNESCAPED_SLASHES);//后期使用\r\n分隔地址
             $data['addtime'] = time();
             //添加场
-            // $data['cid'] = session('cid');
+            $data['cid'] = session('cid');
             $add = db('unit')->insert($data);
             if($add){
                 $this->success('添加单元成功','lst','','1');
@@ -35,9 +35,13 @@ class Dylb extends Common
         }
         $dyfz = db('dyfz')->field('id,fzname')->select();
         $dtu = db('dtu')->field('id,dtuname')->select();
+        $ctype = db('cwh')->where('id',session('cid'))->field('category')->find();
+        // dump($ctype['category']);die;
+        // dump(session('cid'));die;
         $this->assign([
             'dyfz' => $dyfz,
             'dtu' => $dtu,
+            'ctype' => $ctype['category'],
         ]);
         return view();
     }
@@ -63,10 +67,12 @@ class Dylb extends Common
         $data['monitor'] = json_decode($data['monitor']);
         $dyfz = db('dyfz')->field('id,fzname')->select();
         $dtu = db('dtu')->field('id,dtuname')->select();
+        $ctype = db('cwh')->where('id',session('cid'))->field('category')->find();
         $this->assign([
             'data' => $data,
             'dyfz' => $dyfz,
             'dtu' => $dtu,
+            'ctype' => $ctype['category'],
         ]);
         return view();
     }

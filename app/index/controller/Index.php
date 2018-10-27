@@ -63,6 +63,7 @@ class Index extends Common{
     public function find_zc(){
         $info = input('post.');
         $res = db("Cwh")->where($info['info'])->field("id")->find();
+        $cid = session('cid',$res['id']);
         $this->redirect("Zc/index",array("id"=>$res['id']));
     }
 

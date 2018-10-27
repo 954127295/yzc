@@ -18,7 +18,7 @@ class Dtu extends Common
         if(request()->isPost()){
             $data = input('post.');
             // 存入场id
-            // $data['cid'] = session('cid');
+            $data['cid'] = session('cid');
             $data['addtime'] = time();
             $ins = db('dtu')->insert($data);
             if($ins){

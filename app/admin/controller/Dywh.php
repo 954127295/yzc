@@ -16,6 +16,7 @@ class Dywh extends Common
     public function add(){
         if(request()->isPost()){
             $data = input('post.');
+            $data['cid'] = session('cid');
             $ins = db('dyfz')->insert($data);
             if($ins){
                 $this->success('添加单元分组成功','lst','','1');
