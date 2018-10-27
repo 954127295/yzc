@@ -13,7 +13,8 @@ class Zc extends Common{
     //猪场首页
     public function index($id){
         $user = self::$user_arr;
-        $zc = db("Cwh")->where(array("id"=>$id))->field("category")->find();
+        $zc = db("Cwh")->where(array("id"=>$id))->find();
+        $this->assign("zc",$zc);
         if($zc['category'] == 1){
             return $this->fetch("production");
         }elseif($zc['category'] == 2){

@@ -66,4 +66,12 @@ class Index extends Common{
         $this->redirect("Zc/index",array("id"=>$res['id']));
     }
 
+    //选择需进入的猪场
+    public function find_xnname_zc(){
+        $xmname = input('post.xmname');
+        $where['xmname'] = array("like","%$xmname%");
+        $res = db("Cwh")->where($where)->field("id")->find();
+        $this->redirect("Zc/index",array("id"=>$res['id']));
+    }
+
 }

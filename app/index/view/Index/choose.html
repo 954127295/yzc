@@ -13,7 +13,9 @@
 <div class="sy-title"><img src="/__INDEX__/img/logo-title.png"/></div>
 
 <div class="sy-second">
-<div class="search"><input name="搜索" type="text" placeholder="请输入搜索内容" /><span> <img src="/__INDEX__/img/search1.png"/></span></div>
+<form action="{:url('find_xnname_zc')}" id="x_form" method="post">
+<div class="search"><input name="xmname" id="xmname" type="text" placeholder="请输入搜索内容" /><span> <img src="/__INDEX__/img/search1.png" onclick="search()"/></span></div>
+</form>
 <div class="weather"><div class="wea-icon"><img src="/__INDEX__/img/weather-icon1.png"/></div>
 <div class="wea-info"><div class="date">2018-10-15</div>
 <div class="wea-w">多云</div><div class="wea-tem">14℃~19℃</div>
@@ -58,6 +60,12 @@
       return false;
     }else{
       get_sf(qy);
+    }
+  }
+  function search(){
+    var xmname = $("#xmname").val();
+    if(xmname){
+      $("#x_form").submit();
     }
   }
   function get_sf(qy){
