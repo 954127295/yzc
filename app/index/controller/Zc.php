@@ -14,6 +14,10 @@ class Zc extends Common{
     public function index($id){
         $user = self::$user_arr;
         $zc = db("Cwh")->where(array("id"=>$id))->find();
+        if(empty($zc)){
+            $this->error("不存在");
+        }
+        Session::set('zc_id',$zc['id']);
         $this->assign("zc",$zc);
         if($zc['category'] == 1){
             return $this->fetch("production");
