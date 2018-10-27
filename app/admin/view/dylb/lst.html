@@ -52,7 +52,7 @@
       {volist name="data" id="vo"}
       <tr>
         <td>{$vo.id}</td>
-        <td><a href="{:url('Piggery/lst',array('dyid',$vo['id']))}">{$vo.dyname}</a></td>
+        <td><a href="{:url('Piggery/lst',array('dyid'=>$vo['id']))}">{$vo.dyname}</a></td>
         <td>{$vo.fzname}</td>
         <td>{$vo.dtuname}</td>
         <td>{$vo.controller}</td>

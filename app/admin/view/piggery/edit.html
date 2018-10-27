@@ -18,29 +18,31 @@
 
 <div class="row">
 <!--ce-->
-{include file="common/qtlft"}
+
 
   <div class="main">
     <div class="table">
-      <div class="ups-title">修改DTU</div>
+      <div class="ups-title">{if condition="$date['dytype'] eq 1 OR $date['dytype'] eq 2"}修改圈{else/}修改耳标号{/if}</div>
       <div class="ups-info add-info">
         <form action="" method="post">
             <input type="hidden" name="id" value="{$date.id}" />
-            <div class="ups-info-n add-info-n"><div class="info-name">DTU别名 </div>
+            <input type="hidden" name="unitid" value="{$date.unitid}" />
+            <div class="ups-info-n add-info-n"><div class="info-name">单元名称 </div>
                 <div class="info-in1 add-in">
-                    <input name="dtuname" type="text" value="{$date.dtuname}"/>
+                    {$date.dyname}
+                </div>
+            </div>
+            <div class="ups-info-n add-info-n"><div class="info-name">圈名称 </div>
+                <div class="info-in1 add-in">
+                    <input name="jname" type="text" value="{$date.jname}"/>
                 </div>
             </div>
             <div class="ups-info-n add-info-n"><div class="info-name">出厂编号</div>
                 <div class="info-in1 add-in">
-                    <input name="number" type="text" value="{$date.number}"/>
+                    <input name="jnumber" type="text" value="{$date.jnumber}"/>
                 </div>
             </div>
-            <div class="ups-info-n add-info-n"><div class="info-name">类型</div>
-                <div class="info-in1 add-in">
-                    <input name="type" type="text" value="{$date.type}"/>
-                </div>
-            </div>
+
             <input type="submit" value="提交" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 20px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">
         </form>
       </div>
