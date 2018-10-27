@@ -1,0 +1,82 @@
+@charset "utf-8";
+body{
+	margin:0;
+	padding:0;
+	vertical-align: baseline;
+	font-size:14px;
+	color:#fff;
+	font-family:'Microsoft YaHei','Helvetica Neue', 'Hiragino Sans GB', 黑体, Arial, sans-serif;
+	background: url(../img/sy-bg.png) no-repeat #141414;
+	background-size: 100% 1000px;
+	}
+ul,li,img {list-style:none;border:none; padding:0; margin:0;}
+a {text-decoration:none;cursor:pointer;outline:none; color:#fff}	
+
+
+.content {
+	width: 100%;
+	height:100%;
+}
+.sy-con{
+	width:860px;
+	margin:0 auto;
+	}
+.sy-title{ 
+    text-align:center;
+	margin-top:100px;
+	}
+.sy-second{
+	margin-top:60px;
+	display:flex;
+	}
+.search{
+	width:600px;
+	height:60px;
+	line-height:60px;
+	border-radius:10px;
+	background-color:rgba(30,30,60,0.5);
+	display:flex;
+	}
+.search input{
+	width:520px;
+	border:0;
+	color:#fff;
+	font-size:16px;
+	background: none;
+	height:60px;
+	line-height:66px;
+	padding-left:20px;
+	}	
+.search span{ height:60px; width:80px; cursor:pointer; text-align:center; }	
+.search span img{ margin-top:16px;}	
+
+.weather{ width:220px; margin-left:20px; display:flex;}	
+.wea-icon{ width:50px; text-align:center;}
+.wea-info{ width:160px; margin-left:10px;}
+
+.sy-third{
+	margin-top:50px;
+	display:flex;
+	}
+.select1{
+	width:180px;
+	height:40px;
+	margin-right:20px;
+	border-radius:6px;
+	background-color:rgba(185,185,185,0.5);
+	}
+.select1 select{
+	height:40px;
+	line-height:40px;
+	width:180px;
+	border:0;
+	color:black;
+	appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+     background: url(../img/sy-xl.png) no-repeat  155px center;
+     padding:0px 25px 0px 10px;
+	}
+select::-ms-expand { display: none; }
+
+	

@@ -5,7 +5,8 @@ use think\Request;
 use think\Session;
 
 class Common extends Controller{
-    public function _initialize(){
+    public function __construct(){
+        parent::__construct();
         $request = Request::instance();
         $c = $request->controller();
     	$a = $request->action();

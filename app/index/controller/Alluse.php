@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use think\Controller;
 use think\Request;
 use think\Session;
@@ -21,7 +21,14 @@ class Alluse extends Controller{
                     $save_user['uid'] = $user['id'];
                     $save_user['permission'] = $user['permission'];
                     Session::set("user",$save_user);
-                    $this->redirect("Alluse/logout");
+                    if(in_array($user['permission'],array(1,2,3))){
+                        $this->redirect("Index/choose");
+                    }elseif(in_array($user['permission'],array(4,5,6))){
+                        $zc_id = 1;//此处查询数据库猪场与用户关联
+                        $this->redirect("Zc/index",array("id"=>$zc_id));
+                    }else{
+                        $this->error("没有相关权限进入");
+                    }
                 }else{
                     $this->error("密码错误");
                 }
@@ -33,14 +40,8 @@ class Alluse extends Controller{
 
     //退出登录
     public function logout(){
-        echo session("user");exit;
-        seesion('user',null);
+        Session::delete('user');
         $this->redirect("Alluse/login");
     }
-
-    public function error_show(){
-        $this->error("没有权限");
-    }
-
 
 }

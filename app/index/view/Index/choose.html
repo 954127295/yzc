@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link href="/__INDEX__/css/index.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="sy-con">
+<div class="sy-title"><img src="/__INDEX__/img/logo-title.png"/></div>
+
+<div class="sy-second">
+<div class="search"><input name="搜索" type="text" placeholder="请输入搜索内容" /><span> <img src="/__INDEX__/img/search1.png"/></span></div>
+<div class="weather"><div class="wea-icon"><img src="/__INDEX__/img/weather-icon1.png"/></div>
+<div class="wea-info"><div class="date">2018-10-15</div>
+<div class="wea-w">多云</div><div class="wea-tem">14℃~19℃</div>
+</div>
+</div>
+</div>
+<form action="{:url('find_zc')}" method="post" id="form">
+<div class="sy-third">
+<div class="select1">
+  <select onchange="change_sf(this)" id="qy" name="info[region]">
+    <option value="0">--请选择区域--</option>
+    {volist name="qy" id="q"}
+      <option value="{$q.region}">{$q.region}</option>
+    {/volist}
+  </select>
+</div>
+<div class="select1">
+  <select onchange="change_zgs(this)" id="sf" name="info[province]">
+  <option value="0">--请选择省份--</option>
+</select>
+</div>
+<div class="select1">
+  <select onchange="change_zc(this)" id="zgs" name="info[zgs]">
+  <option value="0">--请选择子公司--</option>
+</select>
+</div>
+<div class="select1">
+  <select id="zc" name="info[xmname]">
+  <option value="0">--请选择猪场--</option>
+</select>
+</div>
+<a onclick="go()" style="font-size:30px;">进入</a>
+</div>
+</form>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+  function change_sf(this_obj){
+    var qy = $(this_obj).val();
+    if(qy == 0){
+      return false;
+    }else{
+      get_sf(qy);
+    }
+  }
+  function get_sf(qy){
+    $.ajax({
+      url:"{:url('get_sf')}",
+      type:"post",
+      dataType:"json",
+      data:{"qy":qy},
+      success:function(data){
+        if(data.code == 0){
+          var html = '';
+          html += '<option value="0">--请选择省份--</option>';
+          $.each(data.list,function(i,item){
+            html += '<option value="'+item.province+'">'+item.province+'</option>';
+          });
+        $("#sf").html(html);
+        $("#zgs").html('<option value="0">--请选择子公司--</option>');
+        $("#zc").html('<option value="0">--请选择猪场--</option>');
+        }
+      }
+    });
+  }
+  function change_zgs(this_obj){
+    var sf = $(this_obj).val();
+    if(sf == 0){
+      return false;
+    }else{
+      get_zgs(sf);
+    }
+  }
+  function get_zgs(sf){
+    $.ajax({
+      url:"{:url('get_zgs')}",
+      type:"post",
+      dataType:"json",
+      data:{"sf":sf},
+      success:function(data){
+        if(data.code == 0){
+          var html = '';
+          html += '<option value="0">--请选择子公司--</option>';
+          $.each(data.list,function(i,item){
+            html += '<option value="'+item.zgs+'">'+item.zgs+'</option>';
+          });
+        $("#zgs").html(html);
+        $("#zc").html('<option value="0">--请选择猪场--</option>');
+        }
+      }
+    });
+  }
+  function change_zc(this_obj){
+    var zgs = $(this_obj).val();
+    if(zgs == 0){
+      return false;
+    }else{
+      get_zc(zgs);
+    }
+  }
+  function get_zc(zgs){
+    $.ajax({
+      url:"{:url('get_zc')}",
+      type:"post",
+      dataType:"json",
+      data:{"zgs":zgs},
+      success:function(data){
+        if(data.code == 0){
+          var html = '';
+          html += '<option value="0">--请选择猪场--</option>';
+          $.each(data.list,function(i,item){
+            html += '<option value="'+item.xmname+'">'+item.xmname+'</option>';
+          });
+        $("#zc").html(html);
+        }
+      }
+    });
+  }
+  function go(){
+    var zc = $("#zc").val();
+    if(zc == 0){
+      alert("请选择完整筛选条件");
+      return false;
+    }else{
+      $("#form").submit();
+    }
+  }
+</script>
+</html>
