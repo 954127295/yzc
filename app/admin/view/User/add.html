@@ -36,6 +36,15 @@
             </select>
         </div>
     </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">所属场</div>
+        <div class="info-in add-in">
+            <select name="cid">
+                {foreach name="chang" item="c"}
+                <option value="{$c.id}">{$c.xmname}</option>
+                {/foreach}
+            </select>
+        </div>
+    </div>
     <div class="ups-info-n add-info-n"><div class="info-name">姓名</div>
         <div class="info-in add-in"><input name="name" type="text" required="required" placeholder="姓名" /></div>
     </div>

@@ -5,9 +5,11 @@
 <title>用户列表</title>
 <link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
 <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
+<link href="/__ADMIN__/layui/css/layui.css" rel="stylesheet" type="text/css"/>
  <script src="/__ADMIN__/js/jquery.js"></script>
  <script src="/__ADMIN__/js/dssj.js"></script>
     <script src="/__ADMIN__/js/dswh.js"></script>
+ <script src="/__ADMIN__/layui/layui.js"></script>
  <style type="text/css">
 .pagination{
     text-align:right;
@@ -44,6 +46,7 @@
         <td bgcolor="#191919"><strong>姓名</strong></td>
         <td bgcolor="#191919"><strong>手机号</strong></td>
         <td bgcolor="#191919"><strong>邮箱</strong></td>
+        <td bgcolor="#191919"><strong>场管理</strong></td>
         <td bgcolor="#191919"><strong>权限管理</strong></td>
       </tr>
       {volist name="data" id="vo"}
@@ -54,6 +57,13 @@
         <td><input type="text" value="{$vo.name}" onchange="change_user({$vo.id},'name',this)" /></td>
         <td><input type="text" value="{$vo.tel}" onchange="change_user({$vo.id},'tel',this)" /></td>
         <td><input type="text" value="{$vo.email}" onchange="change_user({$vo.id},'email',this)" /></td>
+        <td>
+          <select onchange="change_user({$vo.id},'cid',this)">
+            {foreach name="chang" item="c"}
+              <option {if condition="$vo.cid eq $c.id"}selected{/if} value="{$c.id}">{$c.xmname}</option>
+            {/foreach}
+          </select>
+        </td>
         <td>
           <select onchange="change_user({$vo.id},'permission',this)">
             <option {if condition="$vo.permission eq 1"}selected{/if} value="1">集团总监</option>
@@ -79,6 +89,10 @@
 </div>
 </body>
 <script type="text/javascript">
+  
+  layui.use(['layer', 'form'], function(){
+    var layer = layui.layer
+  });
   function change_user(id,column,this_obj){
     var val = $(this_obj).val();
     $.ajax({
@@ -87,7 +101,7 @@
       dataType:"json",
       data:{"id":id,"column":column,"value":val},
       success:function(data){
-
+        layer.msg("修改用户信息成功");
       }
     });
   }

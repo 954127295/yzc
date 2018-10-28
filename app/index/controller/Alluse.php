@@ -24,7 +24,8 @@ class Alluse extends Controller{
                     if(in_array($user['permission'],array(1,2,3))){
                         $this->redirect("Index/choose");
                     }elseif(in_array($user['permission'],array(4,5,6))){
-                        $zc_id = 1;//此处查询数据库猪场与用户关联
+                        $zc_id = $user['cid'];//此处查询数据库猪场与用户关联
+                        Session::set("cid",$zc_id);
                         $this->redirect("Zc/index",array("id"=>$zc_id));
                     }else{
                         $this->error("没有相关权限进入");

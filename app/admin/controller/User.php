@@ -12,6 +12,8 @@ class User extends Common{
     // 单元列表
     public function lst(){
         $data = db('User')->paginate(10);
+        $chang = db("Cwh")->field("id,xmname")->select();
+        $this->assign("chang",$chang);
         $this->assign([
             'data' => $data,
         ]);
@@ -31,6 +33,8 @@ class User extends Common{
                 $this->error('用户添加失败');
             }
         }else{
+            $chang = db("Cwh")->field("id,xmname")->select();
+            $this->assign("chang",$chang);
             return $this->fetch();
         }
     }
@@ -49,6 +53,7 @@ class User extends Common{
         $data[$column] = $val;
         $where['id'] = $id;
         db("User")->where($where)->update($data);
+        echo true;
     }
 
 }

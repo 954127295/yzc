@@ -15,6 +15,10 @@ class Common extends Controller{
     	if(empty($user)){
     		$this->redirect("Alluse/login");
     	}else{
+            $cid = Session::get('cid');
+            if(empty($cid) && !in_array($user['permission'],array(1,2,3))){
+                $this->redirect("Alluse/login");
+            }
             self::$user_arr = $user;
         }
     }
