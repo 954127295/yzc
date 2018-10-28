@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>后台管理-场列表</title>
+    <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/__ADMIN__/js/dswh.js"></script>
+    <script type="text/javascript">
+
+    </script>
+<style type="text/css">
+    .pagination{
+        text-align:right;
+    }
+    .pagination li{
+        display: inline-block;
+    }
+    .page-style{
+        width:1000px;
+    }
+    td
+    {
+        /*设置表格文字左右和上下居中对齐*/
+        vertical-align: middle;
+        text-align: center;
+        /*设置表格文字在一行显示*/
+        text-overflow:ellipsis;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+</style>
+</head>
+
+<body>
+<div class="content">
+    {include file="alluse/menu" /}
+     <!--修改弹窗-->
+       <div class="main">
+            <div class="table">
+                <table width="1100" border="0">
+                    <tr>
+                        <td bgcolor="#191919" width="20%"><strong>权限属性</strong></td>
+                        <td bgcolor="#191919" width="20%"><strong>操作名称</strong></td>
+                    </tr>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>
+                            {volist name="vo.permission" id="per"}
+                                {$per}
+                            {/volist}
+                        </td>
+                        <td>{$vo.name}</td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+        </div>
+    </div>
+
+<!---->
+
+</body>
+
+
+</html>

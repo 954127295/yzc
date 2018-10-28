@@ -1,79 +1,93 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>后台管理-用户列表</title>
-    <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/__ADMIN__/js/dswh.js"></script>
-    <script type="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户列表</title>
+<link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
+ <script src="/__ADMIN__/js/jquery.js"></script>
+ <script src="/__ADMIN__/js/dssj.js"></script>
+ <style type="text/css">
+.pagination{
+    text-align:right;
+    margin-top:30px;
+}
+.pagination li{
+    display: inline-block;
+}
+.page-style{
 
-    </script>
-<style type="text/css">
-    .pagination{
-        text-align:right;
-    }
-    .pagination li{
-        display: inline-block;
-    }
-    .page-style{
-        width:1000px;
-    }
-    td
-    {
-        /*设置表格文字左右和上下居中对齐*/
-        vertical-align: middle;
-        text-align: center;
-        /*设置表格文字在一行显示*/
-        text-overflow:ellipsis;
-        word-break:keep-all;
-        white-space:nowrap;
-    }
+    width:1000px;
+    text-align:right;
+}
+.page-style a{
+  border: 1px solid #999999;
+  padding: 5px 7px;
+  color: #999999;
+  cursor: pointer;
+}
 </style>
 </head>
 
 <body>
 <div class="content">
-    {include file="alluse/menu" /}
-     <!--修改弹窗-->
-       <div class="main">
-            <div class="table">
-                <table width="1100" border="0">
-                    <tr>
-                        <td bgcolor="#191919" width="20%"><strong>名称</strong></td>
-                        <td bgcolor="#191919" width="20%"><strong>地址</strong></td>
-                        <td bgcolor="#191919" width="20%"><strong>负责人</strong></td>
-                        <td bgcolor="#191919" ><strong>电话</strong></td>
-                        <td bgcolor="#191919" ><strong>报警电话</strong></td>
-                        <td bgcolor="#191919" ><strong>说明</strong></td>
-                        <td bgcolor="#191919" ><strong>操作</strong></td>
-                    </tr>
-                    {volist name="data" id="vo"}
-                    <tr>
-                        <td>{$vo.xmname}</td>
-                        <td>{$vo.address}</td>
-                        <td>{$vo.fzrname}</td>
-                        <td>{$vo.tel}</td>
-                        <td>{$vo.bjtel}</td>
-                        <td>{$vo.explains}</td>
-                        <td class="opt">
-                            <a href="{:url('Cwh/edit',array('id'=>$vo['id']))}">[修改信息]</a>
-                            <a href="{:url('Cwh/del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除?')==false)return false;">[删除]</a>
-                        </td>
-                    </tr>
-                    {/volist}
-                </table>
-                <div class="page-style">
-                    {$data->render()}
-                </div>
-            </div>
-        </div>
+{include file="alluse/menu" /}
+<div class="main">
+  <div class="addto"><a href="{:url('Dylb/add')}">添加用户</a></div>
+  <div class="table">
+    <table width="1000" border="0">
+      <tr>
+        <td bgcolor="#191919"><strong>编号</strong></td>
+        <td bgcolor="#191919"><strong>用户名</strong></td>
+        <td bgcolor="#191919"><strong>密码</strong></td>
+        <td bgcolor="#191919"><strong>姓名</strong></td>
+        <td bgcolor="#191919"><strong>手机号</strong></td>
+        <td bgcolor="#191919"><strong>邮箱</strong></td>
+        <td bgcolor="#191919"><strong>权限管理</strong></td>
+      </tr>
+      {volist name="data" id="vo"}
+      <tr>
+        <td>{$vo.id}</td>
+        <td><input type="text" value="{$vo.username}" onchange="change_user({$vo.id},'username',this)" /></td>
+        <td><input type="password" value="" onchange="change_user({$vo.id},'password',this)" /></td>
+        <td><input type="text" value="{$vo.name}" onchange="change_user({$vo.id},'name',this)" /></td>
+        <td><input type="text" value="{$vo.tel}" onchange="change_user({$vo.id},'tel',this)" /></td>
+        <td><input type="text" value="{$vo.email}" onchange="change_user({$vo.id},'email',this)" /></td>
+        <td>
+          <select onchange="change_user({$vo.id},'permission',this)">
+            <option {if condition="$vo.permission eq 1"}selected{/if} value="1">集团总监</option>
+            <option {if condition="$vo.permission eq 2"}selected{/if} value="2">区域总监</option>
+            <option {if condition="$vo.permission eq 3"}selected{/if} value="3">子公司总监</option>
+            <option {if condition="$vo.permission eq 4"}selected{/if} value="4">场长</option>
+            <option {if condition="$vo.permission eq 5"}selected{/if} value="5">段长</option>
+            <option {if condition="$vo.permission eq 6"}selected{/if} value="6">饲养员</option>
+          </select>
+        </td>
+      </tr>
+      {/volist}
+    </table>
+    <div class="page-style">
+      {$data->render()}
     </div>
+  </div>
+</div>
 
+</div>
+</div>
 <!---->
-
+</div>
 </body>
+<script type="text/javascript">
+  function change_user(id,column,this_obj){
+    var val = $(this_obj).val();
+    $.ajax({
+      url:"{:url('edit')}",
+      type:"post",
+      dataType:"json",
+      data:{"id":id,"column":column,"value":val},
+      success:function(data){
 
-
+      }
+    });
+  }
+</script>
 </html>
