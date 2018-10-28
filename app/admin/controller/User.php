@@ -18,6 +18,23 @@ class User extends Common{
         return view();
     }
 
+    //用户添加
+    public function add(){
+        if(request()->isPost()){
+            $data = input('post.');
+            $data['key'] = rand(100,999);
+            $data['password'] = md5(md5($data['password']).$data['key']);
+            $res = db('User')->insert($data);
+            if($res){
+                $this->success('用户添加成功');
+            }else{
+                $this->error('用户添加失败');
+            }
+        }else{
+            return $this->fetch();
+        }
+    }
+
     //用户修改
     public function edit(){
         $id = input("post.id");

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>单元分组-添加</title>
+<link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
+<link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
+    <script src="/__ADMIN__/js/dswh.js"></script>
+</head>
+
+<body>
+<div class="content">
+{include file="alluse/menu" /}
+
+<div class="main">
+<div class="table">
+<div class="ups-title">{$pername}</div>
+<div class="ups-info add-info">
+<form action="{:url('edit')}" method="post">
+    <div class="ups-info-n add-info-n"><div class="info-name">集团总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("1",$pers)){ echo "checked"; } ?> value="1" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">区域总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("2",$pers)){ echo "checked"; } ?> value="2" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">子公司总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("3",$pers)){ echo "checked"; } ?> value="3" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">场长</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("4",$pers)){ echo "checked"; } ?> value="4" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">段长</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("5",$pers)){ echo "checked"; } ?> value="5" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">饲养员</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="per[]" <?php if(in_array("6",$pers)){ echo "checked"; } ?> value="6" />
+        </div>
+    </div>
+    <input type="hidden" value="{$id}" name="hid" />
+    <input type="submit" value="提交" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">
+
+</form>
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</body>
+
+
+</html>

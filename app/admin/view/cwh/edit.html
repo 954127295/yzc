@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>单元分组-场修改</title>
 <link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
+<link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
 </head>
 
 <body>
@@ -32,6 +33,9 @@
     <div class="ups-info-n add-info-n"><div class="info-name">地址</div>
         <div class="info-in add-in"><input name="address" type="text" value="{$data.address}" placeholder="地址" /></div>
     </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">城市</div>
+        <div class="info-in add-in"><input name="city" type="text" value="{$data.cityname}" placeholder="城市" /></div>
+    </div>
     <div class="ups-info-n add-info-n"><div class="info-name">负责人</div>
         <div class="info-in add-in"><input name="fzrname" type="text" value="{$data.fzrname}" placeholder="负责人" /></div>
     </div>
@@ -43,6 +47,14 @@
     </div>
     <div class="ups-info-n add-info-n"><div class="info-name">报警电话</div>
         <div class="info-in add-in"><input name="bjtel" type="text" value="{$data.bjtel}" placeholder="报警电话" /></div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">场分类</div>
+        <div class="info-in add-in">
+            <select name="category">
+                <option {if condition="$data.category eq 1" }selected{/if} value="1">生产厂</option>
+                <option {if condition="$data.category eq 2" }selected{/if} value="2">繁殖场</option>
+            </select>
+        </div>
     </div>
 
 </div>

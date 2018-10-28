@@ -10,7 +10,7 @@ class Index extends Common{
 
 	//首页场列表
     public function index(){
-        $data = db('cwh')->paginate(1);
+        $data = db('cwh')->paginate(10);
         $this->assign([
             'data' => $data,
         ]);

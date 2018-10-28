@@ -35,10 +35,16 @@ class Cwh extends Common
         }
         return view();
     }
+
     // 场信息修改
     public function edit($id){
         if(request()->isPost()){
             $_edit = input('post.');
+            //检查城市
+            $_edit['city'] = $this->check_city($_edit['city']);
+            if(empty($_edit['city'])){
+                $this->error("请输入正确城市");
+            }
             $edit = db('cwh')->update($_edit);
             if($edit){
                 $this->success('修改场信息成功','Index/index');
@@ -46,12 +52,15 @@ class Cwh extends Common
                 $this->error('修改场信息失败');
             }
         }
-        $data = db('cwh')->where('id',$id)->find();
+        $data = db('Cwh')->where('id',$id)->find();
+        $city = db("CityNumber")->where(array("CityCode"=>$data['city']))->field("ReadmeName")->find();
+        $data['cityname'] = $city['ReadmeName'];
         $this->assign([
             'data' => $data,
         ]);
         return view();
     }
+
     // 场删除
     public function del($id){
         $del = db('cwh')->delete($id);

@@ -43,4 +43,25 @@ class Permission extends Common{
         return $this->fetch();
     }
 
+    //权限修改
+    public function edit(){
+        if(request()->isPost()){
+            $data = input("post.");
+            $where['id'] = $data['hid'];
+            $per = implode(",",$data['per']);
+            $datas['per'] = $per;
+            db("Permission")->where($where)->update($datas);
+            $this->success("修改成功");
+        }else{
+            $id = input('id');
+            $where['id'] = $id;
+            $permission = db("Permission")->where($where)->field("per,name")->find();
+            $per_arr = explode(",",$permission['per']);
+            $this->assign("pers",$per_arr);
+            $this->assign("pername",$permission['name']);
+            $this->assign("id",$id);
+            return $this->fetch();
+        }
+    }
+
 }
