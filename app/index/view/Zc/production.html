@@ -24,18 +24,20 @@
 <div class="ds-title">单元</div>
 <div class="ds-ul">
 <div class="ds-opt">
-<select name="单元">
-  <option>保育单元</option>
-  <option>保育单元1</option>
-  <option>保育单元2</option>
+<select onchange="window.location=this.value;">
+  <option>--------保育单元--------</option>
+  {volist name="byinfo" id="vo"}
+  <option value="{:url('jk/index',array('id'=>$vo['id']))}">{$vo.dyname}</option>
+  {/volist}
 </select>
 </div>
 
 <div class="ds-opt">
 <select name="栋单元">
-  <option>育肥单元</option>
-  <option>育肥单元1</option>
-  <option>育肥单元2</option>
+  <option>--------育肥单元--------</option>
+  {volist name="yfinfo" id="vo"}
+  <option value="{:url('jk/index',array('id'=>$vo['id']))}">{$vo.dyname}</option>
+  {/volist}
 </select>
 </div>
 </div>

@@ -1,0 +1,25 @@
+<div class="sidebar">
+<ul style=" padding:20px 0px;">
+<li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-1.png"/><a href="{:url('Jk/index',array('id'=>$Request.session.dyid))}">单元监控</a></div></li>
+<li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-2.png"/>数据透视</div></li>
+<li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-3.png"/>单元报警</div></li>
+<li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-4.png"/>环控设置</div></li>
+<li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-5.png"/>动物健康</div></li>
+<li class="li-f "><div class="li-first"><img src="/__ADMIN__/img/li-6.png"/>动物数据</div>
+    <ul style="display: none" class="li-firstDrop">
+     <li > 保育单元</li>
+     <li > 育肥单元</li>
+     <li class=""> 怀孕单元</li>
+     <li> 哺育单元</li>
+    </ul>
+</li>
+<li {if condition="$c eq 'Dywh' OR $c eq 'Dylb' OR $c eq 'Dtu'"} class="li-f sid_checked" {/if}><div class="li-first"><img src="/__ADMIN__/img/li-7.png"/>单元维护</div>
+    <ul  {if condition="$c eq 'Dywh' OR $c eq 'Dylb' OR $c eq 'Dtu'"}{else/} style="display: none"{/if} class="li-firstDrop">
+      <li {if condition="$c eq 'Dywh'"} class="deop-checked" {/if}><a href="{:url('Dywh/lst')}">单元分组</a></li>
+      <li {if condition="$c eq 'Dylb'"} class="deop-checked" {/if}><a href="{:url('Dylb/lst')}">单元列表</a></li>
+      <li {if condition="$c eq 'Dtu'"} class="deop-checked" {/if}><a href="{:url('Dtu/lst')}">DTU维护</a></li>
+    </ul>
+</li>
+
+</ul>
+</div>

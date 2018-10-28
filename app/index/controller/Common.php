@@ -11,6 +11,10 @@ class Common extends Controller{
         $request = Request::instance();
         $c = $request->controller();
     	$a = $request->action();
+        $this->assign("c",$c);
+        $this->assign("a",$a);
+        $cinfo = db('cwh')->where('id',session('cid'))->field('category')->find();
+        // if(){}
         $user = Session::get('user');
     	if(empty($user)){
     		$this->redirect("Alluse/login");

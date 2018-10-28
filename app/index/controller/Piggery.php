@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use \think\Controller;
 use \think\Request;
 use think\Session;
@@ -9,17 +9,12 @@ class Piggery extends Common{
     //首页场列表
     public function lst($dyid){
         $dyinfo = db('unit')->where('id',$dyid)->field('id,dyname,dytype')->find();
-        $data = db('pigpen')->paginate(1);
+        $data = db('pigpen')->where('dyid',$dyid)->paginate(10);
         $this->assign([
             'dyinfo' => $dyinfo,
             'data' => $data,
         ]);
         return view();
-        // if($dyinfo['dytype'] == 1 OR $dyinfo['dytype'] ==2){
-        //     return $this->fetch('Piggery/sclst');//生产厂
-        // }else{
-        //     return $this->fetch('Piggery/fzlst');//繁殖场
-        // }
     }
 
     // 添加猪圈/耳标号

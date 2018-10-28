@@ -21,6 +21,7 @@ class Zc extends Common{
         $this->assign("zc",$zc);
         $res = file_get_contents("http://api.help.bj.cn/apis/weather6d/?id=".$zc['city']);
         $result = json_decode($res,true);
+        // dump($result);die;
         $weather = $result['data']['forecast'];
         $new_weather = array();
         foreach($weather as $w){
@@ -29,12 +30,25 @@ class Zc extends Common{
             $w['week'] = $week;
             $new_weather[] = $w;
         }
+        // dump($cinfo);die;
         $this->assign("weather",$new_weather);
         if($zc['category'] == 1){
+            $byinfo = db('unit')->where('cid',session('cid'))->where('dytype',1)->select();
+            $yfinfo = db('unit')->where('cid',session('cid'))->where('dytype',2)->select();
+            // dump($byinfo);die;
+            $this->assign([
+                'byinfo' => $byinfo,
+                'yfinfo' => $yfinfo
+            ]);
             return $this->fetch("production");
         }elseif($zc['category'] == 2){
+            $hyinfo = db('unit')->where('cid',session('cid'))->where('dytype',3)->select();
+            $fminfo = db('unit')->where('cid',session('cid'))->where('dytype',4)->select();
+            $this->assign([
+                'hyinfo' => $hyinfo,
+                'fminfo' => $fminfo
+            ]);
             return $this->fetch("breeding");
         }
     }
-
 }

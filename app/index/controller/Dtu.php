@@ -1,12 +1,12 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use \think\Controller;
 use \think\Request;
 class Dtu extends Common
 {
     // dtu列表
     public function lst(){
-        $data = db('dtu')->paginate(10);
+        $data = db('dtu')->where('cid',session('cid'))->paginate(10);
         $this->assign([
             'data' => $data,
         ]);

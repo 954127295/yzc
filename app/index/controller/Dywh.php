@@ -1,12 +1,12 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use \think\Controller;
 use \think\Request;
 class Dywh extends Common
 {
     // 单元分组列表
     public function lst(){
-        $data = db('dyfz')->paginate(10);
+        $data = db('dyfz')->where('cid',session('cid'))->paginate(10);
         $this->assign([
             'data' => $data,
         ]);

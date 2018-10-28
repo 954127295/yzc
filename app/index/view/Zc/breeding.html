@@ -24,18 +24,20 @@
 <div class="ds-title">单元</div>
 <div class="ds-ul">
 <div class="ds-opt">
-<select name="单元">
-  <option>怀孕单元</option>
-  <option>怀孕单元1</option>
-  <option>怀孕单元2</option>
+<select onchange="window.location=this.value;">
+  <option>--------怀孕单元--------</option>
+  {volist name="hyinfo" id="vo"}
+  <option value="{:url('jk/index',array('id'=>$vo['id']))}">{$vo.dyname}</option>
+  {/volist}
 </select>
 </div>
 
 <div class="ds-opt">
 <select name="单元">
-  <option>分娩单元</option>
-  <option>分娩单元1</option>
-  <option>分娩单元2</option>
+  <option>--------分娩单元--------</option>
+  {volist name="fminfo" id="vo"}
+  <option value="{:url('jk/index',array('id'=>$vo['id']))}">{$vo.dyname}</option>
+  {/volist}
 </select>
 </div>
 
@@ -105,7 +107,7 @@
 
 <!--警报弹窗-->
 <div class="alarm-tc">
-<div class="alarm-title">报警信息 <div class="close"><img src="img/close.png" /></div></div>
+<div class="alarm-title">报警信息 <div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
 <div class="alarm-info">
 <div class="alarm-in"><div class="alarm-in-l"><span>分娩舍1</span><span>高温报警</span><span>2018-10-12 14:30:12</span></div>
 <div class="alarm-in-c">查看</div></div>

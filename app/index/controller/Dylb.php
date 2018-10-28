@@ -1,5 +1,5 @@
 <?php
-namespace app\admin\controller;
+namespace app\index\controller;
 use \think\Controller;
 use \think\Request;
 class Dylb extends Common
@@ -11,6 +11,7 @@ class Dylb extends Common
         ->alias('a')
         ->join('dyfz b','a.dyfzid=b.id')
         ->join('dtu c','a.dtuid=c.id')
+        ->where('a.cid',session('cid'))
         ->paginate(10);
         $this->assign([
             'data' => $data,
@@ -33,8 +34,8 @@ class Dylb extends Common
                 $this->error('添加单元失败');
             }
         }
-        $dyfz = db('dyfz')->field('id,fzname')->select();
-        $dtu = db('dtu')->field('id,dtuname')->select();
+        $dyfz = db('dyfz')->field('id,fzname')->where('cid',session('cid'))->select();
+        $dtu = db('dtu')->field('id,dtuname')->where('cid',session('cid'))->select();
         $ctype = db('cwh')->where('id',session('cid'))->field('category')->find();
         // dump($ctype['category']);die;
         // dump(session('cid'));die;
