@@ -21,7 +21,7 @@ class Alluse extends Controller{
                     $save_user['uid'] = $user['id'];
                     $save_user['permission'] = $user['permission'];
                     Session::set("user",$save_user);
-                    $this->redirect("Alluse/logout");
+                    $this->redirect("Index/index");
                 }else{
                     $this->error("密码错误");
                 }

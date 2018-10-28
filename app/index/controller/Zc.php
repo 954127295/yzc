@@ -19,6 +19,17 @@ class Zc extends Common{
         }
         Session::set('zc_id',$zc['id']);
         $this->assign("zc",$zc);
+        $res = file_get_contents("http://api.help.bj.cn/apis/weather6d/?id=".$zc['city']);
+        $result = json_decode($res,true);
+        $weather = $result['data']['forecast'];
+        $new_weather = array();
+        foreach($weather as $w){
+            list($day,$week) = explode(" ",$w['date']);
+            $w['day'] = $day;
+            $w['week'] = $week;
+            $new_weather[] = $w;
+        }
+        $this->assign("weather",$new_weather);
         if($zc['category'] == 1){
             return $this->fetch("production");
         }elseif($zc['category'] == 2){

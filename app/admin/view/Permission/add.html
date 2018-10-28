@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>权限-添加</title>
+<link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="content">
+{include file="alluse/menu" /}
+
+<div class="main">
+<div class="table">
+<div class="ups-title">添加权限</div>
+<div class="ups-info add-info">
+
+<form action="" method="post">
+    <div class="ups-info-n add-info-n"><div class="info-name">集团总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="1" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">区域总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="2" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">子公司总监</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="3" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">场长</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="4" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">段长</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="5" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">饲养员</div>
+        <div class="info-in add-in">
+            <input type="checkbox" name="permission[]" value="6" width="20px" height="20px" />
+        </div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">控制器</div>
+        <div class="info-in add-in"><input name="info[controller]" type="text" required="required" placeholder="类" /></div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">方法</div>
+        <div class="info-in add-in"><input name="info[function]" type="text" required="required" placeholder="所属省份" /></div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">操作名称</div>
+        <div class="info-in add-in"><input name="info[name]" type="text" required="required" placeholder="所属子公司" /></div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">操作名称</div>
+        <div class="info-in add-in"><input name="info[show_order]" type="text" required="required" placeholder="所属子公司" /></div>
+    </div>
+    <div class="ups-info-n add-info-n"><div class="info-name">是否显示</div>
+        <div class="info-in add-in">
+          <select name="info[show]">
+            <option value="yes">显示</option>
+            <option value="no">不显示</option>
+          </select>
+    </div>
+</div>
+<input type="submit" value="提交" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">
+
+</form>
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</body>
+
+
+</html>

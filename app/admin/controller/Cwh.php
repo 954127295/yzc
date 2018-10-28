@@ -2,10 +2,18 @@
 namespace app\admin\controller;
 use \think\Controller;
 use \think\Request;
+use \think\Db;
 class Cwh extends Common
 {
     public function index(){
         return view();
+    }
+
+    //城市检查
+    private function check_city($city){
+        $sql = "select CityCode from pig_city_number where instr('".$city."',ReadmeName)>0";
+        $res = Db::query($sql);
+        return $res[0]['CityCode'];
     }
 
     // 场信息添加
@@ -13,6 +21,11 @@ class Cwh extends Common
         if(request()->isPost()){
             $data = input('post.');
             $data['time'] = time();
+            //检查城市
+            $data['city'] = $this->check_city($data['city']);
+            if(empty($data['city'])){
+                $this->error("请输入正确城市");
+            }
             $date = db('cwh')->insert($data);
             if($date){
                 $this->success('添加场信息成功');

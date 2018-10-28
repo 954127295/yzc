@@ -86,21 +86,21 @@
 <!--天气-->
 <div class="weather">
 <ul>
-<li><div class="">今天</div><div class="">10/12</div><div class="">19°</div><div class=""><img src="img/zc-tq1.png" /></div>
-  <div class="">晴</div><div class="">北风</div><div class=""><img src="img/zc-tq2.png" /></div>
-</li>
-<li><div class="">明天</div><div class="">10/13</div><div class="">19°</div><div class=""><img src="img/zc-tq1.png" /></div>
-  <div class="">晴</div><div class="">北风</div><div class=""><img src="img/zc-tq2.png" /></div>
-</li>
-<li><div class="">周日</div><div class="">10/14</div><div class="">19°</div><div class=""><img src="img/zc-tq1.png" /></div>
-  <div class="">晴</div><div class="">北风</div><div class=""><img src="img/zc-tq2.png" /></div>
-</li>
-<li><div class="">周一</div><div class="">10/15</div><div class="">19°</div><div class=""><img src="img/zc-tq1.png" /></div>
-  <div class="">晴</div><div class="">北风</div><div class=""><img src="img/zc-tq2.png" /></div>
-</li>
-<li style="border:0;"><div class="">周二</div><div class="">10/16</div><div class="">19°</div><div class=""><img src="img/zc-tq1.png" /></div>
-  <div class="">晴</div><div class="">北风</div><div class=""><img src="img/zc-tq2.png" /></div>
-</li>
+  {volist name="weather" id="w"}
+    <li>
+      <div class="">{$w.week}</div>
+      <div class="">{$w.day}</div>
+      <div class="">{$w.temphigh}°</div>
+      <div class="">
+        <img src="/__INDEX__/img/zc-tq1.png" />
+      </div>
+      <div class="">{$w.weather}</div>
+      <div class="">{$w.weather}</div>
+      <div class="">
+        <img src="/__INDEX__/img/zc-tq2.png" />
+      </div>
+    </li>
+  {/volist}
 </ul>
 </div>
 </div>

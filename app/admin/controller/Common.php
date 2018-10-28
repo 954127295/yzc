@@ -11,6 +11,7 @@ class Common extends Controller{
         $c = $request->controller();
     	$a = $request->action();
         $user = Session::get('user');
+        // print_r($user);exit;
     	if(empty($user)){
     		$this->redirect("Alluse/login");
     	}

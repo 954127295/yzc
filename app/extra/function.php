@@ -1,7 +1,7 @@
 <?php
 	function get_menu($c,$a){
 		$user = session("user");
-		$pers = db("Permission")->where(array("show"=>"yes"))->select();
+		$pers = db("Permission")->where(array("show"=>"yes"))->order("show_order")->select();
 		$html = '';
 		foreach($pers as $p){
 			$p_arr = explode(",",$p['per']);
