@@ -33,8 +33,7 @@ class Alluse extends Controller{
 
     //退出登录
     public function logout(){
-        echo session("user");exit;
-        seesion('user',null);
+        Session::delete("user");
         $this->redirect("Alluse/login");
     }
 
