@@ -9,7 +9,7 @@ class User extends Common{
 		parent::__construct();
 	}
 
-    public function add(){
+    public function lst(){
 		if(request()->isPost()){
             $data = input('post.');
             print_r($data);
