@@ -14,6 +14,7 @@ class Zc extends Common{
     public function index($id){
         $user = self::$user_arr;
         $zc = db("Cwh")->where(array("id"=>$id))->find();
+        // dump($zc);die;
         if(empty($zc)){
             $this->error("不存在");
         }

@@ -6,11 +6,14 @@
 <li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-4.png"/>环控设置</div></li>
 <li class="li-f"><div class="li-first"><img src="/__ADMIN__/img/li-5.png"/>动物健康</div></li>
 <li class="li-f "><div class="li-first"><img src="/__ADMIN__/img/li-6.png"/>动物数据</div>
-    <ul style="display: none" class="li-firstDrop">
-     <li > 保育单元</li>
-     <li > 育肥单元</li>
-     <li class=""> 怀孕单元</li>
-     <li> 哺育单元</li>
+    <ul {if condition="$c eq 'Bydy' OR $c eq 'Yfdy' OR $c eq 'Hydy' OR $c eq 'Pydy'"}{else/} style="display: none"{/if} class="li-firstDrop">
+    {if condition="$category eq 1"}
+     <li{if condition="$c eq 'Bydy'"} class="deop-checked" {/if}> <a href="{:url('Bydy/index')}">保育单元</a></li>
+     <li{if condition="$c eq 'Yfdy'"} class="deop-checked" {/if}> <a href="{:url('Yfdy/index')}">育肥单元</a></li>
+     {else /}
+     <li {if condition="$c eq 'Hydy'"} class="deop-checked" {/if}> <a href="{:url('Hydy/index')}">怀孕单元</a></li>
+     <li {if condition="$c eq 'Pydy'"} class="deop-checked" {/if}> <a href="{:url('Pydy/index')}">哺育单元</a></li>
+     {/if}
     </ul>
 </li>
 <li {if condition="$c eq 'Dywh' OR $c eq 'Dylb' OR $c eq 'Dtu'"} class="li-f sid_checked" {/if}><div class="li-first"><img src="/__ADMIN__/img/li-7.png"/>单元维护</div>

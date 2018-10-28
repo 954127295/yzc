@@ -47,6 +47,7 @@
         <td bgcolor="#191919"><strong>接入DTU</strong></td>
         <td bgcolor="#191919"><strong>控制器编号</strong></td>
         <td bgcolor="#191919"><strong>报警手机</strong></td>
+        <td bgcolor="#191919"><strong>单元类型</strong></td>
         <td bgcolor="#191919"><strong>[OPT]</strong></td>
       </tr>
       {volist name="data" id="vo"}
@@ -57,6 +58,7 @@
         <td>{$vo.dtuname}</td>
         <td>{$vo.controller}</td>
         <td>{$vo.warningtel}</td>
+        <td>{if condition="$vo['dytype'] eq 1"} 保育单元 {elseif condition="$vo['dytype'] eq 2"} 育肥单元 {elseif condition="$vo['dytype'] eq 3"} 怀孕单元 {elseif condition="$vo['dytype'] eq 4"} 分娩单元 {/if}</td>
         <td class="opt"><div class="modify"><a href="{:url('Dylb/edit',array('id'=>$vo['id']))}">[修改信息]</a></div><div class="delete"><a href="{:url('Dylb/del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除({$vo.dyname})数据吗?')==false)return false;">[删除]</a></div></td>
       </tr>
       {/volist}

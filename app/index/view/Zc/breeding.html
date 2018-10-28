@@ -33,7 +33,7 @@
 </div>
 
 <div class="ds-opt">
-<select name="单元">
+<select onchange="window.location=this.value;">
   <option>--------分娩单元--------</option>
   {volist name="fminfo" id="vo"}
   <option value="{:url('jk/index',array('id'=>$vo['id']))}">{$vo.dyname}</option>

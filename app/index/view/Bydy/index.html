@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动物数据-保育单元</title>
+<link href="/__ADMIN__/css/dwsj.css" rel="stylesheet" type="text/css" />
+ <script src="/__ADMIN__/js/jquery.js"></script>
+ <script src="/__ADMIN__/js/dssj.js"></script>
+</head>
+
+<body>
+<div class="content">
+<!--top-->
+{include file="common/qheader"}
+<!--位置<div class="position"></div>-->
+
+<div class="row">
+<!--ce-->
+{include file="common/qtlft"}
+
+<div class="main">
+<div class="min-message">
+<div class="mess-name">单元号：D001</div><!-- <div class="mess-status">状态：使用</div> -->
+</div>
+
+<div class="table">
+<table width="1050" border="0">
+  <tr>
+    <td bgcolor="#191919"><strong>圈</strong></td>
+    <td bgcolor="#191919"><strong>批次</strong></td>
+    <td bgcolor="#191919"><strong>转入时间</strong></td>
+    <td bgcolor="#191919"><strong>转入数量</strong></td>
+    <td bgcolor="#191919"><strong>转入均重</strong></td>
+    <td bgcolor="#191919"><strong>转猪日龄</strong></td>
+    <td bgcolor="#191919"><strong>转出时间</strong></td>
+    <td bgcolor="#191919"><strong>转出数量</strong></td>
+    <td bgcolor="#191919"><strong>当前均重</strong></td>
+    <td bgcolor="#191919"><strong>死亡数量</strong></td>
+    <td bgcolor="#191919"><strong>当前日龄</strong></td>
+    <td bgcolor="#191919"><strong>料肉比</strong></td>
+  </tr>
+  {volist name="info" id="vo"}
+  <tr>
+    <td class="edit">圈001</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  {/volist}
+</table>
+</div>
+
+<!--统计-->
+<div class="sj-count">
+<div class="sj-count-b">单元统计</div>
+<div class="sj-count-n"><span>转入头数:20</span> <span>存栏量:200</span> <span>死亡量:2</span> <span>成活率:98%</span>
+<span>当前均重:120</span> <span>当前日龄:30</span> <span>日增重:1</span> <span>数量差异:2</span> <span>饲料量:10</span>
+<span>料肉比:80</span></div>
+</div>
+<!--修改记录-->
+<div class="record">
+<div class="z-title">编辑记录</div>
+<div class="table">
+<table width="1050" border="0">
+  <tr>
+    <td bgcolor="#191919"><strong>圈</strong></td>
+    <td bgcolor="#191919"><strong>批次</strong></td>
+    <td bgcolor="#191919"><strong>转入时间</strong></td>
+    <td bgcolor="#191919"><strong>转入数量</strong></td>
+    <td bgcolor="#191919"><strong>转入均重</strong></td>
+    <td bgcolor="#191919"><strong>转猪日龄</strong></td>
+    <td bgcolor="#191919"><strong>转出时间</strong></td>
+    <td bgcolor="#191919"><strong>转出数量</strong></td>
+    <td bgcolor="#191919"><strong>当前均重</strong></td>
+    <td bgcolor="#191919"><strong>死亡数量</strong></td>
+    <td bgcolor="#191919"><strong>当前日龄</strong></td>
+    <td bgcolor="#191919"><strong>料肉比</strong></td>
+  </tr>
+  <tr>
+    <td>圈001</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td >圈002</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+</div>
+<!--统计表-->
+
+</div>
+
+<!--编辑弹窗-->
+<div class="edit-tc">
+<div class="mark"></div>
+<div class="ups">
+<div class="ups-title">编辑信息<div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
+<div class="ups-info">
+
+<div class="ups-info1">
+<div class="ups-info-n ups-by-n">
+<div class="info-name">转入日龄</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">当前日龄</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">转入均重</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+</div>
+
+<div class="ups-info1">
+<div class="ups-info-n ups-by-n">
+<div class="info-name">当前均重</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">转入数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">死亡数</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+</div>
+</div>
+
+<div class="ups-info1">
+<div class="ups-info-n ups-by-n">
+<div class="info-name">转出数量</div><div class="info-in"><input name="名称" type="text" value="" /></div>
+</div>
+
+</div>
+
+</div>
+<div class="ups-button">提交</div>
+</div>
+</div>
+<!--弹窗结束-->
+
+</div>
+
+</div>
+<!---->
+</div>
+</body>
+
+
+</html>

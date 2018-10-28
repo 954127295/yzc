@@ -14,8 +14,9 @@ class Common extends Controller{
         $this->assign("c",$c);
         $this->assign("a",$a);
         $cinfo = db('cwh')->where('id',session('cid'))->field('category')->find();
-        // if(){}
+        $this->assign("category",$cinfo['category']);
         $user = Session::get('user');
+        // echo 1;
     	if(empty($user)){
     		$this->redirect("Alluse/login");
     	}else{
