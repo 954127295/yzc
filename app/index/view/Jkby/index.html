@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>动物健康-保育单元</title>
+<link href="/__INDEX__/css/dwjk.css" rel="stylesheet" type="text/css" />
+ <script src="/__INDEX__/js/jquery.js" ></script>
+ <script src="/__INDEX__/js/dsjk.js"></script>
+ <style type="text/css">
+   .cure{
+      margin-left: 40px;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      padding: 1px 10px;
+      cursor: pointer;
+   }
+   .pagination{
+    text-align:right;
+    margin-top:30px;
+}
+.pagination li{
+    display: inline-block;
+}
+.page-style{
+
+    width:1000px;
+    text-align:right;
+}
+.page-style a{
+  border: 1px solid #999999;
+  padding: 5px 7px;
+  color: #999999;
+  cursor: pointer;
+}
+ </style>
+</head>
+
+<body>
+<div class="content">
+<!--top-->
+{include file="common/qheader"}
+<!--位置<div class="position"></div>-->
+
+<div class="row">
+<!--ce-->
+{include file="common/qtlft"}
+
+<div class="main">
+<div class="z-title"><div class="z-title-b">动物免疫</div>  <div class="z-entry">录入</div></div>
+<div class="table">
+<table width="1050" border="0">
+  <tr>
+    <td bgcolor="#191919"><strong>免疫类型</strong></td>
+    <td bgcolor="#191919"><strong>用药时间</strong></td>
+    <td bgcolor="#191919"><strong>用药类型</strong></td>
+    <td bgcolor="#191919"><strong>用药量</strong></td>
+    <td bgcolor="#191919"><strong>用药总量</strong></td>
+    </tr>
+    {volist name="data" id="vo"}
+    <tr>
+      <td class="immunity">{$vo.yname}</td>
+      <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+      <td>{$vo.yname}</td>
+      <td>{$vo.yyl}ml</td>
+      <td>{$vo.yyzl}ml</td>
+    </tr>
+    {/volist}
+
+
+
+</table>
+</div>
+
+<!--动物治疗-->
+<div class="record">
+<div class="z-title"><div class="z-title-b">动物治疗</div> <div class="cure">录入</div></div>
+<div class="table">
+<table width="1050" border="0">
+  <tr>
+    <td bgcolor="#191919"><strong>耳标号</strong></td>
+    <!-- <td bgcolor="#191919"><strong>治疗类型</strong></td> -->
+    <td bgcolor="#191919"><strong>治疗时间</strong></td>
+    <td bgcolor="#191919"><strong>治疗症状</strong></td>
+    <td bgcolor="#191919"><strong>治疗数量</strong></td>
+    <td bgcolor="#191919"><strong>治疗用药</strong></td>
+    <td bgcolor="#191919"><strong>用药量</strong></td>
+    <td bgcolor="#191919"><strong>治疗结果</strong></td>
+    <td bgcolor="#191919"><strong>治疗动物总数</strong></td>
+    </tr>
+  <tr>
+    {volist name="zl" id="vo"}
+    <td>{$vo.ebh}</td>
+    <!-- <td></td> -->
+    <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+    <td>{$vo.bz}</td>
+    <td>{$vo.number}</td>
+    <td>{$vo.type}</td>
+    <td>{$vo.yyl}</td>
+    <td>{$vo.status}</td>
+    <td>{$vo.number}</td>
+    </tr>
+    {/volist}
+</table>
+</div>
+</div>
+<!--统计表-->
+
+</div>
+<!--动物免疫录入-->
+<div class="z-entry-tc">
+<div class="mark"></div>
+<div class="ups">
+<div class="ups-title">动物免疫<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
+<form action="{:url('myadd')}" method="post">
+<div class="ups-info">
+<div class="ups-info1">
+<div class="ups-info-n ups-info-entry">
+<div class="info-name">用药类型</div><div class="info-in">
+  <select name="type">
+    {volist name="info" id="vo"}
+    <option value="{$vo.id}">{$vo.yname}</option>
+    {/volist}
+  </select>
+</div>
+</div>
+</div>
+</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 250px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
+</form>
+</div>
+</div>
+
+<!--动物治疗弹窗-->
+<div class="cure-tc">
+<div class="mark"></div>
+<div class="ups">
+<form action="{:url('zladd')}" method="post" name="form1">
+<div class="ups-title">动物治疗<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
+<div class="ups-info">
+
+<div class="ups-info1">
+<div class="ups-info-n ">
+<div class="info-name">耳标号</div><div class="info-in">
+<select name="ebh">
+{volist name="ebh" id="vo"}
+  <option value="{$vo.jnumber}">{$vo.jnumber}</option>
+{/volist}
+</select></div>
+</div>
+<div class="ups-info-n ">
+<div class="info-name">治疗数量</div><div class="info-in"><input name="number" type="text" value=" " /></div>
+</div>
+</div>
+
+<div class="ups-info1">
+  <div class="ups-info-n ">
+  <div class="info-name">治疗症状</div>
+  <div class="info-in">
+    <select name="bz" onChange="gettype()">
+      <option>请选择治疗症状</option>
+      <option value="1">大肠杆菌</option>
+      <option value="2">猪链球菌</option>
+      <option value="3">副猪嗜血杆菌</option>
+      <option value="4">支原体</option>
+      <option value="5">巴氏杆菌</option>
+      <option value="6">波氏杆菌</option>
+      <option value="7">沙门氏菌</option>
+      <option value="8">梭菌</option>
+    </select>
+  </div>
+  </div>
+  <div class="ups-info-n ">
+  <div class="info-name">用药类型</div>
+  <div class="info-in">
+    <select name="type">
+      <option>请选择用药类型 </option>
+    </select>
+  </div>
+  </div>
+</div>
+<div class="ups-info1">
+<div class="ups-info-n ">
+<div class="info-name">治疗结果</div>
+<div class="info-in">
+  <select name="status">
+    <option value="痊愈">痊愈</option>
+    <option value="未痊愈">未痊愈</option>
+  </select>
+</div>
+</div>
+<div class="ups-info-n ">
+<div class="info-name">用药量</div><div class="info-in"><input name="yyl" type="text" value="  " /></div>
+</div>
+</div>
+
+
+</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 350px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
+</div>
+</div>
+</form>
+<!--弹窗结束-->
+
+</div>
+
+</div>
+<!---->
+</div>
+</body>
+<script type="text/javascript">
+    //定义一个二维数组
+        var type=[
+            ["粘菌素","恩诺沙星","环丙沙星","安普霉素"],
+            ["头孢噻呋","磺胺间甲安嘧啶钠","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
+            ["头孢噻呋","磺胺间甲安嘧啶钠","安普霉素","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
+            ["金霉素","林可霉素","泰安霉素","泰妙霉素"],
+            ["卡那霉素","环丙沙星","恩诺沙星","阿莫西林","磺胺间甲安嘧啶钠","土霉素"],
+            ["土霉素","庆大霉素","新霉素","环丙沙星","粘霉素","氟苯尼考"],
+            ["环丙沙星","恩诺沙星","头孢噻呋","头孢喹肟"],
+            ["青霉素","氨芐西林","氟苯尼考","多西环素"],
+        ];
+        function gettype(){
+            var sltbz=document.form1.bz;   //获得国家下拉框的对象
+            var slttype=document.form1.type;     //获得城市下拉框的对象
+            var bz=type[sltbz.selectedIndex-1];    //得到对应国家的城市数组
+            slttype.length=1;    //清空城市下拉框，仅留提示选项。
+            //通过for循环，将城市中的值填充到城市下拉框中
+            for(var i=0;i<bz.length;i++){
+                slttype[i+1]=new Option(bz[i],bz[i]);
+            }
+        }
+    </script>
+
+</html>

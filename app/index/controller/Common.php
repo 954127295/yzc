@@ -13,8 +13,8 @@ class Common extends Controller{
     	$a = $request->action();
         $this->assign("c",$c);
         $this->assign("a",$a);
-        $cinfo = db('cwh')->where('id',session('cid'))->field('category')->find();
-        $this->assign("category",$cinfo['category']);
+        $dyinfo = db('unit')->where('id',session('dyid'))->field('dytype')->find();
+        $this->assign("category",$dyinfo['dytype']);
         $user = Session::get('user');
         // echo 1;
     	if(empty($user)){
