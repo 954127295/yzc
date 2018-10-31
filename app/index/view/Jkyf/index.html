@@ -6,6 +6,34 @@
 <link href="/__INDEX__/css/dwjk.css" rel="stylesheet" type="text/css" />
  <script src="/__INDEX__/js/jquery.js" ></script>
  <script src="/__INDEX__/js/dsjk.js"></script>
+ <style type="text/css">
+   .cure{
+      margin-left: 40px;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      padding: 1px 10px;
+      cursor: pointer;
+   }
+   .pagination{
+    text-align:right;
+    margin-top:30px;
+}
+.pagination li{
+    display: inline-block;
+}
+.page-style{
+
+    width:1000px;
+    text-align:right;
+}
+.page-style a{
+  border: 1px solid #999999;
+  padding: 5px 7px;
+  color: #999999;
+  cursor: pointer;
+}
+ </style>
 </head>
 
 <body>
@@ -29,27 +57,16 @@
     <td bgcolor="#191919"><strong>用药量</strong></td>
     <td bgcolor="#191919"><strong>用药总量</strong></td>
     </tr>
-  <tr>
-    <td class="immunity">蓝耳猫</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    {volist name="data" id="vo"}
+    <tr>
+      <td class="immunity">{$vo.yname}</td>
+      <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+      <td>{$vo.yname}</td>
+      <td>{$vo.yyl}ml</td>
+      <td>{$vo.yyzl}ml</td>
     </tr>
-  <tr>
-    <td class="immunity">猪瘟活疫苗</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
+    {/volist}
+
 
 
 </table>
@@ -57,12 +74,12 @@
 
 <!--动物治疗-->
 <div class="record">
-<div class="z-title"><div class="z-title-b">动物治疗</div></div>
+<div class="z-title"><div class="z-title-b">动物治疗</div> <div class="cure">录入</div></div>
 <div class="table">
 <table width="1050" border="0">
   <tr>
-    <td bgcolor="#191919"><strong>号</strong></td>
-    <td bgcolor="#191919"><strong>治疗类型</strong></td>
+    <td bgcolor="#191919"><strong>耳标号</strong></td>
+    <!-- <td bgcolor="#191919"><strong>治疗类型</strong></td> -->
     <td bgcolor="#191919"><strong>治疗时间</strong></td>
     <td bgcolor="#191919"><strong>治疗症状</strong></td>
     <td bgcolor="#191919"><strong>治疗数量</strong></td>
@@ -72,28 +89,18 @@
     <td bgcolor="#191919"><strong>治疗动物总数</strong></td>
     </tr>
   <tr>
-    <td class="cure">001</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    {volist name="zl" id="vo"}
+    <td>{$vo.ebh}</td>
+    <!-- <td></td> -->
+    <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+    <td>{$vo.bz}</td>
+    <td>{$vo.number}</td>
+    <td>{$vo.type}</td>
+    <td>{$vo.yyl}ml</td>
+    <td>{$vo.status}</td>
+    <td>{$vo.number}</td>
     </tr>
-  <tr>
-    <td >002</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-
+    {/volist}
 </table>
 </div>
 </div>
@@ -105,21 +112,22 @@
 <div class="mark"></div>
 <div class="ups">
 <div class="ups-title">动物免疫<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
+<form action="{:url('myadd')}" method="post">
 <div class="ups-info">
 <div class="ups-info1">
 <div class="ups-info-n ups-info-entry">
-<div class="info-name">用药名称</div><div class="info-in"><select name="膘情">
-  <option>猪瘟活疫苗</option>
-  <option>蓝耳猫</option>
-  <option>圆环</option>
-</select></div>
+<div class="info-name">用药类型</div><div class="info-in">
+  <select name="type">
+    {volist name="info" id="vo"}
+    <option value="{$vo.id}">{$vo.yname}</option>
+    {/volist}
+  </select>
 </div>
 </div>
-
-
-
 </div>
-<div class="ups-button">提交</div>
+</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 250px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
+</form>
 </div>
 </div>
 
@@ -127,49 +135,72 @@
 <div class="cure-tc">
 <div class="mark"></div>
 <div class="ups">
+<form action="{:url('zladd')}" method="post" name="form1">
 <div class="ups-title">动物治疗<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
 <div class="ups-info">
 
 <div class="ups-info1">
 <div class="ups-info-n ">
-<div class="info-name">用药量</div><div class="info-in"><input name="名称" type="text" value="  " /></div>
+<div class="info-name">耳标号</div><div class="info-in">
+<select name="ebh">
+{volist name="ebh" id="vo"}
+  <option value="{$vo.jnumber}">{$vo.jnumber}</option>
+{/volist}
+</select></div>
 </div>
 <div class="ups-info-n ">
-<div class="info-name">治疗数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">治疗数量</div><div class="info-in"><input name="number" type="text" value=" " /></div>
 </div>
 </div>
 
 <div class="ups-info1">
-<div class="ups-info-n ">
-<div class="info-name">用药类型</div><div class="info-in"><select name="膘情">
-  <option>类型1</option>
-  <option>类型2</option>
-  <option>类型3</option>
-</select></div>
-</div>
-<div class="ups-info-n ">
-<div class="info-name">治疗症状</div><div class="info-in"><select name="膘情">
-  <option>症状1</option>
-  <option>症状2</option>
-  <option>症状3</option>
-</select></div>
-</div>
+  <div class="ups-info-n ">
+  <div class="info-name">治疗症状</div>
+  <div class="info-in">
+    <select name="bz" onChange="gettype()">
+      <option>请选择治疗症状</option>
+      <option value="1">支原体</option>
+      <option value="2">副猪</option>
+      <option value="3">链球菌</option>
+      <option value="4">APP</option>
+      <option value="5">巴氏杆菌</option>
+      <option value="6">梭菌</option>
+      <option value="7">波氏杆菌</option>
+      <option value="8">回肠炎</option>
+      <option value="9">衣原体</option>
+    </select>
+  </div>
+  </div>
+  <div class="ups-info-n ">
+  <div class="info-name">用药类型</div>
+  <div class="info-in">
+    <select name="type">
+      <option>请选择用药类型 </option>
+    </select>
+  </div>
+  </div>
 </div>
 <div class="ups-info1">
 <div class="ups-info-n ">
-<div class="info-name">治疗结果</div><div class="info-in"><select name="膘情">
-  <option>结果1</option>
-  <option>结果2</option>
-  <option>结果3</option>
-</select></div>
+<div class="info-name">治疗结果</div>
+<div class="info-in">
+  <select name="status">
+    <option value="痊愈">痊愈</option>
+    <option value="未痊愈">未痊愈</option>
+  </select>
+</div>
+</div>
+<div class="ups-info-n ">
+<div class="info-name">用药量</div><div class="info-in"><input name="yyl" type="text" value="  " /></div>
 </div>
 </div>
 
 
 </div>
-<div class="ups-button">提交</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 350px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
 </div>
 </div>
+</form>
 <!--弹窗结束-->
 
 </div>
@@ -178,6 +209,29 @@
 <!---->
 </div>
 </body>
-
+<script type="text/javascript">
+    //定义一个二维数组
+        var type=[
+            ["金霉素","氟苯尼考","林可","泰妙","强力(轮换)","恩诺沙星","头孢"],
+            ["青霉素","阿莫西林","思诺沙星","氟苯尼考","环丙沙星","安普霉素"],
+            ["青霉素","阿莫西林","恩诺沙星","氟苯尼考","环丙沙星"],
+            ["氟苯尼考","林可霉素","环丙沙星","强力器素","头孢","恩诺沙星巴氏杆菌"],
+            ["坏丙沙星","阿莫西林","林可霉素","强力霉素","氟苯尼考","头孢"],
+            ["青霉素","氟苯尼考","林可霉素","恩拉霉素","氨苄","磺胺"],
+            ["磺胺","环丙沙星"],
+            ["金素","林可","土霉素","秦妙","泰乐"],
+            ["金霉素","林可","氟苯尼考"],
+        ];
+        function gettype(){
+            var sltbz=document.form1.bz;   //获得国家下拉框的对象
+            var slttype=document.form1.type;     //获得城市下拉框的对象
+            var bz=type[sltbz.selectedIndex-1];    //得到对应国家的城市数组
+            slttype.length=1;    //清空城市下拉框，仅留提示选项。
+            //通过for循环，将城市中的值填充到城市下拉框中
+            for(var i=0;i<bz.length;i++){
+                slttype[i+1]=new Option(bz[i],bz[i]);
+            }
+        }
+    </script>
 
 </html>

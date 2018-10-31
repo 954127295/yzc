@@ -14,7 +14,6 @@ class Jk extends Common
         $this->assign([
             'dyinfo' => $dyinfo,
         ]);
-        // dump($dyinfo);
         return view();
     }
 
