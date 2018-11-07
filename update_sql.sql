@@ -51,3 +51,14 @@ CREATE TABLE `yzc`.`pig_dwmy` ( `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT C
 
 
 CREATE TABLE `yzc`.`pig_dwzl` ( `id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '动物治疗ID' , `ebh` VARCHAR(20) NOT NULL COMMENT '耳标号' , `number` SMALLINT NOT NULL COMMENT '治疗数量' , `bz` VARCHAR(50) NOT NULL COMMENT '治疗病症' , `type` VARCHAR(50) NOT NULL COMMENT '用药类型' , `status` VARCHAR(10) NOT NULL COMMENT '治疗结果' , `yyl` FLOAT NOT NULL COMMENT '用药量' , `dyid` SMALLINT NOT NULL COMMENT '单元id' , `fenlei` ENUM('1','2') NOT NULL COMMENT '治疗母猪1治疗仔猪2' , PRIMARY KEY (`id`)) ENGINE = MyISAM CHARACTER SET utf8 COLLATE utf8_general_ci COMMENT = '动物治疗';
+
+-- 2018-11-1
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Drugs', 'index', '免疫用药', 'yes');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Drugs', 'del', '免疫用药删除', 'no');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Drugs', 'edit', '免疫用药修改', 'no');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Zlzz', 'index', '治疗症状', 'yes');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Zlzz', 'del', '治疗症状删除', 'no');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Zlzz', 'edit', '治疗症状修改', 'no');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Yylx', 'index', '用药类型', 'yes');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Yylx', 'del', '用药类型删除', 'no');
+INSERT INTO `pig_permission` (`id`, `per`, `controller`, `function`, `name`, `show`) VALUES (NULL, '1,2,3', 'Yylx', 'edit', '用药类型修改', 'no');

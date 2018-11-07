@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>后台管理-场列表</title>
+    <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/__ADMIN__/js/dswh.js"></script>
+    <script type="text/javascript">
+
+    </script>
+<style type="text/css">
+    .pagination{
+        text-align:right;
+    }
+    .pagination li{
+        display: inline-block;
+    }
+    .page-style{
+        width:750px;
+    }
+    td
+    {
+        /*设置表格文字左右和上下居中对齐*/
+        vertical-align: middle;
+        text-align: center;
+        /*设置表格文字在一行显示*/
+        text-overflow:ellipsis;
+        word-break:keep-all;
+        white-space:nowrap;
+    }
+</style>
+</head>
+
+<body>
+<div class="content">
+    {include file="alluse/menu" /}
+     <!--修改弹窗-->
+       <div class="main">
+       <div class="addto">添加免疫用药</div>
+            <div class="table">
+                <table width="1100" border="0">
+                    <tr>
+                        <td bgcolor="#191919" width="20%"><strong>药名称</strong></td>
+                        <td bgcolor="#191919" width="20%"><strong>用量</strong></td>
+                        <td bgcolor="#191919" width="40%"><strong>备注</strong></td>
+                        <td bgcolor="#191919" ><strong>操作</strong></td>
+                    </tr>
+                    {volist name="data" id="vo"}
+                    <tr>
+                        <td>{$vo.yname}</td>
+                        <td>{$vo.zsml}ml</td>
+                        <td>{$vo.bz}</td>
+                        <td class="opt">
+                            <a href="{:url('edit',array('id'=>$vo['id']))}">[修改信息]</a>
+                            <a href="{:url('del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除?')==false)return false;">[删除]</a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </table>
+                <div class="page-style">
+                {$data->render()}
+                </div>
+            </div>
+        </div>
+    </div>
+<form action="" method="post">
+  <div class="addto-tc">
+  <div class="mark"></div>
+  <div class="ups">
+  <div class="ups-title">添加免疫用药<div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
+  <div class="ups-info">
+  <div class="ups-info-n"><div class="info-name">药品名</div>
+  <div class="info-in"><input name="yname" type="text" value="" /></div></div>
+  <div class="ups-info-n"><div class="info-name">注射剂量</div>
+  <div class="info-in"><input name="zsml" type="text" value="" style="width:20%"/>ml</div></div>
+  <div class="ups-info-n"><div class="info-name">备注</div>
+  <div class="info-in">
+    <textarea name="bz" style="background-color: #1E1E1E;border:0px;width:100%;height:60px;color:#FFFFFF"></textarea>
+  </div></div>
+
+  </div>
+  <input class="ups-button" type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 400px;border:0px;color:#FFFFFF" value="提交" />
+  </div>
+  </div>
+</form>
+<!---->
+</body>
+</html>
