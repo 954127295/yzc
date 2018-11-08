@@ -10,7 +10,7 @@ class Jkby extends Common
     // 动物免疫界面
     public function index(){
         // 药品
-        $myypinfo = db('drugs')->where('typenum',4)->field('id,yname')->select();
+        $myypinfo = db('drugs')->field('id,yname')->select();
         // 免疫数据显示
         $data = db('dwmy')
         ->alias('a')
