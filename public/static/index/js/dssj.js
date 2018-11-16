@@ -14,43 +14,67 @@ $(function() {
 })
 
 //保育育肥舍 编辑
-$(function($){
-	$(document).ready(function(){		
-  $(".edit").click(function(){
-  $(".edit-tc").show();
-  });
+// $(function($){
+// 	$(document).ready(function(){		
+//   $(".edit").click(function(){
+//   $(".edit-tc").show();
+//   });
   		
-  $(".close,.ups-button").click(function(){
-  $(".edit-tc").hide();
-  });
-});	
-   });
+//   $(".close,.ups-button").click(function(){
+//   $(".edit-tc").hide();
+//   });
+// });	
+//    });
    
 //怀孕舍 编辑
 $(function($){
 	$(document).ready(function(){		
   $(".edit-hy").click(function(){
+    var x = $(this).find("#hid").val();
+    $("#eb_id").val($(this).text());
+    $("#edit_id").val(x);
+    var tc = $(this).next("td").text();
+    $("input[name='tc']").val(tc);
+    var bq = $(this).next().next().next().next().text();
+    $("#biaoq").val(bq);
+    var pz = $(this).next().next().text();
+    if(pz != ""){
+      $("#peizhong").prop("checked",true);
+    }
+    var out_reason = $(this).next().next().next().next().next().next().next().next().text();
+    if(out_reason == "流产"){
+      $(".liuchan").prop("checked",true);
+    }
+    if(out_reason == "死亡"){
+      $(".siwang").prop("checked",true);
+    }
+    if(out_reason == "转出"){
+      $(".zhuanchu").prop("checked",true);
+    }
   $(".edit-hy-tc").show();
   });
-  		
   $(".close,.ups-button").click(function(){
+      $(".liuchan").prop("checked",false);
+      $(".siwang").prop("checked",false);
+      $(".zhuanchu").prop("checked",false);
+    $("#peizhong").prop("checked",false);
   $(".edit-hy-tc").hide();
   });
 });	
    });   
    
  //哺育舍 编辑
-$(function($){
-	$(document).ready(function(){		
-  $(".edit-by").click(function(){
-  $(".edit-by-tc").show();
-  });
+// $(function($){
+// 	$(document).ready(function(){		
+//   $(".edit-by").click(function(){
+//   $(".edit-by-tc").show();
+//   });
   		
-  $(".close,.ups-button").click(function(){
-  $(".edit-by-tc").hide();
-  });
-});	
-   });
+//   $(".close,.ups-button").click(function(){
+//   $(".edit-by-tc").hide();
+//   });
+// });	
+//    });
 
 
 

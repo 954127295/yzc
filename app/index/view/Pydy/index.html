@@ -20,7 +20,7 @@
 
 <div class="main">
 <div class="min-message">
-<div class="mess-name">胎次：100次</div>
+<div class="mess-name">胎次：{$num.tc}次</div>
 </div>
 
 <div class="table">
@@ -31,7 +31,7 @@
     <td bgcolor="#191919"><strong>分娩日期</strong></td>
     <td bgcolor="#191919"><strong>日龄</strong></td>
     <td bgcolor="#191919"><strong>健仔数量</strong></td>
-    <td bgcolor="#191919"><strong>死仔数量</strong></td>
+    <td bgcolor="#191919"><strong>死胎数量</strong></td>
     <td bgcolor="#191919"><strong>干尸数量</strong></td>
     <td bgcolor="#191919"><strong>弱仔数量</strong></td>
     <td bgcolor="#191919"><strong>畸形数量</strong></td>
@@ -40,113 +40,44 @@
     <td bgcolor="#191919"><strong>母猪转入时间</strong></td>
     <td bgcolor="#191919"><strong>母猪转出时间</strong></td>
     <td bgcolor="#191919"><strong>仔猪转出时间</strong></td>
+    <td bgcolor="#191919"><strong>仔猪转出数量</strong></td>
     <td bgcolor="#191919"><strong>仔猪死亡量</strong></td>
     <td bgcolor="#191919"><strong>仔猪存栏量</strong></td>
     <td bgcolor="#191919"><strong>仔猪成活率</strong></td>
     </tr>
+{volist name="data" id="vo"}
   <tr>
-    <td class="edit-by">111</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td class="edit-by">{$vo.jnumber}<input type="hidden" value="{$vo.id}" id="hid" /></td>
+    <td>{$vo.logs.tc}</td>
+    <td>{$vo.logs.delivery_time}</td>
+    <td>{$vo.logs.date_year}</td>
+    <td>{$vo.logs.health_num}</td>
+    <td>{$vo.logs.die_num}</td>
+    <td>{$vo.logs.mummy_num}</td>
+    <td>{$vo.logs.weak_num}</td>
+    <td>{$vo.logs.deformity_num}</td>
+    <td>{$vo.logs.all_num}</td>
+    <td>{$vo.logs.status}</td>
+    <td>{$vo.in_time}</td>
+    <td>{$vo.logs.mother_out_time}</td>
+    <td>{$vo.logs.children_out_time}</td>
+    <td>{$vo.logs.children_out_num}</td>
+    <td>{$vo.logs.children_die_num}</td>
+    <td>{$vo.logs.children_all_num}</td>
+    <td>{$vo.logs.children_ok_rate}</td>
     </tr>
-  <tr>
-    <td class="edit-by">222</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>333</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>444</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>555</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
+{/volist}
 </table>
+<div class="page-style">
+    {$page1}
+</div>
 </div>
 
 <!--统计-->
 <div class="sj-count">
 <div class="sj-count-b">单元统计</div>
-<div class="sj-count-n"><span>转入头数:20</span> <span>母猪存栏量:20</span> <span>仔猪存栏量:20</span> <span>母猪死亡量:2</span> <span>仔猪死亡量:2</span>  <span>数量差异:2</span> <span>健仔:10</span> <span>死胎:5</span> <span>弱仔:3</span> <span>畸形:0</span> <span>存活率:98%</span>
-<span>数量差异:4</span></div>
+<div class="sj-count-n"><span>转入头数:{$num.in_num}</span> <span>母猪存栏量:{$num.mother_cunlan}</span> <span>仔猪存栏量:{$num.children_all_num}</span> <span>母猪死亡量:{$num.mother_die}</span> <span>仔猪死亡量:{$num.children_die_num}</span>  <span>仔猪数量差异:{$num.children_cha}</span> <span>健仔:{$num.health_num}</span> <span>死胎:{$num.die_num}</span> <span>弱仔:{$num.weak_num}</span> <span>畸形:{$num.deformity_num}</span> <span>存活率:{$num.children_ok_rate}</span>
+<span>母猪数量差异:{$num.mother_cha}</span></div>
 </div>
 
 <!--修改记录-->
@@ -154,13 +85,13 @@
 <div class="z-title">编辑记录</div>
 <div class="table">
 <table width="1080" border="0">
-  <tr>
+<tr>
     <td bgcolor="#191919"><strong>耳标号</strong></td>
     <td bgcolor="#191919"><strong>胎次</strong></td>
     <td bgcolor="#191919"><strong>分娩日期</strong></td>
     <td bgcolor="#191919"><strong>日龄</strong></td>
     <td bgcolor="#191919"><strong>健仔数量</strong></td>
-    <td bgcolor="#191919"><strong>死仔数量</strong></td>
+    <td bgcolor="#191919"><strong>死胎数量</strong></td>
     <td bgcolor="#191919"><strong>干尸数量</strong></td>
     <td bgcolor="#191919"><strong>弱仔数量</strong></td>
     <td bgcolor="#191919"><strong>畸形数量</strong></td>
@@ -169,46 +100,35 @@
     <td bgcolor="#191919"><strong>母猪转入时间</strong></td>
     <td bgcolor="#191919"><strong>母猪转出时间</strong></td>
     <td bgcolor="#191919"><strong>仔猪转出时间</strong></td>
+    <td bgcolor="#191919"><strong>仔猪转出数量</strong></td>
     <td bgcolor="#191919"><strong>仔猪存栏量</strong></td>
     <td bgcolor="#191919"><strong>仔猪成活率</strong></td>
+</tr>
+{volist name="log" id="vo"}
+    <tr>
+        <td class="edit-by">{$vo.erbiao_num}</td>
+        <td>{$vo.tc}</td>
+        <td>{$vo.delivery_time}</td>
+        <td>{$vo.date_year}</td>
+        <td>{$vo.health_num}</td>
+        <td>{$vo.die_num}</td>
+        <td>{$vo.mummy_num}</td>
+        <td>{$vo.weak_num}</td>
+        <td>{$vo.deformity_num}</td>
+        <td>{$vo.all_num}</td>
+        <td>{$vo.status}</td>
+        <td>{$vo.in_time}</td>
+        <td>{$vo.mother_out_time}</td>
+        <td>{$vo.children_out_time}</td>
+        <td>{$vo.children_out_num}</td>
+        <td>{$vo.children_all_num}</td>
+        <td>{$vo.children_ok_rate}</td>
     </tr>
-  <tr>
-    <td class="edit-by">111</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td class="edit-by">222</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
+{/volist}
 </table>
+<div class="page-style">
+    {$page2}
+</div>
 </div>
 </div>
 </div>
@@ -216,54 +136,62 @@
 <!--哺育单元弹窗-->
 <div class="edit-by-tc">
 <div class="mark"></div>
+<form action="{:url('Pydy/update')}" method="post">
 <div class="ups">
-<div class="ups-title">编辑信息<div class="close"><img src="img/close.png" /></div></div>
+<div class="ups-title">编辑信息<div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
 <div class="ups-info">
 
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">耳标号</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">耳标号</div><div class="info-in"><input readonly name="erbiao_num" id="eb_id" type="text" value=" " /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">胎次</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">胎次</div><div class="info-in"><input name="tc" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">健仔数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">健仔数量</div><div class="info-in"><input name="health_num" type="text" value="" /></div>
 </div>
 
 </div>
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">死胎数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">死胎数量</div><div class="info-in"><input name="die_num" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">干尸数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">干尸数量</div><div class="info-in"><input name="mummy_num" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">弱仔数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">弱仔数量</div><div class="info-in"><input name="weak_num" type="text" value="" /></div>
 </div>
 </div>
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">畸形数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">畸形数量</div><div class="info-in"><input name="deformity_num" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">仔猪死亡</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">仔猪死亡</div><div class="info-in"><input name="children_die_num" type="text" value="" /></div>
 </div>
-<div class="ups-info-n ups-by-n"> <div class="info-name info-buto">分娩</div> </div>
+<div class="ups-info-n ups-by-n"> <div class="info-name info-buto">
+    <label><input type="checkbox" id="fenmian" value="yes" name="fenmian" />分娩</label>
+</div> </div>
+</div>
+
+<div class="ups-info1">
+<div class="ups-info-n ups-by-n">
+<div class="info-name">仔猪转出</div><div class="info-in"><input name="children_out_num" type="text" value="" /></div>
+</div>
 </div>
 
 <div class="ups-opt">
-  <form id="form1" name="form1" method="post" action="">
-  <label><input type="radio" name="选择" value="单选" id="选择_0" />母猪死亡</label>
-  <label><input type="radio" name="选择" value="单选" id="选择_0" />母猪转出</label>
-  <label><input type="radio" name="选择" value="单选" id="选择_0" />仔猪转出</label>
-  </form>
+  <label><input type="radio" name="status" value="母猪死亡" id="muzhusiwang" />母猪死亡</label>
+  <label><input type="radio" name="status" value="母猪转出" id="muzhuzhuanchu" />母猪转出</label>
 </div>
 
 </div>
-<div class="ups-button">提交</div>
+<div id="put_form" class="ups-button">提交</div>
 </div>
+<input type="hidden" value="" name="edit_id" id="edit_id" />
+</form>
 </div>
 
 </div>
@@ -273,5 +201,51 @@
 </div>
 </body>
 
-
+<script type="text/javascript">
+$("#put_form").click(function(){
+    $("form").submit();
+});
+$(document).ready(function(){       
+    $(".edit-by").click(function(){
+        var x = $(this).find("#hid").val();
+        $("#eb_id").val($(this).text());
+        $("#edit_id").val(x);
+        var tc = $(this).next("td").text();
+        $("input[name='tc']").val(tc);
+        var health_num = $(this).parent("tr").find("td").eq(4).text();
+        $("input[name='health_num']").val(health_num);
+        var die_num = $(this).parent("tr").find("td").eq(5).text();
+        $("input[name='die_num']").val(die_num);
+        var mummy_num = $(this).parent("tr").find("td").eq(6).text();
+        $("input[name='mummy_num']").val(mummy_num);
+        var weak_num = $(this).parent("tr").find("td").eq(7).text();
+        $("input[name='weak_num']").val(weak_num);
+        var deformity_num = $(this).parent("tr").find("td").eq(8).text();
+        $("input[name='deformity_num']").val(deformity_num);
+        var children_die_num = $(this).parent("tr").find("td").eq(15).text();
+        $("input[name='children_die_num']").val(children_die_num);
+        $(".edit-by-tc").show();
+        var children_out_num = $(this).parent("tr").find("td").eq(14).text();
+        $("input[name='children_out_num']").val(children_out_num);
+        var fm = $(this).parent("tr").find("td").eq(3).text();
+        if(fm != ""){
+            $("#fenmian").prop("checked",true);
+        }
+        var status = $(this).parent("tr").find("td").eq(10).text();
+        if(status == "母猪死亡"){
+          $("#muzhusiwang").prop("checked",true);
+        }
+        if(status == "母猪转出"){
+          $("#muzhuzhuanchu").prop("checked",true);
+        }
+        $(".edit-by-tc").show();
+    });
+    $(".close,.ups-button").click(function(){
+        $("#fenmian").prop("checked",false);
+        $("#muzhusiwang").prop("checked",false);
+        $("#muzhuzhuanchu").prop("checked",false);
+        $(".edit-by-tc").hide();
+    });
+});
+</script>
 </html>

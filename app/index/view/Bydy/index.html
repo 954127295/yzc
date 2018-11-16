@@ -31,39 +31,46 @@
     <td bgcolor="#191919"><strong>转入时间</strong></td>
     <td bgcolor="#191919"><strong>转入数量</strong></td>
     <td bgcolor="#191919"><strong>转入均重</strong></td>
-    <td bgcolor="#191919"><strong>转猪日龄</strong></td>
+    <td bgcolor="#191919"><strong>转入日龄</strong></td>
     <td bgcolor="#191919"><strong>转出时间</strong></td>
     <td bgcolor="#191919"><strong>转出数量</strong></td>
     <td bgcolor="#191919"><strong>当前均重</strong></td>
     <td bgcolor="#191919"><strong>死亡数量</strong></td>
     <td bgcolor="#191919"><strong>当前日龄</strong></td>
     <td bgcolor="#191919"><strong>料肉比</strong></td>
+    <td bgcolor="#191919"><strong>饲料量</strong></td>
+    <td bgcolor="#191919"><strong>日总重</strong></td>
   </tr>
   {volist name="info" id="vo"}
   <tr>
-    <td class="edit">圈001</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td class="edit">{$vo.jnumber}<input type="hidden" value="{$vo.id}" id="hid" /></td>
+    <td>{$vo.logs.batch}</td>
+    <td>{$vo.in_time}</td>
+    <td>{$vo.logs.in_num}</td>
+    <td>{$vo.logs.in_heavy}</td>
+    <td>{$vo.logs.in_date_year}</td>
+    <td>{$vo.logs.out_time}</td>
+    <td>{$vo.logs.out_num}</td>
+    <td>{$vo.logs.current_weight}</td>
+    <td>{$vo.logs.die_num}</td>
+    <td>{$vo.logs.current_date_year}</td>
+    <td>{$vo.logs.conversion}</td>
+    <td>{$vo.logs.amount}</td>
+    <td>{$vo.logs.total_weight}</td>
   </tr>
   {/volist}
 </table>
+<div class="page-style">
+    {$page1}
+</div>
 </div>
 
 <!--统计-->
 <div class="sj-count">
 <div class="sj-count-b">单元统计</div>
-<div class="sj-count-n"><span>转入头数:20</span> <span>存栏量:200</span> <span>死亡量:2</span> <span>成活率:98%</span>
-<span>当前均重:120</span> <span>当前日龄:30</span> <span>日增重:1</span> <span>数量差异:2</span> <span>饲料量:10</span>
-<span>料肉比:80</span></div>
+<div class="sj-count-n"><span>转入头数:{$num.in_num}</span> <span>存栏量:{$num.cunlan}</span> <span>死亡量:{$num.die_num}</span> <span>成活率:{$num.ok_lv}</span>
+<span>当前均重:{$num.current_weight}</span> <span>当前日龄:{$num.current_date_year}</span> <span>日增重:{$num.day_weight}</span> <span>数量差异:{$num.cha_num}</span> <span>饲料量:{$num.amount}</span>
+<span>料肉比:{$num.conversion}</span></div>
 </div>
 <!--修改记录-->
 <div class="record">
@@ -76,43 +83,38 @@
     <td bgcolor="#191919"><strong>转入时间</strong></td>
     <td bgcolor="#191919"><strong>转入数量</strong></td>
     <td bgcolor="#191919"><strong>转入均重</strong></td>
-    <td bgcolor="#191919"><strong>转猪日龄</strong></td>
+    <td bgcolor="#191919"><strong>转入日龄</strong></td>
     <td bgcolor="#191919"><strong>转出时间</strong></td>
     <td bgcolor="#191919"><strong>转出数量</strong></td>
     <td bgcolor="#191919"><strong>当前均重</strong></td>
     <td bgcolor="#191919"><strong>死亡数量</strong></td>
     <td bgcolor="#191919"><strong>当前日龄</strong></td>
     <td bgcolor="#191919"><strong>料肉比</strong></td>
+    <td bgcolor="#191919"><strong>饲料量</strong></td>
+    <td bgcolor="#191919"><strong>日总重</strong></td>
   </tr>
+{volist name="log" id="vo"}
   <tr>
-    <td>圈001</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td>{$vo.jnumber}</td>
+    <td>{$vo.batch}</td>
+    <td>{$vo.in_time}</td>
+    <td>{$vo.in_num}</td>
+    <td>{$vo.in_heavy}</td>
+    <td>{$vo.in_date_year}</td>
+    <td>{$vo.out_time}</td>
+    <td>{$vo.out_num}</td>
+    <td>{$vo.current_weight}</td>
+    <td>{$vo.die_num}</td>
+    <td>{$vo.current_date_year}</td>
+    <td>{$vo.conversion}</td>
+    <td>{$vo.amount}</td>
+    <td>{$vo.total_weight}</td>
   </tr>
-  <tr>
-    <td >圈002</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-  </tr>
+{/volist}
 </table>
+<div class="page-style">
+    {$page2}
+</div>
 </div>
 </div>
 <!--统计表-->
@@ -122,44 +124,53 @@
 <!--编辑弹窗-->
 <div class="edit-tc">
 <div class="mark"></div>
+<form action="{:url('Bydy/update')}" method="post">
 <div class="ups">
 <div class="ups-title">编辑信息<div class="close"><img src="/__ADMIN__/img/close.png" /></div></div>
 <div class="ups-info">
 
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">转入日龄</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">转入日龄</div><div class="info-in"><input name="in_date_year" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">当前日龄</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">当前日龄</div><div class="info-in"><input name="current_date_year" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">转入均重</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">转入均重</div><div class="info-in"><input name="in_heavy" type="text" value="" /></div>
 </div>
 </div>
 
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">当前均重</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">当前均重</div><div class="info-in"><input name="current_weight" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">转入数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">转入数量</div><div class="info-in"><input name="in_num" type="text" value="" /></div>
 </div>
 <div class="ups-info-n ups-by-n">
-<div class="info-name">死亡数</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">死亡数</div><div class="info-in"><input name="die_num" type="text" value="" /></div>
 </div>
 </div>
 
 <div class="ups-info1">
 <div class="ups-info-n ups-by-n">
-<div class="info-name">转出数量</div><div class="info-in"><input name="名称" type="text" value="" /></div>
+<div class="info-name">转出数量</div><div class="info-in"><input name="out_num" type="text" value="" /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">批次</div><div class="info-in"><input name="batch" type="text" value="" /></div>
+</div>
+<div class="ups-info-n ups-by-n">
+<div class="info-name">饲料量</div><div class="info-in"><input name="amount" type="text" value="" /></div>
 </div>
 
 </div>
 
 </div>
-<div class="ups-button">提交</div>
+<input type="hidden" value="" name="edit_id" id="edit_id" />
+<div id="put_form" class="ups-button">提交</div>
 </div>
+</form>
 </div>
 <!--弹窗结束-->
 
@@ -169,6 +180,49 @@
 <!---->
 </div>
 </body>
+<script type="text/javascript">
+$("#put_form").click(function(){
+    $("form").submit();
+});
+$(document).ready(function(){       
+    $(".edit").click(function(){
+        var x = $(this).find("#hid").val();
+        $("#edit_id").val(x);
 
+        var in_date_year = $(this).parent("tr").find("td").eq(5).text();
+        $("input[name='in_date_year']").val(in_date_year);
+
+        var current_date_year = $(this).parent("tr").find("td").eq(10).text();
+        $("input[name='current_date_year']").val(current_date_year);
+
+        var in_heavy = $(this).parent("tr").find("td").eq(4).text();
+        $("input[name='in_heavy']").val(in_heavy);
+
+        var current_weight = $(this).parent("tr").find("td").eq(8).text();
+        $("input[name='current_weight']").val(current_weight);
+
+        var in_num = $(this).parent("tr").find("td").eq(3).text();
+        $("input[name='in_num']").val(in_num);
+
+        var die_num = $(this).parent("tr").find("td").eq(9).text();
+        $("input[name='die_num']").val(die_num);
+
+        var out_num = $(this).parent("tr").find("td").eq(7).text();
+        $("input[name='out_num']").val(out_num);
+
+        var batch = $(this).parent("tr").find("td").eq(1).text();
+        $("input[name='batch']").val(batch);
+
+        var amount = $(this).parent("tr").find("td").eq(12).text();
+        $("input[name='amount']").val(amount);
+
+        $(".edit-tc").show();
+    });
+
+    $(".close,.ups-button").click(function(){
+        $(".edit-tc").hide();
+    });
+}); 
+</script>
 
 </html>
