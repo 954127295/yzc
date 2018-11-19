@@ -9,8 +9,8 @@ class Jkyf extends Common
 {
     // 动物免疫界面
     public function index(){
-        // 左侧
-        $myypinfo = db('drugs')->where('typenum',5)->field('id,yname')->select();
+        // 药品
+        $myypinfo = db('drugs')->field('id,yname')->select();
         // 免疫数据显示
         $data = db('dwmy')
         ->alias('a')
@@ -21,6 +21,8 @@ class Jkyf extends Common
         // 耳标号
         $ebh = db('pigpen')->where('dyid',session('dyid'))->field('jnumber')->select();
         $zl = db('dwzl')->where('dyid',session('dyid'))->select();
+        $zlzz = db('zlzz')->select();
+        $yylx = db('yylx')->select();
 
         // dump($zl);die;
         $this->assign([
@@ -28,6 +30,8 @@ class Jkyf extends Common
             'data' => $data,//免疫數據
             'ebh' => $ebh,//耳標號
             'zl' => $zl,//治療結果
+            'zlzz' => $zlzz,//治疗症状
+            'yylx' => $yylx,//用药类型
         ]);
         return view();
     }
@@ -56,8 +60,6 @@ class Jkyf extends Common
     public function zladd(){
         if(Request()->isPost()){
             $_data = input('post.');
-            $zz = array('1'=>'支原体','2'=>'副猪','3'=>'链球菌','4'=>'APP','5'=>'巴氏杆菌','6'=>'梭菌','7'=>'波氏杆菌','8'=>'回肠炎','9'=>'衣原体');
-            $_data['bz'] = $zz[$_data['bz']];
             $_data['dyid'] = session('dyid');
             $_data['time'] = time();
             $ins = db('dwzl')->insert($_data);

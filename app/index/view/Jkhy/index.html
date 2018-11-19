@@ -117,9 +117,9 @@
 <div class="ups-info-n ups-info-entry">
 <div class="info-name">耳号</div>
 <div class="info-in">
-  <select name="type">
-    {volist name="info" id="vo"}
-    <option value="{$vo.id}">{$vo.yname}</option>
+  <select name="eh">
+    {volist name="ebh" id="vo"}
+    <option value="{$vo.jnumber}">{$vo.jnumber}</option>
     {/volist}
   </select>
 </div>
@@ -153,7 +153,7 @@
 
 <div class="ups-info1">
 <div class="ups-info-n ">
-<div class="info-name">耳标号</div><div class="info-in">
+<div class="info-name">耳标号1</div><div class="info-in">
 <select name="ebh">
 {volist name="ebh" id="vo"}
   <option value="{$vo.jnumber}">{$vo.jnumber}</option>
@@ -169,16 +169,11 @@
   <div class="ups-info-n ">
   <div class="info-name">治疗症状</div>
   <div class="info-in">
-    <select name="bz" onChange="gettype()">
+    <select name="bz">
       <option>请选择治疗症状</option>
-      <option value="1">大肠杆菌</option>
-      <option value="2">猪链球菌</option>
-      <option value="3">副猪嗜血杆菌</option>
-      <option value="4">支原体</option>
-      <option value="5">巴氏杆菌</option>
-      <option value="6">波氏杆菌</option>
-      <option value="7">沙门氏菌</option>
-      <option value="8">梭菌</option>
+      {volist name="zlzz" id="vo"}
+      <option value="{$vo.zz}">{$vo.zz}</option>
+      {/volist}
     </select>
   </div>
   </div>
@@ -187,6 +182,9 @@
   <div class="info-in">
     <select name="type">
       <option>请选择用药类型 </option>
+      {volist name="yylx" id="vo"}
+      <option value="{$vo.lx}">{$vo.lx}</option>
+      {/volist}
     </select>
   </div>
   </div>
@@ -220,28 +218,6 @@
 <!---->
 </div>
 </body>
-<script type="text/javascript">
-    //定义一个二维数组
-        var type=[
-            ["粘菌素","恩诺沙星","环丙沙星","安普霉素"],
-            ["头孢噻呋","磺胺间甲安嘧啶钠","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
-            ["头孢噻呋","磺胺间甲安嘧啶钠","安普霉素","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
-            ["金霉素","林可霉素","泰安霉素","泰妙霉素"],
-            ["卡那霉素","环丙沙星","恩诺沙星","阿莫西林","磺胺间甲安嘧啶钠","土霉素"],
-            ["土霉素","庆大霉素","新霉素","环丙沙星","粘霉素","氟苯尼考"],
-            ["环丙沙星","恩诺沙星","头孢噻呋","头孢喹肟"],
-            ["青霉素","氨芐西林","氟苯尼考","多西环素"],
-        ];
-        function gettype(){
-            var sltbz=document.form1.bz;   //获得国家下拉框的对象
-            var slttype=document.form1.type;     //获得城市下拉框的对象
-            var bz=type[sltbz.selectedIndex-1];    //得到对应国家的城市数组
-            slttype.length=1;    //清空城市下拉框，仅留提示选项。
-            //通过for循环，将城市中的值填充到城市下拉框中
-            for(var i=0;i<bz.length;i++){
-                slttype[i+1]=new Option(bz[i],bz[i]);
-            }
-        }
-    </script>
+
 
 </html>

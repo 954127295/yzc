@@ -67,8 +67,6 @@
     </tr>
     {/volist}
 
-
-
 </table>
 </div>
 
@@ -157,17 +155,13 @@
   <div class="ups-info-n ">
   <div class="info-name">治疗症状</div>
   <div class="info-in">
-    <select name="bz" onChange="gettype()">
+    <select name="bz"">
       <option>请选择治疗症状</option>
-      <option value="1">大肠杆菌</option>
-      <option value="2">猪链球菌</option>
-      <option value="3">副猪嗜血杆菌</option>
-      <option value="4">支原体</option>
-      <option value="5">巴氏杆菌</option>
-      <option value="6">波氏杆菌</option>
-      <option value="7">沙门氏菌</option>
-      <option value="8">梭菌</option>
+      {volist name="zlzz" id="vo"}
+      <option value="{$vo.zz}">{$vo.zz}</option>
+      {/volist}
     </select>
+  }
   </div>
   </div>
   <div class="ups-info-n ">
@@ -175,6 +169,9 @@
   <div class="info-in">
     <select name="type">
       <option>请选择用药类型 </option>
+      {volist name="yylx" id="vo"}
+      <option value="{$vo.lx}">{$vo.lx}</option>
+      {/volist}
     </select>
   </div>
   </div>
@@ -208,7 +205,7 @@
 <!---->
 </div>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     //定义一个二维数组
         var type=[
             ["粘菌素","恩诺沙星","环丙沙星","安普霉素"],
@@ -230,6 +227,6 @@
                 slttype[i+1]=new Option(bz[i],bz[i]);
             }
         }
-    </script>
+    </script> -->
 
 </html>

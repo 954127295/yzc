@@ -52,4 +52,28 @@ class Zc extends Common{
             return $this->fetch("breeding");
         }
     }
+    public function add(){
+        if(Request()->isPost()){
+            $data = input('post.');
+            $data['monitor'] = json_encode($data['monitor'],JSON_UNESCAPED_SLASHES);//后期使用\r\n分隔地址
+            $data['addtime'] = time();
+            //添加场
+            $data['cid'] = session('cid');
+            $add = db('unit')->insert($data);
+            if($add){
+                $this->success('添加单元成功');
+            }else{
+                $this->error('添加单元失败');
+            }
+        }
+        $dyfz = db('dyfz')->field('id,fzname')->where('cid',session('cid'))->select();
+        $dtu = db('dtu')->field('id,dtuname')->where('cid',session('cid'))->select();
+        $ctype = db('cwh')->where('id',session('cid'))->field('category')->find();
+        $this->assign([
+            'dyfz' => $dyfz,
+            'dtu' => $dtu,
+            'ctype' => $ctype['category'],
+        ]);
+        return view();
+    }
 }

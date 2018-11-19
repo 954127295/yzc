@@ -6,13 +6,40 @@
 <link href="/__INDEX__/css/dwjk.css" rel="stylesheet" type="text/css" />
  <script src="/__INDEX__/js/jquery.js" ></script>
  <script src="/__INDEX__/js/dsjk.js"></script>
+ <style type="text/css">
+   .cure{
+      margin-left: 40px;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      padding: 1px 10px;
+      cursor: pointer;
+   }
+   .pagination{
+    text-align:right;
+    margin-top:30px;
+}
+.pagination li{
+    display: inline-block;
+}
+.page-style{
+
+    width:1000px;
+    text-align:right;
+}
+.page-style a{
+  border: 1px solid #999999;
+  padding: 5px 7px;
+  color: #999999;
+  cursor: pointer;
+}
+ </style>
 </head>
 
 <body>
 <div class="content">
 <!--top-->
 {include file="common/qheader"}
-
 <!--位置<div class="position"></div>-->
 
 <div class="row">
@@ -20,9 +47,8 @@
 {include file="common/qtlft"}
 
 <div class="main">
-<div class="z-title"><div class="z-title-b">动物免疫</div>  <div class="z-entry">录入</div>
-<div class="by-sort"> <div class="by-mz">免疫母猪</div> <div class="by-zz">免疫仔猪</div></div>
-</div>
+<div class="z-title"><div class="z-title-b">动物免疫</div>  <div class="z-entry">录入</div></div>
+<div class="by-sort"><div class="by-mz" {if condition="$typeid eq 1"} style="background-color: #0014FA;" {/if}><a href="{:url('index',array('typeid'=>1))}">免疫母猪</a></div> <div class="by-zz" {if condition="$typeid eq 2"} style="background-color: #0014FA;" {/if}><a href="{:url('index',array('typeid'=>2))}">免疫仔猪</a></div></div>
 <div class="table">
 <table width="1050" border="0">
   <tr>
@@ -33,50 +59,27 @@
     <td bgcolor="#191919"><strong>用药量</strong></td>
     <td bgcolor="#191919"><strong>用药总量</strong></td>
     </tr>
-  <tr>
-    <td class="immunity">蓝耳猫</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    {volist name="data" id="vo"}
+    <tr>
+      <td class="immunity">{$vo.yname}</td>
+      <td>{$vo.eh}</td>
+      <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+      <td>{$vo.yname}</td>
+      <td>{$vo.yyl}ml</td>
+      <td>{$vo.yyzl}ml</td>
     </tr>
-  <tr>
-    <td class="immunity">猪瘟活疫苗</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-
+    {/volist}
 </table>
 </div>
 
 <!--动物治疗-->
 <div class="record">
-<div class="z-title"><div class="z-title-b">动物治疗</div> <div class="by-sort"> <div class="by-mz">治疗母猪</div> <div class="by-zz">治疗仔猪</div></div></div>
+<div class="z-title"><div class="z-title-b">动物治疗</div> <div class="cure">录入</div></div>
 <div class="table">
 <table width="1050" border="0">
   <tr>
     <td bgcolor="#191919"><strong>耳标号</strong></td>
-    <td bgcolor="#191919"><strong>治疗类型</strong></td>
+    <!-- <td bgcolor="#191919"><strong>治疗类型</strong></td> -->
     <td bgcolor="#191919"><strong>治疗时间</strong></td>
     <td bgcolor="#191919"><strong>治疗症状</strong></td>
     <td bgcolor="#191919"><strong>治疗数量</strong></td>
@@ -86,38 +89,18 @@
     <td bgcolor="#191919"><strong>治疗动物总数</strong></td>
     </tr>
   <tr>
-    <td class="cure">001</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    {volist name="zl" id="vo"}
+    <td>{$vo.ebh}</td>
+    <!-- <td></td> -->
+    <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+    <td>{$vo.bz}</td>
+    <td>{$vo.number}</td>
+    <td>{$vo.type}</td>
+    <td>{$vo.yyl}ml</td>
+    <td>{$vo.status}</td>
+    <td>{$vo.number}</td>
     </tr>
-  <tr>
-    <td >002</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-      <tr>
-    <td >002</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
+    {/volist}
 </table>
 </div>
 </div>
@@ -129,21 +112,36 @@
 <div class="mark"></div>
 <div class="ups">
 <div class="ups-title">动物免疫<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
+<form action="{:url('myadd')}" method="post">
+<input type="hidden" name="typeid" value="{$typeid}"/>
 <div class="ups-info">
 <div class="ups-info1">
 <div class="ups-info-n ups-info-entry">
-<div class="info-name">用药名称</div><div class="info-in"><select name="膘情">
-  <option>猪瘟活疫苗</option>
-  <option>蓝耳猫</option>
-  <option>圆环</option>
-</select></div>
+<div class="info-name">耳号</div>
+<div class="info-in">
+  <select name="eh">
+    {volist name="ebh" id="vo"}
+    <option value="{$vo.jnumber}">{$vo.jnumber}</option>
+    {/volist}
+  </select>
 </div>
 </div>
-
-
-
 </div>
-<div class="ups-button">提交</div>
+<div class="ups-info1">
+<div class="ups-info-n ups-info-entry">
+<div class="info-name">用药类型</div>
+<div class="info-in">
+  <select name="type">
+    {volist name="info" id="vo"}
+    <option value="{$vo.id}">{$vo.yname}</option>
+    {/volist}
+  </select>
+</div>
+</div>
+</div>
+</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 250px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
+</form>
 </div>
 </div>
 
@@ -151,49 +149,70 @@
 <div class="cure-tc">
 <div class="mark"></div>
 <div class="ups">
+<form action="{:url('zladd')}" method="post" name="form1">
+<input type="hidden" name="typeid" value="{$typeid}" />
 <div class="ups-title">动物治疗<div class="close"><img src="/__INDEX__/img/close.png" /></div></div>
 <div class="ups-info">
 
 <div class="ups-info1">
 <div class="ups-info-n ">
-<div class="info-name">用药量</div><div class="info-in"><input name="名称" type="text" value="  " /></div>
+<div class="info-name">耳标号</div><div class="info-in">
+<select name="ebh">
+{volist name="ebh" id="vo"}
+  <option value="{$vo.jnumber}">{$vo.jnumber}</option>
+{/volist}
+</select></div>
 </div>
 <div class="ups-info-n ">
-<div class="info-name">治疗数量</div><div class="info-in"><input name="名称" type="text" value=" " /></div>
+<div class="info-name">治疗数量</div><div class="info-in"><input name="number" type="text" value=" " /></div>
 </div>
 </div>
 
 <div class="ups-info1">
-<div class="ups-info-n ">
-<div class="info-name">用药类型</div><div class="info-in"><select name="膘情">
-  <option>类型1</option>
-  <option>类型2</option>
-  <option>类型3</option>
-</select></div>
-</div>
-<div class="ups-info-n ">
-<div class="info-name">治疗症状</div><div class="info-in"><select name="膘情">
-  <option>症状1</option>
-  <option>症状2</option>
-  <option>症状3</option>
-</select></div>
-</div>
+  <div class="ups-info-n ">
+  <div class="info-name">治疗症状</div>
+  <div class="info-in">
+    <select name="bz">
+      <option>请选择治疗症状</option>
+      {volist name="zlzz" id="vo"}
+      <option value="{$vo.zz}">{$vo.zz}</option>
+      {/volist}
+    </select>
+  </div>
+  </div>
+  <div class="ups-info-n ">
+  <div class="info-name">用药类型</div>
+  <div class="info-in">
+    <select name="type">
+      <option>请选择用药类型 </option>
+      {volist name="yylx" id="vo"}
+      <option value="{$vo.lx}">{$vo.lx}</option>
+      {/volist}
+    </select>
+  </div>
+  </div>
 </div>
 <div class="ups-info1">
 <div class="ups-info-n ">
-<div class="info-name">治疗结果</div><div class="info-in"><select name="膘情">
-  <option>结果1</option>
-  <option>结果2</option>
-  <option>结果3</option>
-</select></div>
+<div class="info-name">治疗结果</div>
+<div class="info-in">
+  <select name="status">
+    <option value="痊愈">痊愈</option>
+    <option value="未痊愈">未痊愈</option>
+  </select>
+</div>
+</div>
+<div class="ups-info-n ">
+<div class="info-name">用药量</div><div class="info-in"><input name="yyl" type="text" value="  " /></div>
 </div>
 </div>
 
 
 </div>
-<div class="ups-button">提交</div>
+<input type="submit" style="width: 140px;height: 40px;text-align: center;line-height: 35px;font-size: 16px;background: #f05a00;margin: 25px auto;border-radius: 10px;cursor: pointer;margin-left: 350px;border-color:#F05A00;color:#FFFFFF;" value="提交" />
 </div>
 </div>
+</form>
 <!--弹窗结束-->
 
 </div>

@@ -66,9 +66,6 @@
       <td>{$vo.yyzl}ml</td>
     </tr>
     {/volist}
-
-
-
 </table>
 </div>
 
@@ -157,18 +154,13 @@
   <div class="ups-info-n ">
   <div class="info-name">治疗症状</div>
   <div class="info-in">
-    <select name="bz" onChange="gettype()">
+    <select name="bz">
       <option>请选择治疗症状</option>
-      <option value="1">支原体</option>
-      <option value="2">副猪</option>
-      <option value="3">链球菌</option>
-      <option value="4">APP</option>
-      <option value="5">巴氏杆菌</option>
-      <option value="6">梭菌</option>
-      <option value="7">波氏杆菌</option>
-      <option value="8">回肠炎</option>
-      <option value="9">衣原体</option>
+      {volist name="zlzz" id="vo"}
+      <option value="{$vo.zz}">{$vo.zz}</option>
+      {/volist}
     </select>
+  }
   </div>
   </div>
   <div class="ups-info-n ">
@@ -176,6 +168,9 @@
   <div class="info-in">
     <select name="type">
       <option>请选择用药类型 </option>
+      {volist name="yylx" id="vo"}
+      <option value="{$vo.lx}">{$vo.lx}</option>
+      {/volist}
     </select>
   </div>
   </div>
@@ -209,18 +204,17 @@
 <!---->
 </div>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     //定义一个二维数组
         var type=[
-            ["金霉素","氟苯尼考","林可","泰妙","强力(轮换)","恩诺沙星","头孢"],
-            ["青霉素","阿莫西林","思诺沙星","氟苯尼考","环丙沙星","安普霉素"],
-            ["青霉素","阿莫西林","恩诺沙星","氟苯尼考","环丙沙星"],
-            ["氟苯尼考","林可霉素","环丙沙星","强力器素","头孢","恩诺沙星巴氏杆菌"],
-            ["坏丙沙星","阿莫西林","林可霉素","强力霉素","氟苯尼考","头孢"],
-            ["青霉素","氟苯尼考","林可霉素","恩拉霉素","氨苄","磺胺"],
-            ["磺胺","环丙沙星"],
-            ["金素","林可","土霉素","秦妙","泰乐"],
-            ["金霉素","林可","氟苯尼考"],
+            ["粘菌素","恩诺沙星","环丙沙星","安普霉素"],
+            ["头孢噻呋","磺胺间甲安嘧啶钠","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
+            ["头孢噻呋","磺胺间甲安嘧啶钠","安普霉素","阿莫西林","青霉素","环丙沙星","恩诺沙星","氟苯尼考"],
+            ["金霉素","林可霉素","泰安霉素","泰妙霉素"],
+            ["卡那霉素","环丙沙星","恩诺沙星","阿莫西林","磺胺间甲安嘧啶钠","土霉素"],
+            ["土霉素","庆大霉素","新霉素","环丙沙星","粘霉素","氟苯尼考"],
+            ["环丙沙星","恩诺沙星","头孢噻呋","头孢喹肟"],
+            ["青霉素","氨芐西林","氟苯尼考","多西环素"],
         ];
         function gettype(){
             var sltbz=document.form1.bz;   //获得国家下拉框的对象
@@ -232,6 +226,6 @@
                 slttype[i+1]=new Option(bz[i],bz[i]);
             }
         }
-    </script>
+    </script> -->
 
 </html>
