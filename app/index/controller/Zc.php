@@ -41,6 +41,12 @@ class Zc extends Common{
                 'byinfo' => $byinfo,
                 'yfinfo' => $yfinfo
             ]);
+            //获取育肥单元数据
+            $num1 = $this->get_dy_num(1);
+            $this->assign("num1",$num1);
+            //获取育肥单元数据
+            $num2 = $this->get_dy_num(2);
+            $this->assign("num2",$num2);
             return $this->fetch("production");
         }elseif($zc['category'] == 2){
             $hyinfo = db('unit')->where('cid',session('cid'))->where('dytype',3)->select();
@@ -49,9 +55,93 @@ class Zc extends Common{
                 'hyinfo' => $hyinfo,
                 'fminfo' => $fminfo
             ]);
+            $num1 = $this->get_hy_num();//怀孕猪
+            $this->assign("num1",$num1);
+            $num2 = $this->get_py_num();//哺育猪
+            $this->assign("num2",$num2);
+            // $num2 = $this->get_py_num();//健仔
+            // $this->assign("num2",$num2);
             return $this->fetch("breeding");
         }
     }
+
+    private function get_hy_num(){
+        $yfinfo = db('unit')->where('cid',session('cid'))->where('dytype',3)->select();
+        $dyid_arr = array();
+        foreach($yfinfo as $d){
+            array_push($dyid_arr,$d['id']);
+        }
+        $dyid = implode(",",$dyid_arr);
+        $where['dyid'] = array("in",$dyid);
+        $data = array();
+        $data['in_num'] = db("pigpen")->where(array("dyid"=>array("in",$dyid)))->count();//转入头数
+        $data['die_num'] = db("penlog")->where(array("dyid"=>array("in",$dyid),"out_reason"=>"死亡"))->count();//死亡头数
+        $data['cunlan'] = $data['in_num'] - $data['die_num'];//存栏量
+        $data['out_num'] = db("penlog")->where(array("dyid"=>array("in",$dyid),"out_reason"=>"流产"))->count();//流产数量
+        @$data['ok_lv'] = $this->rounds(($data['in_num']-$data['die_num'])/$data['in_num']);//成活率
+        return $data;
+    }
+
+    private function get_py_num(){
+        $yfinfo = db('unit')->where('cid',session('cid'))->where('dytype',3)->select();
+        $dyid_arr = array();
+        foreach($yfinfo as $d){
+            array_push($dyid_arr,$d['id']);
+        }
+        $dyid = implode(",",$dyid_arr);
+        $data = db('pigpen')->where(array("dyid"=>array("in",$dyid)))->field("id")->select();
+        $num = array();
+        $num['in_num'] = db("pigpen")->where(array("dyid"=>array("in",$dyid)))->count();//转入头数
+        $bycount = db("bylog")->where(array("dyid"=>array("in",$dyid),"status"=>"母猪死亡"))->count();
+        $num['mother_cunlan'] = $num['in_num'] - $bycount;//母猪存栏量
+        $num['mother_die'] = $bycount;//母猪死亡量
+        @$num['ok_lv'] = $this->rounds(($num['in_num']-$num['mother_die'])/$num['in_num']);//成活率
+        $bycount_c = db("bylog")->where(array("dyid"=>array("in",$dyid),"status"=>"母猪转出"))->count();
+        $mother_cha = $num['in_num'] - $bycount - $bycount_c;
+        $num['mother_cha'] = $mother_cha != 0?"<a style='color:red;'>".$mother_cha."</a>":0;//母猪差异
+        foreach($data as $d){
+            $res = db("bylog")->where(array("pen_id"=>$d['id']))->field("")->order("id desc")->find();
+            $num['children_die_num'] += $res['children_die_num'];//仔猪死亡量
+            $num['health_num'] += $res['health_num'];//健仔
+            $num['die_num'] += $res['die_num'];//死胎
+            $num['weak_num'] += $res['weak_num'];//弱仔
+            $num['deformity_num'] += $res['deformity_num'];//畸形
+            $num['children_out_num'] += $res['children_out_num'];
+            $num['tc'] += $res['tc'];//胎次
+
+        }
+        $num['children_all_num'] = $res['health_num'] - $res['children_die_num'];//仔猪存栏量
+        @$num['children_ok_rate'] = $this->rounds(($num['health_num']-$num['die_num'])/$num['health_num']);//存活率
+        $children_cha = $num['health_num'] - $num['children_out_num'];
+        $num['children_cha'] = $children_cha != 0?"<a style='color:red;'>".$children_cha."</a>":0;//仔猪差异
+        return $num;
+    }
+
+    private function get_dy_num($c){
+        $yfinfo = db('unit')->where('cid',session('cid'))->where('dytype',$c)->select();
+        $dyid_arr = array();
+        foreach($yfinfo as $d){
+            array_push($dyid_arr,$d['id']);
+        }
+        $dyid = implode(",",$dyid_arr);
+        $where['dyid'] = array("in",$dyid);
+        $result = db('pigpen')->where($where)->select();
+        $num = array();
+        foreach($result as $d){
+            $res = db("baolog")->where(array("pen_id"=>$d['id']))->field("in_num,die_num")->order("id desc")->find();
+            $num['in_num'] += $res['in_num'];//转入头数
+            $num['cunlan'] += $res['in_num'] - $res['die_num'];//存栏量
+            $num['die_num'] += $res['die_num'];//死亡量
+        }
+        @$num['ok_lv'] = $this->rounds(($num['in_num']-$num['die_num'])/$num['in_num']);//成活率
+        return $num;
+    }
+
+    private function rounds($num){
+        $nums = sprintf("%.4f",$num);
+        return $nums * 100;
+    }
+
     public function add(){
         if(Request()->isPost()){
             $data = input('post.');

@@ -67,8 +67,8 @@ class Bydy extends Common
             $num['amount'] += $res['amount'];//饲料量
             $in_heavy += $res['in_heavy'];
     	}
-        @$num['ok_lv'] = $this->rounds(($data['in_num']-$data['die_num'])/$data['in_num']);//成活率
-        @$num['current_weight'] = $this->rounds($current_weight/$data['cunlan']);//当前均重
+        @$num['ok_lv'] = $this->rounds(($num['in_num']-$num['die_num'])/$num['in_num']);//成活率
+        @$num['current_weight'] = $this->rounds($current_weight/$num['cunlan']);//当前均重
         $num['current_date_year'] = ceil($in_date);//当前日龄
         @$num['day_weight'] = $this->rounds(($current_weight/$num['cunlan'])/$in_date);//日增重
         $cha_num = $num['in_num'] - $num['die_num'] - $out_num;
