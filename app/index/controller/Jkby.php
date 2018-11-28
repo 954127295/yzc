@@ -21,11 +21,24 @@ class Jkby extends Common
         // 耳标号
         $ebh = db('pigpen')->where('dyid',session('dyid'))->field('jnumber')->select();
         $zl = db('dwzl')->where('dyid',session('dyid'))->select();
+        $zlname = db('unit')->where('id',session('dyid'))->field('dyname')->find();
+        // dump($zl);
+        $arr = array();
+        foreach ($zl as $k => $v) {
+            $arr[] = $v['bz'];
+        }
+        foreach (array_count_values($arr) as $key => $value) {
+            $_arr[$key] = (string)$value;
+        }
+        // $a = array_count_values($arr);
+        // dump($_arr);die;
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
 
-        // dump($zl);die;
+        // dump($zlname);die;
         $this->assign([
+            'bt' => $_arr,//饼图
+            'zlname' => $zlname['dyname'],//饼图
             'info' => $myypinfo,
             'data' => $data,//免疫數據
             'ebh' => $ebh,//耳標號
@@ -68,6 +81,17 @@ class Jkby extends Common
             }else{
                 $this->error('添加治疗数据失败','index','',1);
             }
+        }
+    }
+
+    // 删除
+    public function deldwzl($id){
+        echo $id;die;
+        // $del = db('dwzl')->delete($id);
+        if($del){
+            $this->success('删除动物治疗成功','index');
+        }else{
+            $this->error('删除动物治疗数据失败');
         }
     }
 

@@ -21,11 +21,19 @@ class Jkyf extends Common
         // 耳标号
         $ebh = db('pigpen')->where('dyid',session('dyid'))->field('jnumber')->select();
         $zl = db('dwzl')->where('dyid',session('dyid'))->select();
+        $arr = array();
+        foreach ($zl as $k => $v) {
+            $arr[] = $v['bz'];
+        }
+        foreach (array_count_values($arr) as $key => $value) {
+            $_arr[$key] = (string)$value;
+        }
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
 
         // dump($zl);die;
         $this->assign([
+            'bt' => $_arr,//饼图
             'info' => $myypinfo,
             'data' => $data,//免疫數據
             'ebh' => $ebh,//耳標號
@@ -68,6 +76,16 @@ class Jkyf extends Common
             }else{
                 $this->error('添加治疗数据失败','index','',1);
             }
+        }
+    }
+
+    // 删除数据
+    public function del($id){
+        $del = db('dwzl')->delete($id);
+        if($del){
+            $this->success('删除成功');
+        }else{
+            $this->error('删除失败');
         }
     }
 

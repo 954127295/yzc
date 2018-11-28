@@ -6,6 +6,10 @@
 <link href="/__INDEX__/css/dwjk.css" rel="stylesheet" type="text/css" />
  <script src="/__INDEX__/js/jquery.js" ></script>
  <script src="/__INDEX__/js/dsjk.js"></script>
+  <script type="text/javascript" src="/__INDEX__/js/js/jsapi.js"></script>
+<script type="text/javascript" src="/__INDEX__/js/js/corechart.js"></script>
+<script type="text/javascript" src="/__INDEX__/js/js/jquery.gvChart-1.0.1.min.js"></script>
+<script type="text/javascript" src="/__INDEX__/js/js/jquery.ba-resize.min.js"></script>
  <style type="text/css">
    .cure{
       margin-left: 40px;
@@ -34,6 +38,20 @@
   cursor: pointer;
 }
  </style>
+  <script type="text/javascript">
+gvChartInit();
+$(document).ready(function(){
+  $('#myTable5').gvChart({
+    chartType: 'PieChart',
+    gvSettings: {
+      vAxis: {title: 'No of players'},
+      hAxis: {title: 'Month'},
+      width: 1000,
+      height: 250
+    }
+  });
+});
+</script>
 </head>
 
 <body>
@@ -84,6 +102,7 @@
     <td bgcolor="#191919"><strong>用药量</strong></td>
     <td bgcolor="#191919"><strong>治疗结果</strong></td>
     <td bgcolor="#191919"><strong>治疗动物总数</strong></td>
+    <td bgcolor="#191919"><strong>操作</strong></td>
     </tr>
   <tr>
     {volist name="zl" id="vo"}
@@ -96,13 +115,36 @@
     <td>{$vo.yyl}ml</td>
     <td>{$vo.status}</td>
     <td>{$vo.number}</td>
+    <td><a href="{:url('Jkyf/del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除({$vo.dyname})数据吗?')==false)return false;">删除</a></td>
     </tr>
     {/volist}
 </table>
 </div>
 </div>
 <!--统计表-->
+  <div style="width:1700px;margin:0 auto;">
 
+     <table id='myTable5'>
+      <caption>{$zlname}-动物治疗数据分析</caption>
+      <thead>
+        <tr>
+          <th></th>
+          {foreach name="bt" item="vo" key="k"}
+          <th>{$k}</th>
+          {/foreach}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th></th>
+          {foreach name="bt" item="vo" key="k"}
+          <td>{$vo}</td>
+          {/foreach}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 </div>
 <!--动物免疫录入-->
 <div class="z-entry-tc">
