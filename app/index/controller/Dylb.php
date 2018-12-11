@@ -6,6 +6,7 @@ class Dylb extends Common
 {
     // 单元列表
     public function lst(){
+        // dump(session('cid'));die;
         $data = db('unit')
         ->field('a.*,b.fzname,b.id as dyid,c.dtuname,c.id as dtuid')
         ->alias('a')
@@ -13,6 +14,7 @@ class Dylb extends Common
         ->join('dtu c','a.dtuid=c.id')
         ->where('a.cid',session('cid'))
         ->paginate(10);
+        // dump($data);die;
         $this->assign([
             'data' => $data,
         ]);
@@ -66,8 +68,8 @@ class Dylb extends Common
         ->where('a.id',$id)
         ->find();
         $data['monitor'] = json_decode($data['monitor']);
-        $dyfz = db('dyfz')->field('id,fzname')->select();
-        $dtu = db('dtu')->field('id,dtuname')->select();
+        $dyfz = db('dyfz')->field('id,fzname')->where('cid',session('cid'))->select();
+        $dtu = db('dtu')->field('id,dtuname')->where('cid',session('cid'))->select();
         $ctype = db('cwh')->where('id',session('cid'))->field('category')->find();
         $this->assign([
             'data' => $data,

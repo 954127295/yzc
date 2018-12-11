@@ -45,7 +45,7 @@
   <tr>
     <td class="edit">{$vo.jnumber}<input type="hidden" value="{$vo.id}" id="hid" /></td>
     <td>{$vo.logs.batch}</td>
-    <td>{$vo.in_time}</td>
+    <td>{$vo.addtime|date="Y-m-d H:i",###}</td>
     <td>{$vo.logs.in_num}</td>
     <td>{$vo.logs.in_heavy}</td>
     <td>{$vo.logs.in_date_year}</td>
@@ -184,7 +184,7 @@
 $("#put_form").click(function(){
     $("form").submit();
 });
-$(document).ready(function(){       
+$(document).ready(function(){
     $(".edit").click(function(){
         var x = $(this).find("#hid").val();
         $("#edit_id").val(x);
@@ -222,7 +222,7 @@ $(document).ready(function(){
     $(".close,.ups-button").click(function(){
         $(".edit-tc").hide();
     });
-}); 
+});
 </script>
 
 </html>

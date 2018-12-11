@@ -29,6 +29,7 @@ class Hydy extends Common
     		$new_data[] = $d;
     	}
     	$this->assign("page1",$page1);
+        // dump($new_data);die;
         $this->assign([
             'data' => $new_data,
         ]);
@@ -106,7 +107,7 @@ class Hydy extends Common
 			}
 			$data['out_reason'] = $out_reason;
 			$data['out_time'] = $time;
-			
+
 		}
 		db("penlog")->insert($data);
 		$this->redirect("Hydy/index");

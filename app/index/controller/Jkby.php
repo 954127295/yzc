@@ -86,10 +86,9 @@ class Jkby extends Common
 
     // 删除
     public function deldwzl($id){
-        echo $id;die;
-        // $del = db('dwzl')->delete($id);
+        $del = db('dwzl')->delete($id);
         if($del){
-            $this->success('删除动物治疗成功','index');
+            $this->success('删除动物治疗成功','index','',1);
         }else{
             $this->error('删除动物治疗数据失败');
         }

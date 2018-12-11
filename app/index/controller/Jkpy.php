@@ -22,10 +22,18 @@ class Jkpy extends Common
         // 耳标号
         $ebh = db('pigpen')->where('dyid',session('dyid'))->field('jnumber')->select();
         $zl = db('dwzl')->where('dyid',session('dyid'))->where('typeid',$typeid)->select();
+        $arr = array();
+        foreach ($zl as $k => $v) {
+            $arr[] = $v['bz'];
+        }
+        foreach (array_count_values($arr) as $key => $value) {
+            $_arr[$key] = (string)$value;
+        }
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
         // dump($zl);die;
         $this->assign([
+            'bt' => $_arr,//饼图
             'typeid' => $typeid,
             'info' => $myypinfo,
             'data' => $data,//免疫數據

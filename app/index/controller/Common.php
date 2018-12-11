@@ -6,20 +6,23 @@ use think\Session;
 
 class Common extends Controller{
     protected static $user_arr = array();
-    public function __construct($id=''){
+    public function __construct(){
         parent::__construct();
         $request = Request::instance();
         $c = $request->controller();
     	$a = $request->action();
         $this->assign("c",$c);
         $this->assign("a",$a);
+        // dump($id);die;
         if(!empty($id)){
-            session('dyid',$id);
-            $dyinfo = db('unit')->where('id',$id)->field('dytype')->find();
+            // dump($id);die;
+            // session('dyid',$id);
+            $dyinfo = db('unit')->where('id',$id)->find();
+            // echo 1;
         }else{
             $dyinfo = db('unit')->where('id',session('dyid'))->field('dytype')->find();
         }
-
+        // dump($dyinfo);die;
         $this->assign("category",$dyinfo['dytype']);
         $user = Session::get('user');
         // echo 1;

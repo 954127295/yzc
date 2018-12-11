@@ -115,7 +115,7 @@ $(document).ready(function(){
     <td>{$vo.yyl}ml</td>
     <td>{$vo.status}</td>
     <td>{$vo.number}</td>
-    <td><a href="{:url('Jkyf/del',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除({$vo.dyname})数据吗?')==false)return false;">删除</a></td>
+    <td><a href="{:url('Jkby/deldwzl',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除数据吗?')==false)return false;">删除</a></td>
     </tr>
     {/volist}
 </table>

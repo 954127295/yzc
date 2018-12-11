@@ -11,6 +11,7 @@ class Bydy extends Common
     	$dyid = Session::get("dyid");
     	$where['dyid'] = $dyid;
     	$data = db('pigpen')->where($where)->paginate(10,false,['var_page'=>'np']);
+        // dump($data);die;
     	$page1 = $data->render();
     	$data = $data->all();
     	$new_data = array();
@@ -19,6 +20,7 @@ class Bydy extends Common
     		$d['logs'] = $log;
     		$new_data[] = $d;
     	}
+        // dump($new_data);die;
     	$this->assign("page1",$page1);
         $this->assign([
             'info' => $new_data,
