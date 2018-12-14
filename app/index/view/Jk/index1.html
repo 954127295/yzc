@@ -7,50 +7,7 @@
  <script src="/__ADMIN__/js/jquery.js"></script>
  <script src="/__ADMIN__/js/dssj.js"></script>
   <style>
-    .word-color{
-      color: #3e57ff;
-    }
-    .line-height1213{
-      line-height: 30px;
-    }
-    .line-height1213 img {
-      width: 60px;
-    }
-    .environment{
-      display: inline-block;
-      width: 30px;
-      vertical-align: middle;
-    }
-    .tubiaoul1 li {
-      float: left;
-      margin: 5px 18px;
-      text-align: center;
-    }
-    .mianyi1213{
-      position: relative;
-      top: -9px;
-      left: 15px;
-    }
-    .my-n{
-      width: 50px;
-      height: 5px;
-      background-color: white;
-      margin-bottom: 8px;
-    }
-    .my-a{
-      width: 50px;
-      height: 5px;
-      background-color: #3e57ff;
-      margin-bottom: 8px;
-    }
-    .mianyi-bg{
-      top: 39px;
-      position: relative;
-    }
-    .imgul {
-      width: 100%;
-      padding-top: 0px;
-    }
+
   </style>
 </head>
 
@@ -65,7 +22,7 @@
 <!--ce-->
 {include file="common/qtlft"}
 
-<div class="main word-color">
+<div class="main">
 
   <div class="min-message">
     <div class="mess-name">单元名：{$dyinfo.dyname}{$info.dyname}</div><!-- <div style="margin-left: -160px">圈号：D001</div> -->
@@ -107,7 +64,7 @@
   </div>
 </div>
 
-  <div style="width: 96%;height: 130px;background-color: #1e1e23;padding: 20px;margin-top: 20px;color: white">
+  <div style="width: 96%;height: 130px;background-color: #1e1e23;padding: 20px;margin-top: 20px">
     <div class="ds-title">动物资产</div>
     <div>
       <ul class="imgul">
@@ -155,15 +112,10 @@
 
         </li>
         <li>
-          <img class="mianyi-bg" src="/__ADMIN__/img/tubiao5.png" alt="">
-          <div class="mianyi1213">
-            <div class="my-n"></div>
-            <div class="my-a"></div>
-            <div class="my-a"></div>
-          </div>
+          <img src="/__ADMIN__/img/tubiao5.png" alt="">
 
             <div class="numright">
-              2
+              322
             </div>
             <div class="wordright1">
               免疫
@@ -172,6 +124,7 @@
         </li>
         <li>
           <img src="/__ADMIN__/img/tubiao6.png" alt="">
+
             <div class="numright">
               322
             </div>
@@ -196,24 +149,21 @@
             <div style="width: 20px;margin:0 auto;height: 40px;background-color: #3c3c3c;">
 
             </div>
-          </div><br>
-          <img class="environment" src="/__ADMIN__/img/wd1213.png" alt="">29℃
+          </div><br><br>温度1：{$info.T1}℃
         </li>
         <li>
           <div class="histogram">
             <div style="width: 20px;margin:0 auto;height: 40px;background-color: #3c3c3c;">
 
             </div>
-          </div><br>
-          <img class="environment" src="/__ADMIN__/img/wd1213.png" alt=""> 29℃
+          </div><br><br>温度2：{$info.T2}℃
         </li>
         <li>
           <div class="histogram">
             <div style="width: 20px;margin:0 auto;height: 40px;background-color: #3c3c3c;">
 
             </div>
-          </div><br>
-          <img class="environment" src="/__ADMIN__/img/wd1213.png" alt=""> 29℃
+          </div><br><br>温度3：{$info.T3}℃
         </li>
         <li>
           <div class="histogram">
@@ -221,8 +171,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/shidu1213.png" alt=""> 29%
+          ><br><br>湿度：{$info.HU}%
         </li>
         <li>
           <div class="histogram">
@@ -230,8 +179,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/eyht1213.png" alt=""> 20%
+          ><br><br>二氧化碳：{$info.CO2}%
         </li>
         <li>
           <div class="histogram">
@@ -239,8 +187,7 @@
 
             </div>
           </div
-        ><br>
-          <img class="environment" src="/__ADMIN__/img/pm101213.png" alt=""> 25
+        ><br><br>PM10：
         </li>
         <li>
           <div class="histogram">
@@ -248,8 +195,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/gzdj1213.png" alt=""> 3
+          ><br><br>光照等级：
         </li>
         <li>
           <div class="histogram">
@@ -257,8 +203,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/fyzs1213.png" alt=""> 27
+          ><br><br>负压指数：{$info.NP}
         </li>
         <li>
           <div class="histogram">
@@ -266,8 +211,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/aq1213.png" alt=""> 27%
+          ><br><br>氨气：{$info.AM}
         </li>
         <li>
           <div class="histogram">
@@ -275,8 +219,7 @@
 
             </div>
           </div
-          ><br>
-          <img class="environment" src="/__ADMIN__/img/tfl1213.png" alt=""> 30m³/h
+          ><br><br>通风量：
         </li>
 
       </ul>
@@ -290,64 +233,64 @@
 </div>
   <div style="height: 400px" class="table device1">
     <div class="ds-title">定速风机</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机1</li>
-      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机2</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机3</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机4</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机5</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机6</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>风机1<div style="position: relative;top: -80px;">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>风机2<div style="position: relative;top: -80px;">22h</div></li>
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>风机3<div style="position: relative;top: -80px;">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>风机4<div style="position: relative;top: -80px;">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>风机5<div style="position: relative;top: -80px;">22h</div></li>
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>风机6<div style="position: relative;top: -80px;">22h</div></li>
 
     </ul>
   </div>
   <div class="table device2">
     <div class="ds-title">变速风机</div>
-    <ul class="tubiaoul line-height1213">
-      <li style="margin-left: -28px"><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A01</li>
-      <li ><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A02</li>
-      <li ><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A03</li>
-      <li style="margin-right: -34px"><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A03</li>
+    <ul class="tubiaoul">
+      <li style="margin-left: -28px"><img src="/__ADMIN__/img/openone.png" alt=""><br><br>A01<div style="position: relative;top: -80px;">22h</div></li>
+      <li ><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>A02<div style="position: relative;top: -80px;">22h</div></li>
+      <li ><img src="/__ADMIN__/img/openone.png" alt=""><br><br>A03<div style="position: relative;top: -80px;">22h</div></li>
+      <li style="margin-right: -34px"><img src="/__ADMIN__/img/openone.png" alt=""><br><br>A03<div style="position: relative;top: -80px;">22h</div></li>
     </ul>
   </div>
   </div>
   <div class="table device2">
     <div class="ds-title">变频器</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器1</li>
-      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器2</li>
-      <li><img src="/__ADMIN__/img/bianpinqi.png" alt=""><br>变频器3</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>变频器1<div class="device-detailed">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>变频器2<div class="device-detailed">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>变频器3<div class="device-detailed">22h</div></li>
     </ul>
   </div>
   <div style="margin-left: 20px" class="table device1">
     <div class="ds-title">照明</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/zhaoming-a.png" alt=""><br>A01</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>A01<div class="device-detailed">22h</div></li>
     </ul>
   </div>
   <div class="table device2">
     <div class="ds-title">湿帘</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/shilian-a.png" alt=""><br>湿帘</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>湿帘<div class="device-detailed">22h</div></li>
     </ul>
   </div>
   <div style="margin-left: 0" class="table device2">
     <div class="ds-title">喷淋</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/penlin-a.png" alt=""><br>喷淋1</li>
-      <li><img src="/__ADMIN__/img/penlin.png" alt=""><br>喷淋2</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>喷淋1<div class="device-detailed">22h</div></li>
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>喷淋2<div class="device-detailed">22h</div></li>
     </ul>
   </div>
   <div style="margin-left: 20px" class="table device1">
     <div class="ds-title">喂料</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/weiliao-a.png" alt=""><br>喂料1</li>
-      <li><img src="/__ADMIN__/img/weiliao.png" alt=""><br>喂料2</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/openone.png" alt=""><br><br>喂料1<div class="device-detailed">22h</div></li>
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>喂料2<div class="device-detailed">22h</div></li>
     </ul>
   </div>
   <div class="table device2">
     <div class="ds-title">暖灯</div>
-    <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/nuandeng-a.png" alt=""><br>暖灯</li>
+    <ul class="tubiaoul">
+      <li><img src="/__ADMIN__/img/opentwo.png" alt=""><br><br>暖灯<div class="device-detailed">22h</div></li>
     </ul>
   </div>
 

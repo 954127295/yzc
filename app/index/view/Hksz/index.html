@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>环控设置</title>
-<link href="/__INDEX__/css/dwsj.css" rel="stylesheet" type="text/css" />
-    <link href="/__INDEX__/css/style.css" rel="stylesheet" type="text/css" />
- <script src="/__INDEX__/js/jquery.js"></script>
- <script src="/__INDEX__/js/dssj.js"></script>
-    <script src="/__INDEX__/js/index.js"></script>
+<title>DTU维护</title>
+<link href="/__INDEX__/css1/dwsj.css" rel="stylesheet" type="text/css" />
+    <link href="/__INDEX__/css1/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/__INDEX__/css1/configure.css">
+ <script src="/__ADMIN__/js/jquery.js"></script>
+ <script src="/__ADMIN__/js/dssj.js"></script>
+    <script src="/__ADMIN__/js/index.js"></script>
 </head>
 
 <body>
@@ -21,261 +22,290 @@
 <!--ce-->
 {include file="common/qtlft"}
 
+
 <div class="main">
     <div style="" class="min-message">
-        <div class="mess-name">单元号：D001</div>
-        <div style="margin-left: -160px">圈号：D001</div>
+        <div class="mess-name">单元号：{$dyinfo.dyname}</div>
+        <!-- <div style="margin-left: -160px">圈号：D001</div> -->
         <!--
         <div style="position:absolute;margin-top: 7px; left: 580px;width: 160px" class="addto"><a href="tianjia.html">控制器参数手动上传</a></div>
         <div style="position:absolute;margin-top: 7px; left: 770px" class="addto"><a href="tianjia.html">重启控制器</a></div>
         -->
-        <div style="position:absolute;margin-top: 7px; left: 900px" class="ds-opt">
+<!--         <div style="position:absolute;margin-top: 7px; left: 900px" class="ds-opt">
             <select name="数据">
                 <option>保育舍1</option>
                 <option>保育舍2</option>
                 <option>保育舍3</option>
                 <option>保育舍4</option>
             </select>
-        </div>
+        </div> -->
 
     </div>
 
   <div class="machine-ul">
-        <div class="blue-head"></div>
-      &nbsp;&nbsp;定速风机
-      <ul>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机1</div>
-          </li>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机2</div>
-          </li>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机3</div>
-          </li>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机4</div>
-          </li>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机5</div>
-          </li>
-          <li>
-              <img src="/__INDEX__/img/dingsufengji.png" alt="">
-              <div class="switch">
-                  <input type="checkbox" name="toggle">
-                  <label for="toggle"><i></i></label>
-                  <span></span>
-              </div>
-              <div style="text-align: center">定速风机6</div>
-          </li>
-      </ul>
+      <div class="all20181129">
+          <img class="icon-20181129" src="/__INDEX__/img/dingsufengji.png" alt="">
+          &nbsp;&nbsp;定速风机
+          <ul class="ul20181129">
+              <li>
+                  <div class="title20181129">风机1</div>
+                  <ul class="detail20181129">
+                      <li>开启温度：<input type="text"></li>
+                      <li>关机间隔：<input type="text"></li>
+                  </ul>
+              </li>
+              <li>
+                  <div class="title20181129">风机2</div>
+                  <ul class="detail20181129">
+                      <li>开启温度：<input type="text"></li>
+                      <li>关机间隔：<input type="text"></li>
+                  </ul>
+              </li>
+              <li>
+                  <div class="title20181129">风机3</div>
+                  <ul class="detail20181129">
+                      <li>开启温度：<input type="text"></li>
+                      <li>关机间隔：<input type="text"></li>
+                  </ul>
+              </li>
+              <li>
+                  <div class="title20181129">风机4</div>
+                  <ul class="detail20181129">
+                      <li>开启温度：<input type="text"></li>
+                      <li>关机间隔：<input type="text"></li>
+                  </ul>
+              </li>
+              <li>
+                  <div class="title20181129">风机通用</div>
+                  <ul class="detail20181129">
+                      <li>启停间隔：<input type="text"></li>
+                      <li>延时时间：<input type="text"></li>
+                  </ul>
+              </li>
+          </ul>
+      </div>
   </div>
     <div class="machine-ul">
-        <div class="blue-head"></div>
-        &nbsp;&nbsp;变速风机
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/biansufengji.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变速风机1</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/biansufengji.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变速风机2</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/biansufengji.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变速风机3</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/biansufengji.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变速风机4</div>
-            </li>
-        </ul>
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/biansufengji.png" alt="">
+            &nbsp;&nbsp;变速风机
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">地沟</div>
+                    <ul class="detail20181129">
+                        <li>最小通风温度：<input type="text"></li>
+                        <li>最小通风量：<input type="text"></li>
+                        <li>最大通风温度：<input type="text"></li>
+                        <li>最大通风量：<input type="text"></li>
+                        <li>风机启动温度：<input type="text"></li>
+                        <li>风机停止温度：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">热交换</div>
+                    <ul class="detail20181129">
+                        <li>最小通风温度：<input type="text"></li>
+                        <li>最小通风量：<input type="text"></li>
+                        <li>最大通风温度：<input type="text"></li>
+                        <li>最大通风量：<input type="text"></li>
+                        <li>启动温度：<input type="text"></li>
+                        <li>停止温度：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">板下</div>
+                    <ul class="detail20181129">
+                        <li>最小通风温度：<input type="text"></li>
+                        <li>最小通风量：<input type="text"></li>
+                        <li>最大通风温度：<input type="text"></li>
+                        <li>最大通风量：<input type="text"></li>
+                        <li>启动温度：<input type="text"></li>
+                        <li>停止温度：<input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div style=" width: 475px" class="machine-ul">
-        <div class="blue-head"></div>
-        &nbsp;&nbsp;变频器
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/bianpinqi.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变频器1</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/bianpinqi.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变频器2</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/bianpinqi.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">变频器3</div>
-            </li>
-        </ul>
+
+    <div class="machine-ul">
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/zhaoming.png" alt="">
+            &nbsp;&nbsp;照明灯
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">开灯</div>
+                    <ul class="detail20181129">
+                        <li>时间1：<input type="text"></li>
+                        <li>时间2：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">关灯</div>
+                    <ul class="detail20181129">
+                        <li>时间1：<input type="text"></li>
+                        <li>时间2：<input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div style="width: 475px;margin-left: 525px;margin-top: -240px;" class="machine-ul">
-        <div style=" margin-top: -39px;" class="blue-head"></div>
-       <div style="display: inline-block;margin-left: 20px">照明</div>
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/zhaoming.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">照明1</div>
-            </li>
-        </ul>
+
+    <div class="machine-ul">
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/penlin.png" alt="">
+            &nbsp;&nbsp;水帘、喷淋、饮水
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">水帘</div>
+                    <ul class="detail20181129">
+                        <li>开启温度：<input type="text"></li>
+                        <li>关闭温度：<input type="text"></li>
+                        <li>启停间隔：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">喷淋</div>
+                    <ul class="detail20181129">
+                        <li>开启温度：<input type="text"></li>
+                        <li>关闭温度：<input type="text"></li>
+                        <li>开启间隔：<input type="text"></li>
+                        <li>停止间隔：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饮水</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>饮水时长：<input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div style=" width: 475px" class="machine-ul">
-        <div class="blue-head"></div>
-        &nbsp;&nbsp;湿帘
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/shilian.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">湿帘1</div>
-            </li>
-        </ul>
+
+    <div class="machine-ul">
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/weiliao.png" alt="">
+            &nbsp;&nbsp;饲喂
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">饲喂1</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饲喂2</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饲喂3</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饲喂4</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饲喂5</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">饲喂6</div>
+                    <ul class="detail20181129">
+                        <li>第一次时间：<input type="text"></li>
+                        <li>第二次时间：<input type="text"></li>
+                        <li>第三次时间：<input type="text"></li>
+                        <li>第四次时间：<input type="text"></li>
+                        <li>第五次时间：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">喂料1时长</div>
+                    <ul class="detail20181129">
+                        <li>今日时长：<input type="text"></li>
+                        <li>昨日时长：<input type="text"></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="title20181129">喂料2时长</div>
+                    <ul class="detail20181129">
+                        <li>今日时长：<input type="text"></li>
+                        <li>昨日时长：<input type="text"></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
     </div>
-    <div style="width: 475px;margin-left: 525px;margin-top: -240px;" class="machine-ul">
-        <div style=" margin-top: -39px;" class="blue-head"></div>
-        <div style="display: inline-block;margin-left: 20px">喷淋</div>
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/penlin.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">喷淋1</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/penlin.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">喷淋2</div>
-            </li>
-        </ul>
+
+    <div class="machine-ul">
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/nuandeng.png" alt="">
+            &nbsp;&nbsp;暖灯
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">暖灯</div>
+                    <ul class="detail20181129">
+                        <li>开启温度：<input type="text"></li>
+                        <li>关闭温度：<input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div style=" width: 475px" class="machine-ul">
-        <div class="blue-head"></div>
-        &nbsp;&nbsp;喂料
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/weiliao.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">喂料1</div>
-            </li>
-            <li>
-                <img src="/__INDEX__/img/weiliao.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">喂料2</div>
-            </li>
-        </ul>
+
+    <div class="machine-ul">
+        <div class="all20181129">
+            <img class="icon-20181129" src="/__INDEX__/img/baojing.png" alt="">
+            &nbsp;&nbsp;报警
+            <ul class="ul20181129">
+                <li>
+                    <div class="title20181129">报警参数</div>
+                    <ul class="detail20181129">
+                        <li>温度上限报警值：<input type="text"></li>
+                        <li>温度下限报警值：<input type="text"></li>
+                        <li>传感器最大差值：<input type="text"></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div style="width: 475px;margin-left: 525px;margin-top: -240px;" class="machine-ul">
-        <div style=" margin-top: -39px;" class="blue-head"></div>
-        <div style="display: inline-block;margin-left: 20px">暖灯</div>
-        <ul>
-            <li>
-                <img src="/__INDEX__/img/nuandeng.png" alt="">
-                <div class="switch">
-                    <input type="checkbox" name="toggle">
-                    <label for="toggle"><i></i></label>
-                    <span></span>
-                </div>
-                <div style="text-align: center">暖灯1</div>
-            </li>
-        </ul>
-    </div>
+
 </div>
 </div>
 </div>
-
-
-
-<!--怀孕单元弹窗-->
-
 </body>
 
 

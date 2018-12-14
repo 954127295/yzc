@@ -1,0 +1,244 @@
+@charset "utf-8";
+body{
+	margin:0;
+	padding:0;
+	vertical-align: baseline;
+	font-size:14px;
+	color:#fff;
+	font-family:'Microsoft YaHei','Helvetica Neue', 'Hiragino Sans GB', 黑体, Arial, sans-serif;
+	background:#141414;
+	}
+ul,li,img {list-style:none;border:none; padding:0; margin:0;}
+a {text-decoration:none;cursor:pointer;outline:none; color:#fff}	
+table{border-collapse:collapse;}
+
+.content {
+	width: 100%;
+	height:100%;
+}
+.top{
+	width:100%;
+	height:60px;
+	background:#1e1e1e;
+	}
+.m-min{ width:1200px; margin:0 auto;}	
+.logo{
+	width:200px;
+	float: left;
+	margin-top:10px;
+	}	
+.top-r{ 
+     width:260px;
+	 position:absolute;
+	 right:30px;
+	 display:flex;
+	 }	
+.t-alarm,.t-sett{margin-left:20px; cursor:pointer; margin-top:18px; }	
+.tx{
+	width:160px;
+	height:30px;
+	float:right;
+	line-height:30px;
+	margin-top:15px;
+	cursor:pointer;
+	color:#fff;
+	background:url(../img/xl.png) no-repeat right center;
+	display:flex;
+	}	
+.tx-name{ margin-left:15px; }	
+
+/**/
+.position{
+	height:56px;
+	background:#232323;
+	line-height:56px;
+	}
+.p-info{
+	width:250px;
+	float:left;
+	background:url(../img/home.png) no-repeat left center;
+	padding-left:30px;
+	}
+.row{
+	height:100%;
+	width:100%;
+	display:flex;
+	position:absolute;
+	}
+.sidebar{
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 15%;
+    bottom: 0;
+	background:#191919;
+	min-height:450px;
+	}	
+.sid_title{
+	width:140px;
+	margin:0 auto;
+	font-size:20px;
+    color:#fff;
+	text-align:center;
+	border:1px solid #c8c8c8;
+	margin-top:25px;
+	padding:10px 0px;
+	}	
+.sidebar ul{
+	margin:30px 0px;
+	}	
+.sidebar ul li{
+	height:50px;
+	line-height:50px;
+	text-align:center;
+	font-size:16px;
+	margin-bottom:10px;
+	border-bottom:1px solid #141414;
+	cursor: pointer;/*鼠标指上变小手*/
+}
+.sidebar ul li:hover{
+	background:#141414;
+	}
+.sid_checked{
+	background:#141414;
+	}	
+.main{
+	width:82%;
+	position: absolute;
+    top:0;
+	right:0;
+    bottom: 0;
+	padding:20px;
+	min-height:450px;
+	}	
+.addto{
+	width:100px;
+	height:36px;
+	text-align:center;
+	line-height:36px;
+	cursor: pointer;/*鼠标指上变小手*/
+	background:#1e1e1e;
+	border:1px solid #5a5a5a;
+	border-radius:6px;
+	}
+.table{
+	padding:20px;
+	background:#1e1e1e;
+	margin-top:20px;
+	}	
+.table table{border-collapse:collapse;}
+.table  table,th, td{ border:1px solid  #3c3c3c;}
+.table td{ height:40px; line-height:40px; text-align:center;}
+.table table a:hover{ color:#000096;}
+.opt{
+	display:flex;
+	padding-left:30px;
+	}
+.modify{ width:80px; text-align:center;cursor: pointer;}	
+.delete{width:60px;cursor: pointer;}
+.setting{width:70px;cursor: pointer;}
+
+	/*添加分组弹窗*/	
+.addto-tc,.modify-tc,.delete-tc{display: none;}
+.mark{
+	position:fixed;
+    left:0;
+    top:0;
+    opacity:.6;
+    width:100%;
+    height:100%;
+    background:#000;
+    z-index:100;
+	}
+.ups{
+	z-index:101;/*比上面的数字大*/
+	position:fixed;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+	width:51%;
+	background:#282828;
+	border:1px solid #505050;
+	border-radius:10px;
+	}	
+.ups-title{
+	font-size:16px;
+	text-align:center;
+	line-height:42px;
+	font-weight:bolder;
+	color:#fff;
+	border-bottom:1px solid #505050;
+	}	
+.close{
+	width:20px;
+	float:right;
+	margin-top: 10px;
+    margin-right: 10px;
+	cursor: pointer;
+	}	
+.ups-info{
+	width:80%;
+	margin:20px auto;
+	}
+.ups-info-n{ display:flex; margin-bottom:15px;}	
+.info-name{
+	width:90px;
+	text-align:right;
+	padding-right:20px;
+	height:36px;
+	line-height:36px;
+	font-weight:bolder;
+	}
+.info-in{
+	margin-left:10px;
+	width:380px;
+	height:36px;
+	line-height:36px;
+	}
+.info-in input,.info-in select{
+	width:380px;
+	border:0;
+	color:#c8c8c8;
+	background:#1e1e1e;
+	height:30px;
+	line-height:36px;
+	padding-left:20px;
+	}	
+.info-in select{
+	width:400px;
+	}		
+.ups-button{
+	width:140px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	font-size:16px;
+	background:#f05a00;
+	margin:25px auto;
+	border-radius:10px;
+	cursor: pointer;
+	}
+.delete-info{
+	padding-top:20px;
+	font-size:18px;
+	text-align:center;
+	}
+.delete-title{ border:0;}				
+	
+/*添加页面*/
+.add-info{ width:60%;}
+.add-info-n{ margin-bottom:25px;}
+.add-in input,.add-in select{
+	width:380px;
+	border:0;
+	color:#c8c8c8;
+	background:#141414;
+	height:30px;
+	line-height:36px;
+	padding-left:20px;
+	}	
+.add-in select{ width:400px;}	
+ .add-many input{
+	 width:40px;
+	 margin-top:12px;
+	}			

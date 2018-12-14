@@ -1,0 +1,40 @@
+.icon-20181129{
+    width: 40px;
+    vertical-align: middle;
+}
+.ul20181129{
+    margin-top: 20px;
+}
+.all20181129{
+    width: 98%;
+}
+.title20181129{
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding-left: 20px;
+    background-color: #1F2736;
+    line-height: 50px;
+    font-size: 18px;
+}
+.detail20181129{
+    width: 98%;
+    height: auto;
+    border: 1px solid #1F2736;
+    padding: 20px;
+}
+.detail20181129 li{
+    /*float: left;*/
+    display: inline-block;
+    margin: 10px 10px;
+    width: 280px;
+    text-align: right;
+
+}
+.detail20181129 input{
+    width: 140px;
+    height: 30px;
+    background-color: #ffffff;
+    padding-left: 10px;
+    font-size: 14px;
+}
