@@ -36,4 +36,9 @@ class Common extends Controller{
             self::$user_arr = $user;
         }
     }
+    protected function get_redis(){
+        $redis = new \Redis();
+        $redis->connect("127.0.0.1",6379);
+        return $redis;
+    }
 }

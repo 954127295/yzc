@@ -19,6 +19,22 @@ class Jk extends Common
             'dyinfo' => $dyinfo,
             'info' => $info,
         ]);
+
+        $redis = $this->get_redis();
+        $result = $redis->lrange("yzc",0,0);
+
+        if(empty($result)){
+            $res = db('hardware')->order("id desc")->find();
+        }else{
+            $res = unserialize($result[0]);
+            foreach($res as $k=>$r){
+                if($r == "--"){
+                    $res[$k] = '0';
+                }
+            }
+        }
+        $this->assign("hw",$res);
+
         return view();
     }
 

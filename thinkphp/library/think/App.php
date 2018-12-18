@@ -501,7 +501,13 @@ class App
 
         if ($config['app_multi_module']) {
             // 多模块部署
-            $module    = strip_tags(strtolower($result[0] ?: $config['default_module']));
+            // $module    = strip_tags(strtolower($result[0] ?: $config['default_module']));
+            if($convert){ //增加模块的大小写是否自动转换的功能
+                $module    = strip_tags(strtolower($result[0] ?: $config['default_module']));
+            }else{
+                $module    = strip_tags($result[0] ?: $config['default_module']);
+            }
+
             $bind      = Route::getBind('module');
             $available = false;
 
