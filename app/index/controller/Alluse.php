@@ -18,6 +18,7 @@ class Alluse extends Controller{
                 $key = $user['key'];
                 $new_password = md5(md5($password).$key);
                 if($new_password == $user['password']){
+                    Session::set("username",$user['name']);
                     $save_user['uid'] = $user['id'];
                     $save_user['permission'] = $user['permission'];
                     Session::set("user",$save_user);

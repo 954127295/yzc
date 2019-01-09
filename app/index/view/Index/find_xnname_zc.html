@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>首页</title>
+<link href="/__INDEX__/css/index.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="sy-con">
+<div class="sy-title"><img src="/__INDEX__/img/logo-title.png"/></div>
+
+<div class="sy-second">
+<form action="{:url('find_xnname_zc')}" id="x_form" method="post">
+<div class="search"><input name="xmname" id="xmname" type="text" value="{$key}" placeholder="请输入搜索内容" /><span> <img src="/__INDEX__/img/search1.png" onclick="search()"/></span></div>
+</form>
+<div class="weather"><div class="wea-icon"><img src="/__INDEX__/img/weather-icon1.png"/></div>
+<div class="wea-info"><div class="date">{$now}</div>
+<div class="wea-w">多云</div><div class="wea-tem">14℃~19℃</div>
+</div>
+</div>
+</div>
+<div>
+  <br>
+  <h1>请选择：</h1>
+  <ul style="line-height: 30px;">
+    {foreach name="list" item="li"}
+      <a href="{:url('Zc/index',array('id'=>$li['id']))}"><li>{$li.xmname}</li></a>
+    {/foreach}
+  </ul>
+</div>
+</div>
+</div>
+</body>
+</html>

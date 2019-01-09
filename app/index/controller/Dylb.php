@@ -7,6 +7,7 @@ class Dylb extends Common
     // 单元列表
     public function lst(){
         // dump(session('cid'));die;
+
         $data = db('unit')
         ->field('a.*,b.fzname,b.id as dyid,c.dtuname,c.id as dtuid')
         ->alias('a')
@@ -14,9 +15,13 @@ class Dylb extends Common
         ->join('dtu c','a.dtuid=c.id')
         ->where('a.cid',session('cid'))
         ->paginate(10);
-        // dump($data);die;
+        $_data = db('unit')->where('cid',session('cid'))->select();
+
+        // dump($_data);die;
         $this->assign([
             'data' => $data,
+            'data1' => $_data,
+            'data2' => $__data,
         ]);
         return view();
     }
@@ -25,8 +30,15 @@ class Dylb extends Common
     public function add(){
         if(Request()->isPost()){
             $data = input('post.');
+            // dump($data);die;
             $data['monitor'] = json_encode($data['monitor'],JSON_UNESCAPED_SLASHES);//后期使用\r\n分隔地址
             $data['addtime'] = time();
+            if(!$data['dyfzid']){
+                $this->error('请选择单元分组');
+            }
+            if(!$data['dtuid']){
+                $this->error('请选择接入DTU');
+            }
             //添加场
             $data['cid'] = session('cid');
             $add = db('unit')->insert($data);

@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>动物健康-保育单元</title>
 <link href="/__INDEX__/css/dwjk.css" rel="stylesheet" type="text/css" />
  <script src="/__INDEX__/js/jquery.js" ></script>
@@ -67,12 +68,12 @@ $(document).ready(function(){
 {include file="common/qtlft"}
 
 <div class="main">
-<div class="z-title"><div class="z-title-b">动物免疫</div>  <div class="z-entry">录入</div></div>
+<div class="z-title"><div class="z-title-b">{$zlname}动物免疫</div>  <div class="z-entry">录入</div></div>
 <div class="table">
 <table width="1050" border="0">
   <tr>
     <td bgcolor="#191919"><strong>免疫类型</strong></td>
-    <td bgcolor="#191919"><strong>用药时间</strong></td>
+    <td bgcolor="#191919"><strong>免疫时间</strong></td>
     <td bgcolor="#191919"><strong>用药类型</strong></td>
     <td bgcolor="#191919"><strong>用药量</strong></td>
     <td bgcolor="#191919"><strong>用药总量</strong></td>
@@ -80,7 +81,8 @@ $(document).ready(function(){
     {volist name="data" id="vo"}
     <tr>
       <td class="immunity">{$vo.yname}</td>
-      <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+      <!-- <td>{$vo.time|date="Y-m-d H:i:s",###}</td> -->
+      <td>{$vo.mytime}</td>
       <td>{$vo.yname}</td>
       <td>{$vo.yyl}ml</td>
       <td>{$vo.yyzl}ml</td>
@@ -92,7 +94,7 @@ $(document).ready(function(){
 
 <!--动物治疗-->
 <div class="record">
-<div class="z-title"><div class="z-title-b">动物治疗</div> <div class="cure">录入</div></div>
+<div class="z-title"><div class="z-title-b">{$zlname}动物治疗</div> <div class="cure">录入</div></div>
 <div class="table">
 <table width="1050" border="0">
   <tr>
@@ -121,7 +123,7 @@ $(document).ready(function(){
     <td><a href="{:url('Jkby/deldwzl',array('id'=>$vo['id']))}" onclick="if(confirm('确定删除?')==false)return false;">删除</a></td>
     </tr>
     {/volist}
-    {$zlname}
+
 </table>
 </div>
 </div>
@@ -165,6 +167,17 @@ $(document).ready(function(){
     <option value="{$vo.id}">{$vo.yname}</option>
     {/volist}
   </select>
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="ups-info">
+<div class="ups-info1">
+<div class="ups-info-n ups-info-entry">
+<div class="info-name">免疫时间</div><div class="info-in">
+  <input type="text" name="mytime" value="" placeholder="格式{$time}">为空默认当前时间</span>
 </div>
 </div>
 </div>
@@ -231,7 +244,7 @@ $(document).ready(function(){
 </div>
 </div>
 <div class="ups-info-n ">
-<div class="info-name">用药量</div><div class="info-in"><input name="yyl" type="text" value="  " /></div>
+<div class="info-name">用药量</div><div class="info-in"><input name="yyl" type="text" value="" /></div>
 </div>
 </div>
 

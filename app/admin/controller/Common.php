@@ -12,6 +12,9 @@ class Common extends Controller{
     	$a = $request->action();
         $user = Session::get('user');
         // print_r($user);exit;
+        $username = db('user')->where('id',$user['uid'])->field('username')->find();
+        $this->assign('username',$username['username']);
+        // dump($username);die;
     	if(empty($user)){
     		$this->redirect("Alluse/login");
     	}

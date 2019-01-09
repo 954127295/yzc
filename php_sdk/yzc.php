@@ -34,15 +34,18 @@ class yzc{
 	public function data_processing($data=''){
 		// $data = '{"payload":"eyJJRCI6NzAwMDAwMSwiSFUiOjQ3LjgsIkFNIjoiLS0iLCJIMlMiOiItLSIsIkNPMiI6OTI3LCJOUCI6Ii0tIiwiTEkiOiItLSIsIlBNIjoiLS0iLCJXIjowLjAwLCJUMSI6MTYuMCwiVDIiOjIwLjAsIlQzIjoxNi4zLCJFMSI6MC4yMSwiRTIiOiItLSIsIkUzIjoiLS0iLCJFNCI6Ii0tIiwiRTUiOiItLSIsIkU2IjoiLS0iLCJXQSI6MCwiRUEiOjEsIlQxQSI6MCwiVDJBIjowLCJUM0EiOjAsIlBMQSI6MCwiSFRBIjowLCJMVEEiOjAsIklTQSI6MCwiVElNRSI6IjIwMTgtMTItMTMgMTU6NTU6MDcifQ==","messagetype":"upload","topic":"/a1m3yx5oS4o/7000001/up","messageid":1073124162769526784,"timestamp":1544687712}';
 		$data_arr = json_decode($data,true);
-		$msg = json_decode(base64_decode($data_arr['payload']),true);
-		$msg['SID'] = $msg['ID'];
-		unset($msg['ID']);
-		$redis = $this->fetch_redis();
-		print_r($msg);
-        echo PHP_EOL;
-        echo PHP_EOL;
-		$redis->rpush("yzc",serialize($msg));
-		// $count = $sth->rowCount();//受影响行数
+		if($data_arr['messagetype'] == "upload"){
+			$msg = json_decode(base64_decode($data_arr['payload']),true);
+			$msg['SID'] = $msg['ID'];
+			unset($msg['ID']);
+			$msg['TIME'] = strtotime($msg['TIME']);
+			$redis = $this->fetch_redis();
+			print_r($msg);
+	        echo PHP_EOL;
+	        echo PHP_EOL;
+			$redis->rpush("yzc",serialize($msg));
+			// $count = $sth->rowCount();//受影响行数
+		}
 	}
 
 	public function handle_msg_list(){

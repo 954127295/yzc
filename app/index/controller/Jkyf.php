@@ -21,6 +21,8 @@ class Jkyf extends Common
         // 耳标号
         $ebh = db('pigpen')->where('dyid',session('dyid'))->field('jnumber')->select();
         $zl = db('dwzl')->where('dyid',session('dyid'))->select();
+        $zlname = db('unit')->where('id',session('dyid'))->field('dyname')->find();
+        // dump($zl);
         $arr = array();
         foreach ($zl as $k => $v) {
             $arr[] = $v['bz'];
@@ -28,12 +30,17 @@ class Jkyf extends Common
         foreach (array_count_values($arr) as $key => $value) {
             $_arr[$key] = (string)$value;
         }
+        // $a = array_count_values($arr);
+        // dump($_arr);die;
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
-
-        // dump($zl);die;
+        $time = date('Y-m-d');
+        // dump($time);die;
+        // dump($zlname);die;
         $this->assign([
+            'time' => $time,//时间
             'bt' => $_arr,//饼图
+            'zlname' => $zlname['dyname'],
             'info' => $myypinfo,
             'data' => $data,//免疫數據
             'ebh' => $ebh,//耳標號
@@ -47,10 +54,18 @@ class Jkyf extends Common
     public function myadd(){
         if(Request()->isPost()){
             $_data = input('post.');
+            $ifnum = db('dwmy')->where('dyid',session('dyid'))->select();
+            if(count($ifnum)>2){
+                $this->error('最多免疫3次');
+            }
+            if(!$_data['mytime']){
+                $_data['mytime'] =  date('Y-m-d');
+            }
             $data = db('drugs')->where('id',$_data['type'])->find();
             $dy = db('pigpen')->where('dyid',session('dyid'))->select();
             $date = array();
             $date['mytype'] = $data['id'];
+            $date['mytime'] = $_data['mytime'];
             $date['type'] = $data['id'];
             $date['time'] = time();
             $date['yyl'] = $data['zsml'];

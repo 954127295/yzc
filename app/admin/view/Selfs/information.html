@@ -19,30 +19,30 @@
 <div class="content">
     <!--top-->
     <div class="top">
-        <div class="m-min">
-            <div class="logo"><img src="__STATIC__/img/logo.png"/></div>
-            <div class="top-r">
-                <div onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" id="navigation">
-                    <div class="tx">
-                        <div class="tx-img"><img src="img/tx.png"/></div>
-                        <div class="tx-name">牧原1234</div>
-                    </div>
-                    <ul>
-                        <li><a href="{:url('Selfs/password')}">密码修改</a></li>
-                        <li><a href="{:url('Selfs/information')}">用户信息修改</a></li>
-                        <li><a href="{:url('Alluse/logout')}">退出</a></li>
-                    </ul>
+    <div class="m-min">
+        <div class="logo"><img src="/__ADMIN__/img/logo.png"/></div>
+        <div class="top-r">
+            <div onmouseover="displaySubMenu(this)" onmouseout="hideSubMenu(this)" id="navigation">
+                <div class="tx">
+                    <div class="tx-img"><img src="/__ADMIN__/img/tx.png"/></div>
+                    <div class="tx-name">{$username}</div>
                 </div>
-
-                
+                <ul >
+                    <li><a href="{:url('Selfs/password')}">密码修改</a></li>
+                    <li><a href="{:url('Selfs/information')}">用户信息修改</a></li>
+                    <li><a href="{:url('Alluse/logout')}">退出</a></li>
+                </ul>
             </div>
+
+
         </div>
     </div>
+</div>
 
     <!--位置-->
     <div class="position">
         <div class="m-min">
-            <div class="p-info"><a href="#">后台管理</a> > <a href="#">用户信息修改</a></div>
+            <div class="p-info"><a href="/admin">后台管理</a> > <a href="#">用户信息修改</a></div>
         </div>
     </div>
     <div class="row">
@@ -72,7 +72,7 @@
                     <div class="ups-button" style="float:left;margin-left:140px;">提交</div>
                     <div class="close-button" style="float:left;margin-left:50px;">取消</div>
                 </div>
-                
+
             </div>
         </div>
      </form>

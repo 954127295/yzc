@@ -1,10 +1,10 @@
 <div class="top">
 <div class="m-min">
-<div class="logo"><img src="/__ADMIN__/img/logo.png"/></div>
+<div class="logo"><a href="{:url('Zc/index',array('id'=>$Think.session.cid))}"><img src="/__ADMIN__/img/logo.png"/></a></div>
 <div class="top-r">
-<div class="tx"><div class="tx-img"><img src="/__ADMIN__/img/tx.png" /></div> <div class="tx-name">牧原1234</div>  </div>
-<div class="t-alarm"><img src="/__ADMIN__/img/zc-jb.png" /></div>
-<div class="t-sett"><img src="/__ADMIN__/img/t-sett.png" /></div>
+<div class="tx"><div class="tx-img"><img src="/__ADMIN__/img/tx.png" /></div> <div class="tx-name">{$Think.session.username}</div><a href="{:url('Alluse/logout')}" style="margin-left:30px;">退出</a></div>
+<!-- <div class="t-alarm"><img src="/__ADMIN__/img/zc-jb.png" /></div>
+<div class="t-sett"><img src="/__ADMIN__/img/t-sett.png" /></div> -->
 </div>
 </div>
 </div>

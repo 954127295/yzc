@@ -30,8 +30,10 @@ class Jkhy extends Common
         }
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
+        $time = date('Y-m-d');
         // dump($zl);die;
         $this->assign([
+            'time' => $time,//时间
             'bt' => $_arr,//饼图
             'info' => $myypinfo,
             'data' => $data,//免疫數據
@@ -46,17 +48,24 @@ class Jkhy extends Common
     public function myadd(){
         if(Request()->isPost()){
             $_data = input('post.');
+            $dynum = db('dwmy')->where('dyid',session('dyid'))->select();
+            if(count($dynum)>2){
+                $this->error('最多免疫3次');
+            }
+            if(!$_data['mytime']){
+                $_data['mytime'] =  date('Y-m-d');
+            }
             $data = db('drugs')->where('id',$_data['type'])->find();
             $dy = db('pigpen')->where('dyid',session('dyid'))->select();
             $date = array();
             $date['mytype'] = $data['id'];
+            $date['eh'] = $_data['eh'];
+            $date['mytime'] = $_data['mytime'];
             $date['type'] = $data['id'];
             $date['time'] = time();
             $date['yyl'] = $data['zsml'];
-            $date['eh'] = $_data['eh'];
             $date['yyzl'] = $data['zsml']*count($dy);
             $date['dyid'] = session('dyid');
-            // dump($date);die;
             $ins = db('dwmy')->insert($date);
             if($ins){
                 $this->success('添加免疫数据成功','index','',1);

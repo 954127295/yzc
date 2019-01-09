@@ -47,7 +47,7 @@
     </tr>
 {volist name="data" id="vo"}
   <tr>
-    <td class="edit-by">{$vo.jnumber}<input type="hidden" value="{$vo.id}" id="hid" /></td>
+    <td class="edit-by" style="color:red">{$vo.jnumber}(录入)<input type="hidden" value="{$vo.id}" id="hid" /></td>
     <td>{$vo.logs.tc}</td>
     <td>{$vo.logs.delivery_time}</td>
     <td>{$vo.logs.date_year}</td>
@@ -205,7 +205,7 @@
 $("#put_form").click(function(){
     $("form").submit();
 });
-$(document).ready(function(){       
+$(document).ready(function(){
     $(".edit-by").click(function(){
         var x = $(this).find("#hid").val();
         $("#eb_id").val($(this).text());

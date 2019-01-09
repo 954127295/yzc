@@ -41,17 +41,19 @@
             <div class="table">
                 <table width="1100" border="0">
                     <tr>
-                        <td bgcolor="#191919" width="20%"><strong>权限属性</strong></td>
                         <td bgcolor="#191919" width="20%"><strong>操作名称</strong></td>
+                        <td bgcolor="#191919" width="20%"><strong>权限属性</strong></td>
+
                     </tr>
                     {volist name="data" id="vo"}
                     <tr>
+                        <td><a href="{:url('edit',array('id'=>$vo['id']))}">{$vo.name}</a></td>
                         <td>
                             {volist name="vo.permission" id="per"}
                                 {$per}、
                             {/volist}
                         </td>
-                        <td><a href="{:url('edit',array('id'=>$vo['id']))}">{$vo.name}</a></td>
+
                     </tr>
                     {/volist}
                 </table>

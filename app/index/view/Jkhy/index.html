@@ -80,7 +80,8 @@ $(document).ready(function(){
     <tr>
       <td class="immunity">{$vo.yname}</td>
       <td>{$vo.eh}</td>
-      <td>{$vo.time|date="Y-m-d H:i:s",###}</td>
+      <!-- <td>{$vo.time|date="Y-m-d H:i:s",###}</td> -->
+      <td>{$vo.mytime}</td>
       <td>{$vo.yname}</td>
       <td>{$vo.yyl}ml</td>
       <td>{$vo.yyzl}ml</td>
@@ -176,6 +177,16 @@ $(document).ready(function(){
     <option value="{$vo.id}">{$vo.yname}</option>
     {/volist}
   </select>
+</div>
+</div>
+</div>
+
+</div>
+<div class="ups-info">
+<div class="ups-info1">
+<div class="ups-info-n ups-info-entry">
+<div class="info-name">免疫时间</div><div class="info-in">
+  <input type="text" name="mytime" value="" placeholder="格式{$time}">为空默认当前时间</span>
 </div>
 </div>
 </div>

@@ -34,9 +34,11 @@ class Jkby extends Common
         // dump($_arr);die;
         $zlzz = db('zlzz')->select();
         $yylx = db('yylx')->select();
-
+        $time = date('Y-m-d');
+        // dump($time);die;
         // dump($zlname);die;
         $this->assign([
+            'time' => $time,//时间
             'bt' => $_arr,//饼图
             'zlname' => $zlname['dyname'],//饼图
             'info' => $myypinfo,
@@ -52,10 +54,18 @@ class Jkby extends Common
     public function myadd(){
         if(Request()->isPost()){
             $_data = input('post.');
+            $dynum = db('dwmy')->where('dyid',session('dyid'))->select();
+            if(count($dynum)>2){
+                $this->error('最多免疫3次');
+            }
+            if(!$_data['mytime']){
+                $_data['mytime'] =  date('Y-m-d');
+            }
             $data = db('drugs')->where('id',$_data['type'])->find();
             $dy = db('pigpen')->where('dyid',session('dyid'))->select();
             $date = array();
             $date['mytype'] = $data['id'];
+            $date['mytime'] = $_data['mytime'];
             $date['type'] = $data['id'];
             $date['time'] = time();
             $date['yyl'] = $data['zsml'];

@@ -11,12 +11,13 @@ class Bydy extends Common
     	$dyid = Session::get("dyid");
     	$where['dyid'] = $dyid;
     	$data = db('pigpen')->where($where)->paginate(10,false,['var_page'=>'np']);
-        // dump($data);die;
+        $dyname = db('unit')->where('id',$dyid)->find();
+        $pic = db('pic')->where('dyid',$dyid)->field('pic')->find();
     	$page1 = $data->render();
     	$data = $data->all();
     	$new_data = array();
     	foreach($data as $d){
-    		$log = db("baolog")->where(array("pen_id"=>$d['id']))->order("id desc")->find();
+    		$log = db("baolog")->where(array("pen_id"=>$d['id'],"batch"=>$pic['pic']))->order("id desc")->select();
     		$d['logs'] = $log;
     		$new_data[] = $d;
     	}
@@ -24,6 +25,8 @@ class Bydy extends Common
     	$this->assign("page1",$page1);
         $this->assign([
             'info' => $new_data,
+            'dyname' => $dyname['dyname'],
+            'pic' => $pic['pic'],
         ]);
         $log = $this->get_log();
         $page2 = $log->render();

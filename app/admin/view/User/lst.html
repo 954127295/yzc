@@ -5,7 +5,7 @@
 <title>用户列表</title>
 <link href="/__ADMIN__/css/dswh.css" rel="stylesheet" type="text/css" />
 <link href="/__ADMIN__/css/cwh.css" rel="stylesheet" type="text/css"/>
-<link href="/__ADMIN__/layui/css/layui.css" rel="stylesheet" type="text/css"/>
+<!-- <link href="/__ADMIN__/layui/css/layui.css" rel="stylesheet" type="text/css"/> -->
  <script src="/__ADMIN__/js/jquery.js"></script>
  <script src="/__ADMIN__/js/dssj.js"></script>
     <script src="/__ADMIN__/js/dswh.js"></script>
@@ -28,6 +28,11 @@
   padding: 5px 7px;
   color: #999999;
   cursor: pointer;
+}
+#inputs{
+  background-color:#191919;
+  color:white;
+  border:0px solid red;
 }
 </style>
 </head>
@@ -52,20 +57,20 @@
       {volist name="data" id="vo"}
       <tr>
         <td>{$vo.id}</td>
-        <td><input type="text" value="{$vo.username}" onchange="change_user({$vo.id},'username',this)" /></td>
-        <td><input type="password" value="" onchange="change_user({$vo.id},'password',this)" /></td>
-        <td><input type="text" value="{$vo.name}" onchange="change_user({$vo.id},'name',this)" /></td>
-        <td><input type="text" value="{$vo.tel}" onchange="change_user({$vo.id},'tel',this)" /></td>
-        <td><input type="text" value="{$vo.email}" onchange="change_user({$vo.id},'email',this)" /></td>
+        <td><input id="inputs" type="text" value="{$vo.username}" onchange="change_user({$vo.id},'username',this)" /></td>
+        <td><input id="inputs" type="text" value="" onchange="change_user({$vo.id},'password',this)" /></td>
+        <td><input id="inputs" type="text" value="{$vo.name}" onchange="change_user({$vo.id},'name',this)" /></td>
+        <td><input id="inputs" type="text" value="{$vo.tel}" onchange="change_user({$vo.id},'tel',this)" /></td>
+        <td><input id="inputs" type="text" value="{$vo.email}" onchange="change_user({$vo.id},'email',this)" /></td>
         <td>
-          <select onchange="change_user({$vo.id},'cid',this)">
+          <select id="inputs" onchange="change_user({$vo.id},'cid',this)">
             {foreach name="chang" item="c"}
               <option {if condition="$vo.cid eq $c.id"}selected{/if} value="{$c.id}">{$c.xmname}</option>
             {/foreach}
           </select>
         </td>
         <td>
-          <select onchange="change_user({$vo.id},'permission',this)">
+          <select id="inputs" onchange="change_user({$vo.id},'permission',this)">
             <option {if condition="$vo.permission eq 1"}selected{/if} value="1">集团总监</option>
             <option {if condition="$vo.permission eq 2"}selected{/if} value="2">区域总监</option>
             <option {if condition="$vo.permission eq 3"}selected{/if} value="3">子公司总监</option>

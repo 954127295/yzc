@@ -28,6 +28,7 @@ class Index extends Common{
         }else{
             $qy = db("Cwh")->distinct(true)->field("region")->select();
             $this->assign("qy",$qy);
+            $this->assign("now",date("Y-m-d"));
             return $this->fetch();
         }
     }
@@ -71,8 +72,19 @@ class Index extends Common{
     public function find_xnname_zc(){
         $xmname = input('post.xmname');
         $where['xmname'] = array("like","%$xmname%");
-        $res = db("Cwh")->where($where)->field("id")->find();
-        $this->redirect("Zc/index",array("id"=>$res['id']));
+        $res = db("Cwh")->where($where)->select();
+        if(empty($res)){
+            $this->error("搜索结果为空");
+        }else{
+            if(count($res) == 1){
+                $this->redirect("Zc/index",array("id"=>$res[0]['id']));
+            }else{
+                $this->assign("list",$res);
+                $this->assign("key",$xmname);
+                $this->assign("now",date("Y-m-d"));
+                return $this->fetch();
+            }
+        }
     }
 
 }

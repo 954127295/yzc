@@ -19,10 +19,8 @@ class Jk extends Common
             'dyinfo' => $dyinfo,
             'info' => $info,
         ]);
-
         $redis = $this->get_redis();
         $result = $redis->lrange("yzc",0,0);
-
         if(empty($result)){
             $res = db('hardware')->order("id desc")->find();
         }else{
@@ -33,10 +31,17 @@ class Jk extends Common
                 }
             }
         }
+        $hwt = $this->get_hardwaret();
+        $this->assign("hwt",$hwt);
         $this->assign("hw",$res);
         $this->assign("num",$this->get_dylist());
-
         return view();
+    }
+    private function get_hardwaret(){
+        $redis = $this->get_redis();
+        $result = $redis->lrange("yzct",0,0);
+        $res = db('hardwaret')->order("id desc")->find();
+        return $res;
     }
     //当前动物数、初始数量、日龄、死亡、免疫、治疗
     //取单元数据

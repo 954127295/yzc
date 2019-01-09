@@ -17,6 +17,7 @@ class Dywh extends Common
         if(request()->isPost()){
             $data = input('post.');
             $data['cid'] = session('cid');
+            $data['addtime'] = date('Y-m-d');
             $ins = db('dyfz')->insert($data);
             if($ins){
                 $this->success('添加单元分组成功','lst','','1');

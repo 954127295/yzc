@@ -13,9 +13,9 @@
 <!--top-->
 <div class="top">
 <div class="m-min">
-<div class="logo"><img src="/__INDEX__/img/logo.png"/></div>
+<div class="logo"><a href="{:url('Zc/index',array('id'=>$Think.session.cid))}"><img src="/__ADMIN__/img/logo.png"/></a></div>
 <div class="top-r">
-<div class="tx"><div class="tx-img"><img src="/__INDEX__/img/tx.png" /></div> <div class="tx-name">牧原1234</div>  </div>
+<div class="tx"><div class="tx-img"><img src="/__INDEX__/img/tx.png" /></div> <div class="tx-name">{$Think.session.username}</div><a href="{:url('Alluse/logout')}" style="margin-left:30px;">退出</a></div>
 <div class="t-alarm"><img src="/__INDEX__/img/zc-jb.png" /></div>
 <div class="t-sett"><img src="/__INDEX__/img/t-sett.png" /></div>
 </div>
@@ -29,9 +29,9 @@
 <!--<div class="mess-cs">初始动物：400</div>
 <div class="mess-dq">当前动物：398</div>
 <div class="mess-sw">累计死亡：2</div>-->
-<div class="mess-cl">累计饲料：200</div>
-<div class="mess-wat">累计用水：400</div>
-<div class="mess-ele">累计用电：400</div>
+<div>累计饲料：200</div>
+<div>累计用水：400</div>
+<div>累计用电：400</div>
 </div>
 
 </div>
@@ -43,10 +43,9 @@
 <ul style="margin-top:20px;">
 <li class="li-f sid_checked"><div class="li-first  ">单元分组 <img src="/__INDEX__/img/site-x.png" /></div>
     <ul class="li-firstDrop">
-     <li >单元01-05 </li>
-     <li > 单元05-10</li>
-     <li class="deop-checked"> 单元11-15</li>
-     <li > 单元16-20</li>
+    {volist name="dyfz" id="vo"}
+     <li {if condition="$vo['id'] eq $id"} class="deop-checked" {/if}><a href="{:url('index',array('id'=>$vo['id']))}">{$vo.fzname}</a> </li>
+    {/volist}
     </ul>
 </li>
 <li class="li-f"><div class="li-first">单元对比  <img src="/__INDEX__/img/site-x.png" /></div></li>
@@ -54,40 +53,48 @@
 </ul>
 </div>
 
-<div class="main">
+<div class="main" style="margin-left:19%;">
 <div class="table">
 <table width="1050" border="0">
   <tr>
     <td bgcolor="#191919">单元</td>
     <td bgcolor="#191919"><strong>状态</strong></td>
     <td bgcolor="#191919"><strong>日龄</strong></td>
-    <td bgcolor="#191919"><strong>温度（前）/℃</strong></td>
-    <td bgcolor="#191919"><strong>温度（中）/℃</strong></td>
-    <td bgcolor="#191919"><strong>温度（后）/℃</strong></td>
+    <td bgcolor="#191919"><strong>温度（1）/℃</strong></td>
+    <td bgcolor="#191919"><strong>温度（2）/℃</strong></td>
+    <td bgcolor="#191919"><strong>温度（3）/℃</strong></td>
     <td bgcolor="#191919"><strong>湿度/%</strong></td>
     <td bgcolor="#191919"><strong>通风量/m³/h</strong></td>
     <td bgcolor="#191919"><strong>存栏量/头</strong></td>
   </tr>
+  {volist name="dyinfo" id="vo"}
   <tr>
-    <td class="alarm1">单元1</td>  <td>在线</td>  <td>8</td>  <td>29.3</td>  <td>29.3</td>  <td>30</td>
-    <td>70</td>  <td>80</td>  <td></td>
+    <!-- <td class="alarm1">{$vo.dyname}</td> -->
+    <td>{$vo.dyname}</td>
+    <td>在线</td>
+    <td>
+      {if condition="$vo.current_date_year gt 0"}
+        {$vo.current_date_year}
+        {else /}
+        0
+      {/if}
+    </td>
+    <td>{$vo.T1}</td>
+    <td>{$vo.T2}</td>
+    <td>{$vo.T3}</td>
+    <td>{$vo.HU}</td>
+    <td>设备未上传</td>
+    <td>
+      {if condition="$vo.cunlan gt 0"}
+        {$vo.cunlan}
+        {else /}
+        0
+      {/if}
+    </td>
   </tr>
-  <tr>
-    <td>单元2</td>  <td>空舍</td>  <td>7</td>  <td>29</td>  <td>29.3</td>  <td>30</td>
-    <td>70</td>  <td>80</td>  <td></td>
-  </tr>
-  <tr>
-   <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>
-    <td>&nbsp;</td>  <td>&nbsp;</td>  <td></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>
-    <td>&nbsp;</td>  <td>&nbsp;</td>  <td></td>
-  </tr>
-  <tr>
-   <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>  <td>&nbsp;</td>
-    <td>&nbsp;</td>  <td>&nbsp;</td>  <td></td>
-  </tr>
+  {/volist}
+
+
 
 </table>
 </div>

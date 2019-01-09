@@ -4,10 +4,48 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>数据透视</title>
 <link href="/__ADMIN__/css/dwsj.css" rel="stylesheet" type="text/css" />
+<link href="/__INDEX__/js/jqplot/jquery.jqplot.min.css" rel="stylesheet" type="text/css" />
+<link href="/__INDEX__/js/jqplot/examples/syntaxhighlighter/styles/shCoreDefault.min.css" rel="stylesheet" type="text/css" />
+<link href="/__INDEX__/js/jqplot/examples/syntaxhighlighter/styles/shThemejqPlot.min.css" rel="stylesheet" type="text/css" />
  <script src="/__ADMIN__/js/jquery.js"></script>
+ <script src="/__INDEX__/js/laydate/laydate.js"></script>
  <script src="/__ADMIN__/js/dssj.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/jquery.jqplot.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/jqplot/examples/syntaxhighlighter/scripts/shCore.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/examples/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/examples/syntaxhighlighter/scripts/shBrushXml.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.logAxisRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+ <script type="text/javascript" src="/__INDEX__/js/m_jqplot.js"></script>
 </head>
+ <style type="text/css">
+    .pagination{
+        text-align:right;
+        margin-top:30px;
+    }
+    .pagination li{
+        display: inline-block;
+    }
+    .page-style{
 
+        width:1000px;
+        text-align:right;
+    }
+    .page-style a{
+      border: 1px solid #999999;
+      padding: 5px 7px;
+      color: #999999;
+      cursor: pointer;
+    }
+ </style>
 <body>
 <div class="content">
 <!--top-->
@@ -25,110 +63,87 @@
     <div class="ds-title">数据透视</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <div class="ds-ul">
       <div class="ds-opt">
-        <select name="数据">
-          <option>温度数据</option>
-          <option>湿度数据</option>
-          <option>温度数据</option>
+        <select id="type">
+          {foreach name="hardwarecolumn" item="c"}
+            <option value="{$c.keys}">{$c.values}</option>
+          {/foreach}
         </select>
       </div>
-      <input class="ds-opt textcolor" type="text" value="开始时间">
-      <input class="ds-opt textcolor" type="text" value="结束时间">
+      <input class="ds-opt textcolor" style="width:200px;" type="text" id="s_time" name="s_time" placeholder="起始时间">
+      <input class="ds-opt textcolor" style="width:200px;" type="text" id="e_time" name="e_time" placeholder="结束时间">
 
-      <div class="enter"><a href="#">搜索</a></div>
+      <div class="enter"><a onclick="search_list()">搜索</a></div>
 
 
     </div>
   </div>
-
+  折线图
+<div id="chart1"></div>
+<script type="text/javascript">
+  function search_list(){
+    var type = $("#type").val();
+    show_zhexian(type);
+  }
+  $(document).ready(function(){
+    var type = "HU";
+    show_zhexian(type);
+  });
+  //  var data = [[3,6,8,1,11,22,4,221,6]];
+  // var data_max = 221; //Y轴最大刻度
+  // var line_title = [name]; //曲线名称
+  // var y_label = ""; //Y轴标题
+  // var x_label = ""; //X轴标题
+  // var x = [1,2,3,4,5,6,7,'2018-12-1',9]; //定义X轴刻度值
+  // var title = "这是标题"; //统计图标标题
+  // j.jqplot.diagram.base("chart1", data, line_title, name, x, x_label, y_label, data_max, 1);
+  function show_zhexian(type){
+    $("#chart1").html("");
+    var s_time = $("#s_time").val();
+    var e_time = $("#e_time").val();
+    $.ajax({
+      url:"{:url('get_zhexian_list')}",
+      type:"post",
+      dataType:"json",
+      data:{"type":type,"s_time":s_time,"e_time":e_time},
+      success:function(data){
+        if(data.values == ""){
+          alert("折线表数据为空");
+          return false;
+        }
+        var times = data.times;
+        var max = data.max;
+        var data = [data.values];
+        var data_max = max; //Y轴最大刻度
+        var line_title = [type]; //曲线名称
+        var y_label = ""; //Y轴标题
+        var x_label = ""; //X轴标题
+        var x = []; //定义X轴刻度值
+        var title = "这是标题"; //统计图标标题
+        j.jqplot.diagram.base("chart1", data, line_title, name, x, x_label, y_label, data_max, 1);
+      }
+    });
+  }
+</script>
   <div class="table">
-   折线图
-  </div>
-
-  <div class="table">
-    <table width="1000" border="0">
+    <table width="100%" border="0">
       <tr>
-        <td bgcolor="#191919"><strong>平均温度</strong></td>
-        <td bgcolor="#191919"><strong>舍外温度</strong></td>
-        <td bgcolor="#191919"><strong>温度A</strong></td>
-        <td bgcolor="#191919"><strong>温度</strong></td>
-        <td bgcolor="#191919"><strong>温度B</strong></td>
-        <td bgcolor="#191919"><strong>温度C</strong></td>
-        <td bgcolor="#191919"><strong>温度D</strong></td>
-        <td bgcolor="#191919"><strong>温度E</strong></td>
-        <td bgcolor="#191919"><strong>湿度</strong></td>
-        <td bgcolor="#191919"><strong>时间</strong></td>
+        {foreach name="hardwarecolumn" item="hw"}
+          <td bgcolor="#191919" style="width:{$td_width}%"><strong>{$hw.values}</strong></td>
+        {/foreach}
       </tr>
+      {foreach name="table_res" key="k" item="ts"}
       <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        {foreach name="hardwarecolumn" item="hl"}
+          <td style="width:{$td_width}%">{$ts[$hl['keys']]}</td>
+        {/foreach}
       </tr>
+      {/foreach}
       <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
+        <td colspan="{$td_count}">
+          <div class="page-style">
+              {$table_res->render()}
+          </div>
+          </td>
       </tr>
     </table>
   </div>
@@ -176,6 +191,15 @@
 <!---->
 </div>
 </body>
-
+<script type="text/javascript">
+  laydate.render({
+    elem: '#s_time'
+    ,type: 'datetime'
+  });
+  laydate.render({
+    elem: '#e_time'
+    ,type: 'datetime'
+  });
+</script>
 
 </html>

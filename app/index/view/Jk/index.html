@@ -292,66 +292,66 @@
   <div style="width: 96%;height: 50px;background-color: #1e1e23;padding: 20px;margin-top: 20px">
     <div class="ds-title">设备状态</div>
 </div>
-  <div style="height: 400px" class="table device1">
+  <div style="height: 300px" class="table device1">
     <div class="ds-title">定速风机</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机1</li>
-      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机2</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机3</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机4</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机5</li>
-      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机6</li>
+      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机1({if condition="$hwt.RS.0 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/dingsufengji-a.png" alt=""><br>风机2({if condition="$hwt.RS.1 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机3({if condition="$hwt.RS.3 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机4({if condition="$hwt.RS.4 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机5({if condition="$hwt.RS.5 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/dingsufengji.png" alt=""><br>风机6({if condition="$hwt.RS.6 eq '1'"}开启{else /}关闭{/if})</li>
 
     </ul>
   </div>
-  <div class="table device2">
+  <div style="height:300px;" class="table device2">
     <div class="ds-title">变速风机</div>
     <ul class="tubiaoul line-height1213">
-      <li style="margin-left: -28px"><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A01</li>
-      <li ><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A02</li>
-      <li ><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A03</li>
-      <li style="margin-right: -34px"><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A03</li>
+      <li style="margin-left: -28px"><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A01({$hwt.RS2}%)</li>
+      <li ><img src="/__ADMIN__/img/biansufengji-a.png" alt=""><br>A02({$hwt.RS3}%)</li>
+      <li ><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A03({$hwt.RS4}%)</li>
+      <li style="margin-right: -34px"><img src="/__ADMIN__/img/biansufengji.png" alt=""><br>A04({$hwt.RS5}%)</li>
     </ul>
   </div>
   </div>
-  <div class="table device2">
+  <div style="height:300px;" class="table device2">
     <div class="ds-title">变频器</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器1</li>
-      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器2</li>
-      <li><img src="/__ADMIN__/img/bianpinqi.png" alt=""><br>变频器3</li>
+      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器1({$hwt.RS18}rpm)</li>
+      <li><img src="/__ADMIN__/img/bianpinqi-a.png" alt=""><br>变频器2({$hwt.RS20}rpm)</li>
+      <li><img src="/__ADMIN__/img/bianpinqi.png" alt=""><br>变频器3({$hwt.RS22}rpm)</li>
     </ul>
   </div>
   <div style="margin-left: 20px" class="table device1">
     <div class="ds-title">照明</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/zhaoming-a.png" alt=""><br>A01</li>
+      <li><img src="/__ADMIN__/img/zhaoming-a.png" alt=""><br>A01({if condition="$hwt.RS0.7 eq '1'"}开启{else /}关闭{/if})</li>
     </ul>
   </div>
   <div class="table device2">
     <div class="ds-title">湿帘</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/shilian-a.png" alt=""><br>湿帘</li>
+      <li><img src="/__ADMIN__/img/shilian-a.png" alt=""><br>湿帘({if condition="$hwt.RS1.0 eq '1'"}开启{else /}关闭{/if})</li>
     </ul>
   </div>
   <div style="margin-left: 0" class="table device2">
     <div class="ds-title">喷淋</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/penlin-a.png" alt=""><br>喷淋1</li>
-      <li><img src="/__ADMIN__/img/penlin.png" alt=""><br>喷淋2</li>
+      <li><img src="/__ADMIN__/img/penlin-a.png" alt=""><br>喷淋1({if condition="$hwt.RS1.1 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/penlin.png" alt=""><br>喷淋2({if condition="$hwt.RS1.2 eq '1'"}开启{else /}关闭{/if})</li>
     </ul>
   </div>
   <div style="margin-left: 20px" class="table device1">
     <div class="ds-title">喂料</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/weiliao-a.png" alt=""><br>喂料1</li>
-      <li><img src="/__ADMIN__/img/weiliao.png" alt=""><br>喂料2</li>
+      <li><img src="/__ADMIN__/img/weiliao-a.png" alt=""><br>喂料1({if condition="$hwt.RS1.3 eq '1'"}开启{else /}关闭{/if})</li>
+      <li><img src="/__ADMIN__/img/weiliao.png" alt=""><br>喂料2({if condition="$hwt.RS1.4 eq '1'"}开启{else /}关闭{/if})</li>
     </ul>
   </div>
   <div class="table device2">
     <div class="ds-title">暖灯</div>
     <ul class="tubiaoul line-height1213">
-      <li><img src="/__ADMIN__/img/nuandeng-a.png" alt=""><br>暖灯</li>
+      <li><img src="/__ADMIN__/img/nuandeng-a.png" alt=""><br>暖灯({if condition="$hwt.RS1.5 eq '1'"}开启{else /}关闭{/if})</li>
     </ul>
   </div>
 

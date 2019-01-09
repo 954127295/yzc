@@ -30,10 +30,11 @@
                     <input name="dyname" type="text" required="required" placeholder="单元分组名称"/>
                 </div>
             </div>
-            <div class="ups-info-n add-info-n"><div class="info-name">单元分组</div>
+            <div class="ups-info-n add-info-n">
+            <div class="info-name">单元分组</div>
               <div class="info-in1 add-in">
                 <select name="dyfzid">
-                  <option>—————————添加单元分组—————————</option>
+
                   {volist name="dyfz" id="vo1"}
                   <option value="{$vo1.id}">{$vo1.fzname}</option>
                   {/volist}
@@ -43,7 +44,7 @@
             <div class="ups-info-n add-info-n"><div class="info-name">接入DTU</div>
               <div class="info-in1 add-in">
                 <select name="dtuid">
-                  <option>——————————接入DTU——————————</option>
+
                   {volist name="dtu" id="vo2"}
                   <option value="{$vo2.id}">{$vo2.dtuname}</option>
                   {/volist}
@@ -83,6 +84,8 @@
 
             <input  value="返回"  onclick="javascript:history.back(-1);" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 80px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">
             <input type="submit" value="提交" style="width: 140px;height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 80px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: -350px;color:white">
+            <a href="{:url('Dywh/add')}" style="height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 80px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 350px;color:white">添加单元分组</a>|
+            <a href="{:url('Dtu/lst')}" style="height: 40px;text-align: center;line-height: 40px;font-size: 16px;background: #f05a00;margin: 80px auto;border-radius: 10px;cursor: pointer;border:0px;margin-left: 0px;color:white">添加dtu</a>
         </form>
 
       </div>

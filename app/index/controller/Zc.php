@@ -12,6 +12,8 @@ class Zc extends Common{
 
     //猪场首页
     public function index($id){
+        Session::delete('dyid');
+        session('dyid',$id);
         $user = self::$user_arr;
         $zc = db("Cwh")->where(array("id"=>$id))->find();
         // dump($zc);die;
@@ -145,6 +147,12 @@ class Zc extends Common{
     public function add(){
         if(Request()->isPost()){
             $data = input('post.');
+            if(!$data['dyfzid']){
+                $this->error('请选择单元分组');
+            }
+            if(!$data['dtuid']){
+                $this->error('请选择接入DTU');
+            }
             $data['monitor'] = json_encode($data['monitor'],JSON_UNESCAPED_SLASHES);//后期使用\r\n分隔地址
             $data['addtime'] = time();
             //添加场

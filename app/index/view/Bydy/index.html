@@ -17,12 +17,16 @@
 <div class="row">
 <!--ce-->
 {include file="common/qtlft"}
-
+<form action="{:url('Pic/pc')}" method="post" >
+<input type="hidden" name="dyid" value="{$Think.session.dyid}"/>
 <div class="main">
-<div class="min-message">
-<div class="mess-name">单元号：D001</div><!-- <div class="mess-status">状态：使用</div> -->
+<div class="min-message" >
+<div class="mess-name">单元号：{$dyname}</div><div class="mess-status" >当前批次：
+<input type="text" name="pic" value="{$pic}"/>
+<input type="submit" value="确认" />
 </div>
-
+</div>
+</form>
 <div class="table">
 <table width="1050" border="0">
   <tr>
@@ -43,7 +47,7 @@
   </tr>
   {volist name="info" id="vo"}
   <tr>
-    <td class="edit">{$vo.jnumber}<input type="hidden" value="{$vo.id}" id="hid" /></td>
+    <td class="edit" style="color:red">{$vo.jnumber}(录入)<input type="hidden" value="{$vo.id}" id="hid" /></td>
     <td>{$vo.logs.batch}</td>
     <td>{$vo.addtime|date="Y-m-d H:i",###}</td>
     <td>{$vo.logs.in_num}</td>
@@ -97,6 +101,7 @@
   <tr>
     <td>{$vo.jnumber}</td>
     <td>{$vo.batch}</td>
+    <!-- <td>{$vo.in_time}</td> -->
     <td>{$vo.in_time}</td>
     <td>{$vo.in_num}</td>
     <td>{$vo.in_heavy}</td>
